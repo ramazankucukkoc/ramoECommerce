@@ -42,12 +42,12 @@ namespace Core.Persistence.Repositories
             return entityList;
         }
         public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, 
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
             bool enableTracking = true, CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query().AsQueryable();
             if (!enableTracking) queryable = queryable.AsNoTracking();
-            if(include != null)queryable=include(queryable);
+            if (include != null) queryable = include(queryable);
             return await queryable.FirstOrDefaultAsync(predicate, cancellationToken);
         }
 
@@ -58,12 +58,12 @@ namespace Core.Persistence.Repositories
             CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query();
-            if(!enableTracking) queryable=queryable.AsNoTracking();
-            if(include !=null)queryable=include(queryable);
+            if (!enableTracking) queryable = queryable.AsNoTracking();
+            if (include != null) queryable = include(queryable);
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null)
                 return await orderBy(queryable).ToPaginateAsync(index, size, 0, cancellationToken);
-            return await queryable.ToPaginateAsync(index,size,0, cancellationToken);
+            return await queryable.ToPaginateAsync(index, size, 0, cancellationToken);
         }
 
         public async Task<IPaginate<TEntity>> GetListByDynamicAsync(Dynamic.Dynamic dynamic,
@@ -72,7 +72,7 @@ namespace Core.Persistence.Repositories
             CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query().AsQueryable().ToDynamic(dynamic);
-            if(!enableTracking) queryable=queryable.AsNoTracking();
+            if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include != null) queryable = include(queryable);
             return await queryable.ToPaginateAsync(index, size, 0, cancellationToken);
 

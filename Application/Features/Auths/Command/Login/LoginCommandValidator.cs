@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Application.Features.Auths.Command.Login
 {
-    public class LoginCommandValidator:AbstractValidator<LoginCommand>
+    public class LoginCommandValidator : AbstractValidator<LoginCommand>
     {
         public LoginCommandValidator()
         {

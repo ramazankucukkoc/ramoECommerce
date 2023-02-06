@@ -18,6 +18,10 @@ namespace Core.Application.Extensions
 
             return options;
         }
+        public static IRuleBuilderOptions<T, string> FirstLetterMustBeUpperCase<T>(this IRuleBuilder<T, string> ruleBuilder)
+        {
+            return ruleBuilder.Must(strToCheck => Char.IsUpper(strToCheck[0])).WithMessage("The first letter is not uppercase");
+        }
         public static IRuleBuilder<T, string> IsPhoneValid<T>(this IRuleBuilder<T, string> ruleBuilder)
         {
             var options = ruleBuilder

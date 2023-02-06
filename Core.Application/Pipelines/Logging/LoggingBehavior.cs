@@ -9,7 +9,7 @@ namespace Core.Application.Pipelines.Logging
 {
     public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
-       // , ILoggableRequest
+       , ILoggableRequest
     {
         private readonly LoggerServiceBase _loggerServiceBase;
         private readonly IHttpContextAccessor _httpContextAccessor;

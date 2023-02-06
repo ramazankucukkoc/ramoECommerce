@@ -1,9 +1,4 @@
 ﻿using Core.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Domain.Entities
 {
@@ -24,8 +19,8 @@ namespace Core.Domain.Entities
             UserOperationClaims = new HashSet<UserOperationClaim>();
             RefreshTokens = new HashSet<RefreshToken>();
         }
-        public User(int id,string firstName,string lastName,string email, byte[]passwordSalt,
-            byte[]passwordHash,bool status,AuthenticatorType authenticatorType):this()
+        public User(int id, string firstName, string lastName, string email, byte[] passwordSalt,
+            byte[] passwordHash, bool status, AuthenticatorType authenticatorType) : this()
         {
             Id = id;
             FirstName = firstName;

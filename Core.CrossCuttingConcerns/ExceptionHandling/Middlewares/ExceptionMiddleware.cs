@@ -30,17 +30,17 @@ namespace Core.CrossCuttingConcerns.ExceptionHandling.Middlewares
             catch (Exception exception)
             {
                 await LogException(context, exception);
-                await HandleExceptionAsync(context.Response, exception);             
+                await HandleExceptionAsync(context.Response, exception);
             }
         }
 
-        private Task HandleExceptionAsync(HttpResponse response,Exception exception)
+        private Task HandleExceptionAsync(HttpResponse response, Exception exception)
         {
             response.ContentType = "application/json";
             _exceptionHandler.Response = response;
             return _exceptionHandler.HandleExceptionAsync(exception);
         }
-        private Task LogException(HttpContext context,Exception exception)
+        private Task LogException(HttpContext context, Exception exception)
         {
             List<LogParameter> logParameters = new()
             {

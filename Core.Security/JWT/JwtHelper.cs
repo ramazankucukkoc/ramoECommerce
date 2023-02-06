@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 
 namespace Core.Security.JWT
 {
@@ -21,26 +22,31 @@ namespace Core.Security.JWT
         }
         public RefreshToken CreateRefreshToken(User user, string ipAddress)
         {
-          
-            throw new NotImplementedException();
-
+            RefreshToken refreshToken = new()
+            {
+                UserId = user.Id,
+                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+                Expires = DateTime.UtcNow.AddDays(7),
+                Created = DateTime.UtcNow,
+                CreatedByIp = ipAddress
+            };
+            return refreshToken;
         }
-
         public AccessToken CreateToken(User user, IList<OperationClaim> operationClaims)
         {
             _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
             SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
-            JwtSecurityToken jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials,operationClaims);
+            JwtSecurityToken jwt = CreateJwtSecurityToken(_tokenOptions, user, signingCredentials, operationClaims);
             JwtSecurityTokenHandler handler = new();
             string? token = handler.WriteToken(jwt);
-           AccessToken accessToken = new() { Token=token,Expiration=_accessTokenExpiration};
+            AccessToken accessToken = new() { Token = token, Expiration = _accessTokenExpiration };
             return accessToken;
         }
 
 
-        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions,User user,
-            SigningCredentials signingCredentials,IList<OperationClaim> operationClaims)
+        public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,
+            SigningCredentials signingCredentials, IList<OperationClaim> operationClaims)
         {
             JwtSecurityToken jwt = new(
                issuer: tokenOptions.Issuer,
@@ -48,10 +54,10 @@ namespace Core.Security.JWT
                 expires: _accessTokenExpiration,
                 notBefore: DateTime.Now,
                 claims: SetCliams(user, operationClaims),
-                signingCredentials:signingCredentials);
+                signingCredentials: signingCredentials);
             return jwt;
         }
-        private IEnumerable<Claim>SetCliams(User user,IList<OperationClaim> operationClaims)
+        private IEnumerable<Claim> SetCliams(User user, IList<OperationClaim> operationClaims)
         {
             List<Claim> claims = new();
             claims.AddNameIdentfier(user.Id.ToString());

@@ -15,7 +15,7 @@ namespace Application.Features.OperationClaims.Rules
             if (result is not null) throw new BusinessException("");
         }
 
-        
+
 
     }
 }

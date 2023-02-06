@@ -8,16 +8,16 @@ namespace Core.CrossCuttingConcerns.ExceptionHandling.Handlers
 
         public Task HandleExceptionAsync(Exception exception)
         {
-            if(exception is BusinessException businessException)
+            if (exception is BusinessException businessException)
                 return HandleException(businessException);
 
-            else if(exception is ValidationException validationException)
+            else if (exception is ValidationException validationException)
                 return HandleException(validationException);
 
-            else if(exception is AuthorizationException authorizationException)
+            else if (exception is AuthorizationException authorizationException)
                 return HandleException(authorizationException);
 
-            else if(exception is NotFoundException notFoundException)
+            else if (exception is NotFoundException notFoundException)
                 return HandleException(notFoundException);
 
             else

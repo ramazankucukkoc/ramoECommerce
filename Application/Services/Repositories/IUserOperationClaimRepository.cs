@@ -3,7 +3,7 @@ using Core.Persistence.Repositories;
 
 namespace Application.Services.Repositories
 {
-    public interface IUserOperationClaimRepository:IAsyncRepository<UserOperationClaim>
+    public interface IUserOperationClaimRepository : IAsyncRepository<UserOperationClaim>
     {
     }
 }

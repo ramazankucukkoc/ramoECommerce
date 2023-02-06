@@ -2,6 +2,7 @@
 using Application.Services.Repositories;
 using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Core.Domain.Entities;
+using Core.Security.GoogleAuth;
 using Core.Security.Hashing;
 
 namespace Application.Features.Auths.Rules
@@ -25,11 +26,16 @@ namespace Application.Features.Auths.Rules
             User? user = await _userRepository.GetAsync(u => u.Email == email);
             if (user != null) throw new BusinessException(AuthMessages.UserMailAlreadyExists);
         }
-        public async Task UserPasswordShouldBeMatch(int id,string password)
+        public async Task UserPasswordShouldBeMatch(int id, string password)
         {
             User? user = await _userRepository.GetAsync(u => u.Id == id);
             if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
                 throw new BusinessException(AuthMessages.PasswordDontMatch);
         }
+        public async Task UsersGoogleMailShouldBeVerified(GoogleUserDetails googleUserDetails)
+        {
+            if (googleUserDetails.EmailVerified == false) throw new BusinessException("Google mail has to be verified.");
+        }
+    
     }
 }

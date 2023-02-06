@@ -26,7 +26,7 @@ namespace Application.Services.UserService
 
         public async Task<User> Update(User user)
         {
-            User updateUser =await _userRepository.UpdateAsync(user);
+            User updateUser = await _userRepository.UpdateAsync(user);
             return updateUser;
         }
     }

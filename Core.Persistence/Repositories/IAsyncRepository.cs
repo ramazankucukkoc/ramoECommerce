@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Core.Persistence.Repositories
 {
-    public interface IAsyncRepository<T>:IQuery<T> where T : Entity
+    public interface IAsyncRepository<T> : IQuery<T> where T : Entity
     {
         Task<T?> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
             bool enableTracking = true,
@@ -22,11 +22,11 @@ namespace Core.Persistence.Repositories
             int index = 0, int size = 10, bool enableTracking = true,
             CancellationToken cancellationToken = default);
 
-        Task<T>AddAsync(T entity);
-        Task<List<T>>AddRangeAsync(List<T> entityList);
-        Task<T>DeleteAsync(T entity);
+        Task<T> AddAsync(T entity);
+        Task<List<T>> AddRangeAsync(List<T> entityList);
+        Task<T> DeleteAsync(T entity);
         Task<List<T>> DeleteRangeAsync(List<T> entityList);
-        Task<T>UpdateAsync(T entity);
+        Task<T> UpdateAsync(T entity);
         Task<List<T>> UpdateRangeAsync(List<T> entityList);
 
 

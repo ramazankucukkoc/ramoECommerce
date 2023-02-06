@@ -2,7 +2,7 @@
 {
     public interface ICachableRequest
     {
-         bool BypassCache { get; }
+        bool BypassCache { get; }
         //ByPassCache işlemi cache ile yapıp yapmıyacagımızı soruyor örneğin database verileri çekebiliriz.
 
         string CacheKey { get; }

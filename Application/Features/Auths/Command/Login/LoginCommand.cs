@@ -1,22 +1,15 @@
 ﻿using Application.Features.Auths.Dtos;
 using Application.Features.Auths.Rules;
 using Application.Services.AuthService;
-using Application.Services.Repositories;
 using Application.Services.UserService;
 using Core.Application.DTOs;
 using Core.Domain.Entities;
 using Core.Security.JWT;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Auths.Command.Login
 {
-    public class LoginCommand:IRequest<LoggedDto>
+    public class LoginCommand : IRequest<LoggedDto>
     {
         public UserForLoginDto UserForLoginDto { get; set; }
         public string IpAddress { get; set; }
@@ -41,10 +34,11 @@ namespace Application.Features.Auths.Command.Login
                 await _authBusinessRules.UserShouldBeExists(user);
                 await _authBusinessRules.UserPasswordShouldBeMatch(user.Id, request.UserForLoginDto.Password);
                 AccessToken createdAccessToken = await _authService.CreateAccessToken(user);
+
                 RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.IpAddress);
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
-                
-                return new LoggedDto() { AccessToken=createdAccessToken, RefreshToken=addedRefreshToken };
+
+                return new LoggedDto() { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
             }
         }
     }

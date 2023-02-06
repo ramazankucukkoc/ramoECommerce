@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Domain.Entities
+﻿namespace Core.Domain.Entities
 {
     public class OperationClaim : Entity
     {
@@ -14,7 +8,7 @@ namespace Core.Domain.Entities
 
         }
         public OperationClaim(int id, string name) : base(id)
-        {      
+        {
             Name = name;
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core.CrossCuttingConcerns.ExceptionHandling.HttpProblemDetails
 {
-    public class NotFoundProblemDetails:ProblemDetails
+    public class NotFoundProblemDetails : ProblemDetails
     {
         public NotFoundProblemDetails(string detail)
         {

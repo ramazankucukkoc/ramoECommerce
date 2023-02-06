@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Users.Queries.GetList
 {
-    public class GetListUserQuery:IRequest<GetListResponse<UserListDto>>
+    public class GetListUserQuery : IRequest<GetListResponse<UserListDto>>
     {
         public PageRequest PageRequest { get; set; }
         public class GetListUserQueryHandler : IRequestHandler<GetListUserQuery, GetListResponse<UserListDto>>
@@ -24,7 +24,7 @@ namespace Application.Features.Users.Queries.GetList
             public async Task<GetListResponse<UserListDto>> Handle(GetListUserQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<User> users = await _userRepository.GetListAsync(
-                    include:x=>x.Include(x=>x.UserOperationClaims).ThenInclude(x=>x.OperationClaim),
+                    include: x => x.Include(x => x.UserOperationClaims).ThenInclude(x => x.OperationClaim),
                     index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
 

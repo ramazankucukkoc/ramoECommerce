@@ -2,12 +2,12 @@
 using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using NpgsqlTypes;
-using Serilog.Sinks.PostgreSQL;
 using Serilog;
+using Serilog.Sinks.PostgreSQL;
 
 namespace Core.CrossCuttingConcerns.Logging.Serilog.Loggers
 {
-    public class PostgreSqlLogger:LoggerServiceBase
+    public class PostgreSqlLogger : LoggerServiceBase
     {
         public PostgreSqlLogger(IConfiguration configuration)
         {

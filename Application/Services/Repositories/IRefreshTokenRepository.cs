@@ -3,7 +3,7 @@ using Core.Persistence.Repositories;
 
 namespace Application.Services.Repositories
 {
-    public interface IRefreshTokenRepository:IAsyncRepository<RefreshToken>
+    public interface IRefreshTokenRepository : IAsyncRepository<RefreshToken>
     {
     }
 }

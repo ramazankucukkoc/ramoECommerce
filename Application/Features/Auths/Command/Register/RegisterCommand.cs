@@ -4,13 +4,14 @@ using Application.Services.AuthService;
 using Application.Services.Repositories;
 using Core.Application.DTOs;
 using Core.Domain.Entities;
+using Core.Mailings;
 using Core.Security.Hashing;
 using Core.Security.JWT;
 using MediatR;
 
 namespace Application.Features.Auths.Command.Register
 {
-    public class RegisterCommand:IRequest<RegisteredDto>
+    public class RegisterCommand : IRequest<RegisteredDto>
     {
         public UserForRegisterDto UserForRegisterDto { get; set; }
         public string IpAddress { get; set; }
@@ -20,12 +21,14 @@ namespace Application.Features.Auths.Command.Register
             private readonly IUserRepository _userRepository;
             private readonly IAuthService _authService;
             private readonly AuthBusinessRules _authBusinessRules;
+            private readonly IMailService _mailService;
 
-            public RegisterCommandHandler(IUserRepository userRepository, IAuthService authService, AuthBusinessRules authBusinessRules)
+            public RegisterCommandHandler(IUserRepository userRepository, IAuthService authService, AuthBusinessRules authBusinessRules, IMailService mailService)
             {
                 _userRepository = userRepository;
                 _authService = authService;
                 _authBusinessRules = authBusinessRules;
+                _mailService = mailService;
             }
 
             public async Task<RegisteredDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -43,7 +46,8 @@ namespace Application.Features.Auths.Command.Register
                     LastName = request.UserForRegisterDto.LastName
                 };
                 User createUser = await _userRepository.AddAsync(newUser);
-                AccessToken createdAccessToken =await _authService.CreateAccessToken(createUser);
+                AccessToken createdAccessToken = await _authService.CreateAccessToken(createUser);
+
                 RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(createUser, request.IpAddress);
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
                 RegisteredDto registeredDto = new()
@@ -51,6 +55,17 @@ namespace Application.Features.Auths.Command.Register
                     AccessToken = createdAccessToken,
                     RefreshToken = addedRefreshToken
                 };
+
+                //_mailService.SendMail(new Mail
+                //{
+                //    ToEmail = request.UserForRegisterDto.Email,
+                //    ToFullName = $"{request.UserForRegisterDto.FirstName} ${request.UserForRegisterDto.LastName}",
+                //    Subject = "Register Your Email - ECommerce - Ramazan",
+                //    TextBody = "Teşekkürler",
+                //    HtmlBody="Kaydetme işlemerini< başarılı şekilde tamamlandı."
+                //});
+
+
                 return registeredDto;
             }
         }

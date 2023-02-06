@@ -2,7 +2,7 @@
 
 namespace Application.Features.Auths.Dtos
 {
-    public class RefreshedTokensDto:IDto
+    public class RefreshedTokensDto : IDto
     {
     }
 }

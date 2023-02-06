@@ -12,12 +12,12 @@
         {
 
         }
-        public Filter(string field,string @operator,string? value,string? logic,IEnumerable<Filter>? filters):this()
+        public Filter(string field, string @operator, string? value, string? logic, IEnumerable<Filter>? filters) : this()
         {
             Field = field;
             Operator = @operator;
-            Value =value;
-            Logic =logic;
+            Value = value;
+            Logic = logic;
             Filters = filters;
         }
     }

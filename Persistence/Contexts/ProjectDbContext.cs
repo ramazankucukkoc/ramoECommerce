@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Configuration;
@@ -72,8 +73,32 @@ namespace Persistence.Contexts
         }
         public DbSet<UserOperationClaim> userOperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<ParentCategory> ParentCategories { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<EmailAuthenticator> EmailAuthenticators { get; set; }
+        public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-
+        public DbSet<CreditCart> CreditCarts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Departman> Departmen { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<IndividualCustomer> IndividualCustomers { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Personel> Personels { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
+        public DbSet<ProductBranch> ProductBranches { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<UserComment> UserComments { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core.CrossCuttingConcerns.ExceptionHandling.HttpProblemDetails
 {
-    public class AuthorizationProblemDetails:ProblemDetails
+    public class AuthorizationProblemDetails : ProblemDetails
     {
         public AuthorizationProblemDetails(string detail)
         {
