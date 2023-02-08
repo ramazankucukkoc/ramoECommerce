@@ -1,8 +1,8 @@
 ﻿using Application.Features.Baskets.Command.CreateBasket;
+using Application.Features.Baskets.Command.DeleteBasket;
 using Application.Features.Baskets.Dtos;
 using Application.Features.Baskets.Queries.GetByBrandIdBasket;
 using Core.Persistence.Paging;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -17,7 +17,13 @@ namespace WebAPI.Controllers
             CreateBasketDto result = await Mediator.Send(createBasketCommand);
             return Ok(result);
         }
-
+        [HttpDelete]
+        [Route("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] DeleteBasketCommand deleteBasketCommand)
+        {
+            DeleteBasketDto result = await Mediator.Send(deleteBasketCommand);
+            return Ok(result);
+        }
 
         [HttpGet]
         [Route("{BrandId}")]

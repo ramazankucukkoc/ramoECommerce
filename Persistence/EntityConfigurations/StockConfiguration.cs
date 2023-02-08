@@ -12,10 +12,11 @@ namespace Persistence.EntityConfigurations
             builder.Property(a => a.Id).HasColumnName("Id");
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id).UseIdentityColumn();
+            builder.Property(a => a.ProductId).HasColumnName("ProductId").IsRequired();
             builder.Property(a => a.CreatedDate).HasColumnName("CreatedDate");
             builder.Property(a => a.UpdatedDate).HasColumnName("UpdatedDate");
             builder.Property(a => a.Quantity).HasColumnName("Quantity").IsRequired();
-
+            builder.HasOne(a => a.Product);
         }
     }
 }

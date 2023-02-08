@@ -7,7 +7,6 @@ namespace Application.Features.Products.Dtos
         public string Name { get; set; }
         public int BrandId { get; set; }
         public int ProductBranchId { get; set; }
-        public int StockId { get; set; }
         public string? ShortDescription { get; set; }
         public string Description { get; set; }
         public decimal RegularPrice { get; set; }// Normal fiyat

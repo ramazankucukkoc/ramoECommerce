@@ -21,6 +21,14 @@ namespace Application.Features.Baskets.Profiles
                 .ForMember(b => b.UserName, dest => dest.MapFrom(b => b.User.FirstName + " " + b.User.LastName))
                 .ForMember(b => b.Email, dest => dest.MapFrom(b => b.User.Email))
                 .ReverseMap();
+
+            
+            CreateMap<Basket, DeleteBasketDto>()
+                .ForMember(b => b.BrandName, dest => dest.MapFrom(b => b.Brand.Name))
+               .ForMember(b => b.ProductName, dest => dest.MapFrom(b => b.Product.Name))
+               .ForMember(b => b.UserName, dest => dest.MapFrom(b => b.User.FirstName + " " + b.User.LastName))
+               .ForMember(b => b.Email, dest => dest.MapFrom(b => b.User.Email))
+               .ReverseMap();
         }
 
     }

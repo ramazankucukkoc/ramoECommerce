@@ -18,6 +18,7 @@ namespace Persistence.EntityConfigurations
             builder.Property(b => b.BrandId).IsRequired().HasColumnName("BrandId");
             builder.Property(b => b.UserId).IsRequired().HasColumnName("UserId");
             builder.Property(b => b.Count).IsRequired().HasColumnName("Count");
+            //builder.Property(b => b.TotalPrice).IsRequired().HasColumnName("TotalPrice").HasColumnType("decimal(18,2)");
             builder.HasOne(b => b.User);
             builder.HasOne(b => b.Product).WithMany(b => b.Baskets).HasForeignKey(b => b.ProductId);
             builder.HasOne(b => b.Brand).WithMany(b => b.Baskets).HasForeignKey(b => b.BrandId);

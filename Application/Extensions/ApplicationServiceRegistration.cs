@@ -5,12 +5,15 @@ using Application.Features.Brands.Rules;
 using Application.Features.Categories.Rules;
 using Application.Features.Cities.Rules;
 using Application.Features.Countries.Rules;
+using Application.Features.Departmans.Rules;
 using Application.Features.OperationClaims.Rules;
 using Application.Features.Orders.Rules;
+using Application.Features.Personels.Rules;
 using Application.Features.Products.Rules;
 using Application.Features.Users.Rules;
 using Application.Services.AuthService;
 using Application.Services.BrandService;
+using Application.Services.ProductService;
 using Application.Services.UserService;
 using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Caching;
@@ -47,8 +50,8 @@ namespace Application.Extensions
             services.AddScoped<BasketBusinessRules>();
             services.AddScoped<CitiesBusinessRules>();
             services.AddScoped<CountryBusinessRules>();
-
-
+            services.AddScoped<DepartmanBusinessRules>();
+            services.AddScoped<PersonelBusinessRules>();
             //-----------------Business Rules----------------------
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
@@ -68,7 +71,8 @@ namespace Application.Extensions
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IBrandService, BrandManager>();
-
+            services.AddScoped<IProductService, ProductManager>();
+           
             //-----------------Business Services----------------------
             services.AddSingleton<IMailService, MailKitMailService>();
 

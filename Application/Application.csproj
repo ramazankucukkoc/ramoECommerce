@@ -10,7 +10,6 @@
     <Folder Include="Features\Addresss\Queries\" />
     <Folder Include="Features\Addresss\Validator\" />
     <Folder Include="Features\Auths\Profiles\" />
-    <Folder Include="Features\Baskets\Command\DeleteBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByUserIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByProductIdBasket\" />
@@ -45,11 +44,8 @@
     <Folder Include="Features\Customers\Queries\" />
     <Folder Include="Features\Customers\Rules\" />
     <Folder Include="Features\Customers\Validator\" />
-    <Folder Include="Features\Departmans\Command\" />
-    <Folder Include="Features\Departmans\Dtos\" />
     <Folder Include="Features\Departmans\Profile\" />
     <Folder Include="Features\Departmans\Queries\" />
-    <Folder Include="Features\Departmans\Rules\" />
     <Folder Include="Features\Departmans\Validator\" />
     <Folder Include="Features\Favorites\Command\" />
     <Folder Include="Features\Favorites\Dtos\" />
@@ -82,11 +78,7 @@
     <Folder Include="Features\Orders\Constants\" />
     <Folder Include="Features\Orders\Queries\" />
     <Folder Include="Features\ParentCategories\Queries\" />
-    <Folder Include="Features\Personels\Command\" />
-    <Folder Include="Features\Personels\Dtos\" />
-    <Folder Include="Features\Personels\Profile\" />
     <Folder Include="Features\Personels\Queries\" />
-    <Folder Include="Features\Personels\Rules\" />
     <Folder Include="Features\Personels\Validator\" />
     <Folder Include="Features\ProductBranchs\Queries\" />
     <Folder Include="Features\ProductBranchs\Rules\" />

@@ -1,5 +1,4 @@
 ﻿using Core.Domain.Entities;
-using Domain.Enums;
 
 namespace Domain.Entities
 {
@@ -10,8 +9,7 @@ namespace Domain.Entities
         public virtual Brand Brand { get; set; }
         public virtual ProductBranch ProductBranch { get; set; }
         public int ProductBranchId { get; set; }
-        public int StockId { get; set; }
-        public Stock Stock { get; set; }
+        public virtual Stock Stock { get; set; }
         public string? ShortDescription { get; set; }
         public string Description { get; set; }
         public decimal RegularPrice { get; set; }// Normal fiyat

@@ -35,7 +35,7 @@ namespace Application.Features.Baskets.Queries.GetByBrandIdBasket
                 Brand brand = await _brandService.GetById(request.BrandId);
                 await _basketBusinessRules.BasketBrandIdActiveShoulExistsWhenInserted(brand.Active);
 
-                IPaginate<Basket>? basket = await _basketRepository.GetListAsync(b => b.BrandId == request.BrandId,
+                IPaginate<Basket>? basket = await _basketRepository.GetListAsync(b => b.BrandId == request.BrandId && b.Active ==true,
                     include: b => b.Include(b => b.Product).ThenInclude(b => b.Category)
                     .ThenInclude(b => b.ParentCategory).Include(b => b.User).Include(b=>b.Brand));
 

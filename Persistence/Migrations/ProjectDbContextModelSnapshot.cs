@@ -830,7 +830,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2023, 2, 6, 23, 47, 36, 413, DateTimeKind.Local).AddTicks(1535))
+                        .HasDefaultValue(new DateTime(2023, 2, 8, 21, 8, 43, 683, DateTimeKind.Local).AddTicks(2108))
                         .HasColumnName("CreatedDate");
 
                     b.Property<int>("CustomerId")
@@ -1117,9 +1117,6 @@ namespace Persistence.Migrations
                         .HasColumnType("character varying(100)")
                         .HasColumnName("ShortDescription");
 
-                    b.Property<int>("StockId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("UpdatedDate");
@@ -1131,8 +1128,6 @@ namespace Persistence.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ProductBranchId");
-
-                    b.HasIndex("StockId");
 
                     b.ToTable("Products", (string)null);
                 });
@@ -1278,6 +1273,10 @@ namespace Persistence.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("CreatedDate");
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer")
+                        .HasColumnName("ProductId");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("integer")
                         .HasColumnName("Quantity");
@@ -1287,6 +1286,9 @@ namespace Persistence.Migrations
                         .HasColumnName("UpdatedDate");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("Stocks", (string)null);
                 });
@@ -1623,19 +1625,11 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Stock", "Stock")
-                        .WithMany("Products")
-                        .HasForeignKey("StockId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
 
                     b.Navigation("ProductBranch");
-
-                    b.Navigation("Stock");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductComment", b =>
@@ -1680,6 +1674,17 @@ namespace Persistence.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Personel");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Stock", b =>
+                {
+                    b.HasOne("Domain.Entities.Product", "Product")
+                        .WithOne("Stock")
+                        .HasForeignKey("Domain.Entities.Stock", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });
@@ -1786,15 +1791,13 @@ namespace Persistence.Migrations
 
                     b.Navigation("Sales");
 
+                    b.Navigation("Stock")
+                        .IsRequired();
+
                     b.Navigation("UserComments");
                 });
 
             modelBuilder.Entity("Domain.Entities.ProductBranch", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Stock", b =>
                 {
                     b.Navigation("Products");
                 });

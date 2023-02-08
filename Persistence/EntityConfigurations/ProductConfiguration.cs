@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 
 namespace Persistence.EntityConfigurations
 {
@@ -24,8 +25,9 @@ namespace Persistence.EntityConfigurations
             builder.Property(x => x.DiscountRate).HasColumnName("DiscountRate");
             builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
             builder.HasOne(x => x.Brand).WithMany(x => x.Products).HasForeignKey(x => x.BrandId);
-            builder.HasOne(x => x.Stock).WithMany(x => x.Products).HasForeignKey(x => x.StockId);
             builder.HasOne(x => x.ProductBranch).WithMany(x => x.Products).HasForeignKey(x => x.ProductBranchId);
+            builder.HasOne(x => x.Stock);
+
         }
     }
 }
