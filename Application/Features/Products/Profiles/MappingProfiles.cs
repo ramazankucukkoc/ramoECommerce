@@ -32,6 +32,12 @@ namespace Application.Features.Products.Profiles
                 .ForMember(x => x.CategoryName, dest => dest.MapFrom(x => x.Category.Name))
                 .ForMember(x => x.ParentCategoryName, dest => dest.MapFrom(x => x.Category.ParentCategory.Name))
                 .ReverseMap();
+
+            CreateMap<IPaginate<Product>, GetListResponse<GetByCategoryIdDto>>()
+               .ReverseMap();
+            CreateMap<Product, GetByCategoryIdDto>()
+                .ForMember(p => p.CategoryName, dest => dest.MapFrom(p => p.Category.Name))
+                .ReverseMap();
         }
     }
 }

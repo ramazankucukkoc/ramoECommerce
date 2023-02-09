@@ -2,6 +2,7 @@
 using Application.Features.Products.Dtos;
 using Application.Features.Products.Queries.GetAll;
 using Application.Features.Products.Queries.GetAllDynamic;
+using Application.Features.Products.Queries.GetByCategoryId;
 using Application.Features.Products.Queries.GetById;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
@@ -68,7 +69,15 @@ namespace WebAPI.Controllers
                                                    [FromBody] Dynamic? dynamic = null)
         {
             GetAllProductByDynamicQuery getAllProductByDynamicQuery = new() { Dynamic = dynamic, PageRequest = pageRequest };
-          GetListResponse <GetAllProductDto> result = await Mediator.Send(getAllProductByDynamicQuery);
+            GetListResponse<GetAllProductDto> result = await Mediator.Send(getAllProductByDynamicQuery);
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("{categoryId}")]
+        public async Task<IActionResult> GetByCategoryId([FromRoute] int categoryId, [FromQuery] PageRequest pageRequest)
+        {
+            GetByCategoryIdQuery getByCategoryIdQuery = new() { CategoryId = categoryId, PageRequest = pageRequest };
+            GetListResponse<GetByCategoryIdDto> result = await Mediator.Send(getByCategoryIdQuery);
             return Ok(result);
         }
     }

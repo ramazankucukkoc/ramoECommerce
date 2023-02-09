@@ -9,5 +9,6 @@ namespace Application.Services.AuthService
         Task<RefreshToken> CreateRefreshToken(User user, string ipAddress);
         Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken);
         Task DeleteRefreshTokens(int userId);
+        Task<EmailAuthenticator> CreateEmailAuthenticator(User user);
     }
 }

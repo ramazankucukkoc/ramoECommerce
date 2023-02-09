@@ -1,5 +1,6 @@
 ﻿using Application.Features.Baskets.Command.CreateBasket;
 using Application.Features.Baskets.Command.DeleteBasket;
+using Application.Features.Baskets.Command.UpdateBasket;
 using Application.Features.Baskets.Dtos;
 using Application.Features.Baskets.Queries.GetByBrandIdBasket;
 using Core.Persistence.Paging;
@@ -30,6 +31,12 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetByBrandIdBasket([FromRoute] GetByBrandIdBasketQuery getByBrandIdBasketQuery)
         {
             GetListResponse<GetByBrandIdBasketDto> result = await Mediator.Send(getByBrandIdBasketQuery);
+            return Ok(result);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateBasketCommand updateBasketCommand)
+        {
+            UpdateBasketDto result = await Mediator.Send(updateBasketCommand);
             return Ok(result);
         }
 

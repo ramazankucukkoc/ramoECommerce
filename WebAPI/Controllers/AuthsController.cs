@@ -1,4 +1,5 @@
-﻿using Application.Features.Auths.Command.Login;
+﻿using Application.Features.Auths.Command.EnableEmailAuthenticator;
+using Application.Features.Auths.Command.Login;
 using Application.Features.Auths.Command.LoginWithGoogle;
 using Application.Features.Auths.Command.Register;
 using Application.Features.Auths.Dtos;
@@ -56,6 +57,17 @@ namespace WebAPI.Controllers
             if (result.RefreshToken is not null) setRefreshTokenCookie(result.RefreshToken);
 
             return Ok(result.AccessToken);
+        }
+        [HttpGet]
+        public async Task<IActionResult> EnableEmailAuthenticator()
+        {
+            EnableEmailAuthenticatorCommand enableEmailAuthenticatorCommand = new()
+            {
+                UserId = getUserIdFromRequest(),
+                VerifyEmailUrlPrefix = $"{_configuration.APIDomain}/Auths/EnableEmailAuthenticator"
+            };
+            await Mediator.Send(enableEmailAuthenticatorCommand);
+            return Ok();
         }
         private void setRefreshTokenCookie(RefreshToken refreshToken)
         {

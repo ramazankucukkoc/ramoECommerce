@@ -6,19 +6,14 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Baskets.Command.UpdateBasket
 {
     public class UpdateBasketCommand : IRequest<UpdateBasketDto>
     {
         public int Id { get; set; }
-        public string ProductName { get; set; }
-        public string BrandName { get; set; }
+        public int ProductId { get; set; }
+        public int BrandId { get; set; }
         public int Count { get; set; }
         public int UserId { get; set; }
 
@@ -37,14 +32,12 @@ namespace Application.Features.Baskets.Command.UpdateBasket
                 = (basketRepository, mapper, basketBusinessRules, _productService, brandService);
             public async Task<UpdateBasketDto> Handle(UpdateBasketCommand request, CancellationToken cancellationToken)
             {
-                Product product = await _productService.GetByName(request.ProductName);
-                await _basketBusinessRules.ProductControl(product.Id);
-                Brand brand = await _brandService.GetByName(request.BrandName);
-                await _basketBusinessRules.BrandControl(brand.Id);
+                await _basketBusinessRules.ProductControl(request.ProductId);
+                await _basketBusinessRules.BrandControl(request.BrandId);
                 await _basketBusinessRules.BasketIdControl(request.Id);
                 Basket? basket = await _basketRepository.GetAsync(b => b.Id == request.Id);
-                basket.BrandId = brand.Id;
-                basket.ProductId = product.Id;
+                basket.BrandId = request.BrandId;
+                basket.ProductId = request.ProductId;
                 basket.Count = request.Count;
                 UpdateBasketDto updateBasketDto = _mapper.Map<UpdateBasketDto>(basket);
                 return updateBasketDto;
