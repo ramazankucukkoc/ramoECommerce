@@ -35,12 +35,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(
-//        "AllowOrigin",
-//        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowOrigin",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 
 //builder.Services.AddDistributedMemoryCache(); // InMemory

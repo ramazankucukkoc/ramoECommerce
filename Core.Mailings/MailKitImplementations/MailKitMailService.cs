@@ -39,6 +39,7 @@ namespace Core.Mailings.MailKitImplementations
 
             using SmtpClient smtp = new();
             smtp.Connect(_mailSettings.Server, _mailSettings.Port,MailKit.Security.SecureSocketOptions.Auto);
+            smtp.Authenticate(_mailSettings.UserName, "Ramazan45.?");
             smtp.Send(email);
             smtp.Disconnect(true);
         }

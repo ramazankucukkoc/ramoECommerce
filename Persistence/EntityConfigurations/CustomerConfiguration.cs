@@ -16,6 +16,7 @@ namespace Persistence.EntityConfigurations
             builder.HasOne(c => c.User);
             builder.HasOne(c => c.CorporateCustomer);
             builder.HasOne(c => c.IndividualCustomer);
+            builder.HasOne(c => c.FindeksCreditRate);
             builder.HasMany(a => a.CustomerAddress);
 
         }

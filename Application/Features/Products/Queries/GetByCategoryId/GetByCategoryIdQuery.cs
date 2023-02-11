@@ -24,7 +24,6 @@ namespace Application.Features.Products.Queries.GetByCategoryId
                 _productRepository = productRepository;
                 _mapper = mapper;
             }
-
             public async Task<GetListResponse< GetByCategoryIdDto>> Handle(GetByCategoryIdQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<Product> products = await _productRepository.GetListAsync(p => p.CategoryId == request.CategoryId

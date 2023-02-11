@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/auth/[action]")]
     [ApiController]
     public class AuthsController : BaseController
     {

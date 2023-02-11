@@ -53,6 +53,8 @@
     <Folder Include="Features\Favorites\Queries\" />
     <Folder Include="Features\Favorites\Rules\" />
     <Folder Include="Features\Favorites\Validator\" />
+    <Folder Include="Features\FindeksCreditRates\Profile\" />
+    <Folder Include="Features\FindeksCreditRates\Validator\" />
     <Folder Include="Features\IndividualCustomers\Command\" />
     <Folder Include="Features\IndividualCustomers\Dtos\" />
     <Folder Include="Features\IndividualCustomers\Profile\" />

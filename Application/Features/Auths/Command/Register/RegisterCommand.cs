@@ -57,14 +57,14 @@ namespace Application.Features.Auths.Command.Register
                     RefreshToken = addedRefreshToken
                 };
 
-                //_mailService.SendMail(new Mail
-                //{
-                //    ToEmail = request.UserForRegisterDto.Email,
-                //    ToFullName = $"{request.UserForRegisterDto.FirstName} ${request.UserForRegisterDto.LastName}",
-                //    Subject = "Register Your Email - ECommerce - Ramazan",
-                //    TextBody = "Teşekkürler",
-                //    HtmlBody="Kaydetme işlemerini< başarılı şekilde tamamlandı."
-                //});
+                _mailService.SendMail(new Mail
+                {
+                    ToEmail = request.UserForRegisterDto.Email,
+                    ToFullName = $"{request.UserForRegisterDto.FirstName} ${request.UserForRegisterDto.LastName}",
+                    Subject = "Register Your Email - ECommerce - Ramazan",
+                    TextBody = "Teşekkürler",
+                    HtmlBody = "Kaydetme işlemerini< başarılı şekilde tamamlandı."
+                });
 
 
                 return registeredDto;

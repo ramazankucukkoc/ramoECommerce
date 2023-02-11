@@ -4,6 +4,7 @@ using Application.Services.AuthService;
 using Application.Services.UserService;
 using Core.Application.DTOs;
 using Core.Domain.Entities;
+using Core.Mailings;
 using Core.Security.JWT;
 using MediatR;
 
@@ -19,13 +20,15 @@ namespace Application.Features.Auths.Command.Login
             private readonly IUserService _userService;
             private readonly IAuthService _authService;
             private readonly AuthBusinessRules _authBusinessRules;
+            private readonly IMailService _mailService;
 
-            public LoginCommandHandler(IUserService userService, IAuthService authService,
-                AuthBusinessRules authBusinessRules)
+            public LoginCommandHandler(IUserService userService 
+                ,IAuthService authService, AuthBusinessRules authBusinessRules, IMailService mailService)
             {
                 _userService = userService;
                 _authService = authService;
                 _authBusinessRules = authBusinessRules;
+                _mailService = mailService;
             }
 
             public async Task<LoggedDto> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -37,6 +40,15 @@ namespace Application.Features.Auths.Command.Login
 
                 RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.IpAddress);
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
+
+                _mailService.SendMail(new Mail
+                {
+                    ToEmail = request.UserForLoginDto.Email,
+                    ToFullName = "Ramazan Küçükkoç",
+                    Subject = "Register Your Email - ECommerce - Ramazan",
+                    TextBody = "Teşekkürler",
+                    HtmlBody = "Kaydetme işlemerini< başarılı şekilde tamamlandı."
+                });
 
                 return new LoggedDto() { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
             }
