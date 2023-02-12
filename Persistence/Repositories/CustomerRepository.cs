@@ -1,8 +1,9 @@
-﻿using Core.Persistence.Repositories;
+﻿using Application.Services.Repositories;
+using Core.Persistence.Repositories;
 using Domain.Entities;
 using Persistence.Contexts;
 
-namespace Application.Services.Repositories
+namespace Persistence.Repositories
 {
     public class CustomerRepository : EfRepositoryBase<Customer, ProjectDbContext>, ICustomerRepository
     {

@@ -37,6 +37,7 @@ namespace Persistence.Extensions
             services.AddScoped<IStockRepository, StockRepository>();
             services.AddScoped<IParentCategoryRepositories, ParentCategoryRepository>();
             services.AddScoped<IFindeksCreditRateRepository, FindeksCreditRateRepository>();
+            services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
 
             //-------------------------Core.Domain------------------------------------
             services.AddScoped<IOtpAuthenticatorRepository, OtpAuthenticatorRepository>();

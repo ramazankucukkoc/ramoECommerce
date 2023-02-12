@@ -18,11 +18,7 @@
     <Folder Include="Features\Brands\Validator\" />
     <Folder Include="Features\Cities\Queries\" />
     <Folder Include="Features\Cities\Validator\" />
-    <Folder Include="Features\CorporateCustomers\Command\" />
-    <Folder Include="Features\CorporateCustomers\Dtos\" />
-    <Folder Include="Features\CorporateCustomers\Profile\" />
     <Folder Include="Features\CorporateCustomers\Queries\" />
-    <Folder Include="Features\CorporateCustomers\Rules\" />
     <Folder Include="Features\CorporateCustomers\Validator\" />
     <Folder Include="Features\Countries\Queries\" />
     <Folder Include="Features\Countries\Validator\" />

@@ -1,8 +1,9 @@
-﻿using Core.Domain.Entities;
+﻿using Application.Services.Repositories;
+using Core.Domain.Entities;
 using Core.Persistence.Repositories;
 using Persistence.Contexts;
 
-namespace Application.Services.Repositories
+namespace Persistence.Repositories
 {
     public class OtpAuthenticatorRepository : EfRepositoryBase<OtpAuthenticator, ProjectDbContext>, IOtpAuthenticatorRepository
     {

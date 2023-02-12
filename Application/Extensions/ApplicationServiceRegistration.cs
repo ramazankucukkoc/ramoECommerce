@@ -4,6 +4,7 @@ using Application.Features.Baskets.Rules;
 using Application.Features.Brands.Rules;
 using Application.Features.Categories.Rules;
 using Application.Features.Cities.Rules;
+using Application.Features.CorporateCustomers.Rules;
 using Application.Features.Countries.Rules;
 using Application.Features.Departmans.Rules;
 using Application.Features.FindeksCreditRates.Rules;
@@ -56,6 +57,7 @@ namespace Application.Extensions
             services.AddScoped<DepartmanBusinessRules>();
             services.AddScoped<PersonelBusinessRules>();
             services.AddScoped<FindeksCreditRateBusinessRules>();
+            services.AddScoped<CorporateCustomerBusinessRules>();
             //-----------------Business Rules----------------------
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
