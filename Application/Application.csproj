@@ -49,13 +49,8 @@
     <Folder Include="Features\Favorites\Queries\" />
     <Folder Include="Features\Favorites\Rules\" />
     <Folder Include="Features\Favorites\Validator\" />
-    <Folder Include="Features\FindeksCreditRates\Profile\" />
     <Folder Include="Features\FindeksCreditRates\Validator\" />
-    <Folder Include="Features\IndividualCustomers\Command\" />
-    <Folder Include="Features\IndividualCustomers\Dtos\" />
-    <Folder Include="Features\IndividualCustomers\Profile\" />
     <Folder Include="Features\IndividualCustomers\Queries\" />
-    <Folder Include="Features\IndividualCustomers\Rules\" />
     <Folder Include="Features\IndividualCustomers\Validator\" />
     <Folder Include="Features\Invoices\Command\" />
     <Folder Include="Features\Invoices\Dtos\" />
@@ -81,11 +76,7 @@
     <Folder Include="Features\ProductBranchs\Queries\" />
     <Folder Include="Features\ProductBranchs\Rules\" />
     <Folder Include="Features\ProductBranchs\Validator\" />
-    <Folder Include="Features\ProductComments\Command\" />
-    <Folder Include="Features\ProductComments\Dtos\" />
-    <Folder Include="Features\ProductComments\Profile\" />
     <Folder Include="Features\ProductComments\Queries\" />
-    <Folder Include="Features\ProductComments\Rules\" />
     <Folder Include="Features\ProductComments\Validator\" />
     <Folder Include="Features\Sales\Command\" />
     <Folder Include="Features\Sales\Dtos\" />

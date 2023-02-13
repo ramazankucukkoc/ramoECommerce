@@ -2,7 +2,7 @@
 {
     public static class ProductExceptionMessages
     {
-        public const string ProductNameExists = "Ürün ismi eklenmiştir!";
+        public const string ProductNameExists = "Bu isimde daha önce ürün eklenmiştir!";
         public const string ProductIsNotExists = "Ürün bulunamamıştır!";
 
     }

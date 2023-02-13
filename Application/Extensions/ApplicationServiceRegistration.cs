@@ -8,9 +8,11 @@ using Application.Features.CorporateCustomers.Rules;
 using Application.Features.Countries.Rules;
 using Application.Features.Departmans.Rules;
 using Application.Features.FindeksCreditRates.Rules;
+using Application.Features.IndividualCustomers.Rules;
 using Application.Features.OperationClaims.Rules;
 using Application.Features.Orders.Rules;
 using Application.Features.Personels.Rules;
+using Application.Features.ProductComments.Rules;
 using Application.Features.Products.Rules;
 using Application.Features.Users.Rules;
 using Application.Services.AuthService;
@@ -58,6 +60,9 @@ namespace Application.Extensions
             services.AddScoped<PersonelBusinessRules>();
             services.AddScoped<FindeksCreditRateBusinessRules>();
             services.AddScoped<CorporateCustomerBusinessRules>();
+            services.AddScoped<IndividualCustomerBusinessRules>();
+            services.AddScoped<ProductCommentBusinessRules>();
+
             //-----------------Business Rules----------------------
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());

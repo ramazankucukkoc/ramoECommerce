@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{D3B92D6C-948E-4F05-A0C0-A7B1AFACBC54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Mailings", "Core.Mailings\Core.Mailings.csproj", "{E9F48EBA-019A-4A79-8754-CE892A038169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Mailings", "Core.Mailings\Core.Mailings.csproj", "{E9F48EBA-019A-4A79-8754-CE892A038169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.SignalR", "Core.SignalR\Core.SignalR.csproj", "{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{E9F48EBA-019A-4A79-8754-CE892A038169}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9F48EBA-019A-4A79-8754-CE892A038169}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9F48EBA-019A-4A79-8754-CE892A038169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{86663682-7067-4436-8641-3420FE712ECA} = {17EE6F28-518D-4C43-BFE8-3F2A76E7B61C}
 		{D3B92D6C-948E-4F05-A0C0-A7B1AFACBC54} = {17EE6F28-518D-4C43-BFE8-3F2A76E7B61C}
 		{E9F48EBA-019A-4A79-8754-CE892A038169} = {32D11837-11D8-4EDA-B7BF-E3E3833054C1}
+		{5DA70382-BE1E-4EB5-AB57-8543EFFF6A30} = {32D11837-11D8-4EDA-B7BF-E3E3833054C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1A90965-4BF6-4958-844A-42E6C7C1BBE9}

@@ -35,6 +35,8 @@ namespace Application.Features.Auths.Command.Register
             public async Task<RegisteredDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
             {
                 await _authBusinessRules.UserEmailShouldBeActive(request.UserForRegisterDto.Email);
+
+
                 byte[] passwordHash, passwordSalt;
                 HashingHelper.CreatePasswordHash(request.UserForRegisterDto.Password, out passwordHash, out passwordSalt);
                 User newUser = new()

@@ -18,6 +18,7 @@ namespace Core.Security.Extensions
         {
             return Convert.ToInt32(claimsPrincipal?.Claims("UserId")?.FirstOrDefault());
         }
+        
         public static string? GetName(this ClaimsPrincipal claimsPrincipal)
         {
             return claimsPrincipal?.Claims("Name")?.FirstOrDefault();
@@ -30,5 +31,13 @@ namespace Core.Security.Extensions
         {
             return claimsPrincipal.Claims("Email")?.FirstOrDefault();
         }
+        public static string? FindFirstValue(this ClaimsPrincipal claimsPrincipal,string claimTypes)
+        {
+            if(claimsPrincipal==null)throw new ArgumentNullException(nameof(claimsPrincipal));
+
+            var claim=claimsPrincipal.FindFirst(claimTypes);
+            return claim?.Value;
+        }
+
     }
 }

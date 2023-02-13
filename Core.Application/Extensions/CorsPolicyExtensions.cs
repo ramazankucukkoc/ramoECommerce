@@ -7,14 +7,14 @@ namespace Core.Application.Extensions
     {
         public static IServiceCollection ConfigureCorsPolicy(this IServiceCollection services)
         {
-            //services(opt =>
+            //services.addcors(opt =>
             //{
             //    opt.AddDefaultPolicy(builder => builder
             //        .AllowAnyOrigin()
             //        .AllowAnyMethod()
             //        .AllowAnyHeader());
             //});
-           return services;
+            return services;
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Core.Security.GoogleAuth
     {
         public async Task<GoogleUserDetails> GetGoogleUserDetails(string googleAccessToken)
         {
+
             GoogleJsonWebSignature.Payload? googleAuthTokenInfo = await GoogleJsonWebSignature.ValidateAsync(googleAccessToken);
 
             return new GoogleUserDetails

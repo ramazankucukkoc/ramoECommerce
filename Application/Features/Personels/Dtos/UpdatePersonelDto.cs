@@ -1,6 +1,6 @@
 ﻿namespace Application.Features.Personels.Dtos
 {
-    public class CreatePersonelDto
+    public class UpdatePersonelDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

@@ -19,5 +19,10 @@ namespace Application.Features.Personels.Rules
             IPaginate<Personel> result = await _personelRepository.GetListAsync(p => p.FirstName + " " + p.LastName==personelName);
             if (result.Items.Any()) throw new BusinessException(PersonelBusinessException.PersonelFullName);
         }
+        public async Task PersonelIdControl(int id)
+        {
+            Personel? getByIdPersonel = await _personelRepository.GetAsync(p => p.Id == id);
+            if (getByIdPersonel is null) throw new BusinessException(PersonelBusinessException.PersonelIdDonotExists);
+        }
     }
 }

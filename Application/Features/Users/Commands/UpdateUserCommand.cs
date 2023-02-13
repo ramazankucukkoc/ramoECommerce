@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.Users.Commands
 {
-    public class UpdateUserCommand:IRequest<UpdateUserDto>
+    public class UpdateUserCommand : IRequest<UpdateUserDto>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -18,7 +18,7 @@ namespace Application.Features.Users.Commands
 
         public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UpdateUserDto>
         {
-          private readonly IUserRepository _userRepository;
+            private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
             private readonly UserBusinessRules _userBusinessRules;
 
@@ -29,16 +29,16 @@ namespace Application.Features.Users.Commands
                 _mapper = mapper;
                 _userBusinessRules = userBusinessRules;
             }
-
             public async Task<UpdateUserDto> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
             {
-                User mappedUser =_mapper.Map<User>(request);
+                await _userBusinessRules.UserConNotBeDuplicatedWhenUpdated(request.Id, request.Email);
+                User mappedUser = _mapper.Map<User>(request);
                 byte[] passwordHash, passwordSalt;
                 HashingHelper.CreatePasswordHash(request.Password, out passwordHash, out passwordSalt);
                 mappedUser.PasswordHash = passwordHash;
                 mappedUser.PasswordSalt = passwordSalt;
                 User updatedUser = await _userRepository.UpdateAsync(mappedUser);
-                UpdateUserDto updateUserDto =_mapper.Map<UpdateUserDto>(updatedUser);
+                UpdateUserDto updateUserDto = _mapper.Map<UpdateUserDto>(updatedUser);
                 return updateUserDto;
             }
         }
