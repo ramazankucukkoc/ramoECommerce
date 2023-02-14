@@ -11,20 +11,20 @@ namespace WebAPI.Controllers
     public class ProductCommentsController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]CreateProductCommentCommand createProductCommentCommand)
+        public async Task<IActionResult> Add([FromBody] CreateProductCommentCommand createProductCommentCommand)
         {
             CreateProductCommentDto result = await Mediator.Send(createProductCommentCommand);
             return Ok(result);
         }
         [HttpDelete]
         [Route("{Id}")]
-        public async Task<IActionResult> Delete([FromRoute]DeleteProductCommentCommand deleteProductCommentCommand)
+        public async Task<IActionResult> Delete([FromRoute] DeleteProductCommentCommand deleteProductCommentCommand)
         {
             DeleteProductCommentDto result = await Mediator.Send(deleteProductCommentCommand);
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody]UpdateProductCommentCommand updateProductCommentCommand)
+        public async Task<IActionResult> Update([FromBody] UpdateProductCommentCommand updateProductCommentCommand)
         {
             UpdateProductCommentDto result = await Mediator.Send(updateProductCommentCommand);
             return Ok(result);

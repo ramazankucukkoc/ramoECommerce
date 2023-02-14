@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Categories.Queries.GetAll
 {
-    public class GetAllCategoryQuery:IRequest<GetListResponse< GetAllCategoryDto>>
+    public class GetAllCategoryQuery : IRequest<GetListResponse<GetAllCategoryDto>>
     {
         public PageRequest PageRequest { get; set; }
 
-        public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery,GetListResponse< GetAllCategoryDto>>
+        public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, GetListResponse<GetAllCategoryDto>>
         {
             private readonly ICategoryRepository _categoryRepository;
             private readonly IMapper _mapper;
@@ -24,14 +24,14 @@ namespace Application.Features.Categories.Queries.GetAll
                 _mapper = mapper;
             }
 
-            public async Task<GetListResponse< GetAllCategoryDto>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
+            public async Task<GetListResponse<GetAllCategoryDto>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<Category> categories = await _categoryRepository.GetListAsync(
                     index: request.PageRequest.Page, size: request.PageRequest.PageSize,
-                    include:x=>x.Include(x => x.ParentCategory)
+                    include: x => x.Include(x => x.ParentCategory)
                     , orderBy: x => x.OrderBy(x => x.Name));
 
-                GetListResponse<GetAllCategoryDto> result =_mapper.Map<GetListResponse<GetAllCategoryDto>>(categories);
+                GetListResponse<GetAllCategoryDto> result = _mapper.Map<GetListResponse<GetAllCategoryDto>>(categories);
                 return result;
             }
         }

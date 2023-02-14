@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Users.Commands
 {
-    public class DeleteUserCommnad:IRequest<DeletedUserDto>
+    public class DeleteUserCommnad : IRequest<DeletedUserDto>
     {
         public int Id { get; set; }
 
@@ -28,9 +28,9 @@ namespace Application.Features.Users.Commands
             public async Task<DeletedUserDto> Handle(DeleteUserCommnad request, CancellationToken cancellationToken)
             {
                 await _userBusinessRules.UserIdShouldExistsWhenSelected(request.Id);
-                User mappedUser =_mapper.Map<User>(request);
+                User mappedUser = _mapper.Map<User>(request);
                 mappedUser.Status = false;
-                User deletedUser =await _userRepository.UpdateAsync(mappedUser);
+                User deletedUser = await _userRepository.UpdateAsync(mappedUser);
                 DeletedUserDto deletedUserDto = _mapper.Map<DeletedUserDto>(deletedUser);
                 return deletedUserDto;
 

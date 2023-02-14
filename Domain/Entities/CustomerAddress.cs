@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class CustomerAddress:Entity
+    public class CustomerAddress : Entity
     {
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }

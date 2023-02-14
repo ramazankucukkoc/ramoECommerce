@@ -8,9 +8,9 @@ using MediatR;
 
 namespace Application.Features.Brands.Queries.GetListBrand
 {
-    public class GetListBrandQuery:IRequest<GetListResponse<BrandListDto>>
+    public class GetListBrandQuery : IRequest<GetListResponse<BrandListDto>>
     {
-        public PageRequest PageRequest  { get; set; }
+        public PageRequest PageRequest { get; set; }
 
         public class GetListBrandQueryHandler : IRequestHandler<GetListBrandQuery, GetListResponse<BrandListDto>>
         {
@@ -25,11 +25,11 @@ namespace Application.Features.Brands.Queries.GetListBrand
 
             public async Task<GetListResponse<BrandListDto>> Handle(GetListBrandQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<Brand> brands = await _brandRepository.GetListAsync(b=>b.Active ==true,
+                IPaginate<Brand> brands = await _brandRepository.GetListAsync(b => b.Active == true,
                     index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
 
-                GetListResponse<BrandListDto> mappedBrandListModel =_mapper.Map<GetListResponse<BrandListDto>>(brands);
+                GetListResponse<BrandListDto> mappedBrandListModel = _mapper.Map<GetListResponse<BrandListDto>>(brands);
                 return mappedBrandListModel;
             }
         }

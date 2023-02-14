@@ -1,7 +1,4 @@
-﻿using Core.Domain.Entities;
-using Domain.Entities;
-
-namespace Application.Features.Baskets.Dtos
+﻿namespace Application.Features.Baskets.Dtos
 {
     public class GetByBrandIdBasketDto
     {
@@ -12,7 +9,7 @@ namespace Application.Features.Baskets.Dtos
         public string Email { get; set; }
         public int Count { get; set; }
         public string BrandName { get; set; }
-        public string ProductName  { get; set; }
+        public string ProductName { get; set; }
         public string ParentCategoryName { get; set; }
         public string CategoryName { get; set; }
     }

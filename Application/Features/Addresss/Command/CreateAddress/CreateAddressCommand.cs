@@ -20,7 +20,7 @@ namespace Application.Features.Addresss.Command.CreateAddress
             private readonly IMapper _mapper;
             private readonly AddressBusinessRules _addressBusinessRules;
 
-            public CreateBrandCommandHandler(IAddressRepository addressRepository, 
+            public CreateBrandCommandHandler(IAddressRepository addressRepository,
                 IMapper mapper, AddressBusinessRules addressBusinessRules)
             {
                 _addressRepository = addressRepository;
@@ -32,7 +32,7 @@ namespace Application.Features.Addresss.Command.CreateAddress
             {
                 Address? mappedAddress = _mapper.Map<Address>(request);
                 Address createAddress = await _addressRepository.AddAsync(mappedAddress);
-                CreateAddressDto createAddressDto=_mapper.Map<CreateAddressDto>(createAddress);
+                CreateAddressDto createAddressDto = _mapper.Map<CreateAddressDto>(createAddress);
                 return createAddressDto;
             }
         }

@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Favorite:Entity
+    public class Favorite : Entity
     {
         public int ProductId { get; set; }
         public Product Product { get; set; }

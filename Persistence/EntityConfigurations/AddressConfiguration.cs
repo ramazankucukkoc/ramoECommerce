@@ -14,7 +14,7 @@ namespace Persistence.EntityConfigurations
             builder.Property(a => a.Id).UseIdentityColumn();
             builder.Property(a => a.CreatedDate).HasColumnName("CreatedDate");
             builder.Property(a => a.UpdatedDate).HasColumnName("UpdatedDate");
-            builder.Property(a => a.UserId).HasColumnName("UserId").IsRequired() ;
+            builder.Property(a => a.UserId).HasColumnName("UserId").IsRequired();
             builder.Property(a => a.CityId).HasColumnName("CityId").IsRequired();
             builder.Property(a => a.AddressDetail).HasColumnName("AddressDetail").IsRequired().HasMaxLength(150);
             builder.Property(a => a.AddressAbbreviation).HasColumnName("AddressAbbreviation").IsRequired().HasMaxLength(150);

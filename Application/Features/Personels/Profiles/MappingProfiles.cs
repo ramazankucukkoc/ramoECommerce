@@ -5,7 +5,7 @@ using Domain.Entities;
 
 namespace Application.Features.Personels.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {

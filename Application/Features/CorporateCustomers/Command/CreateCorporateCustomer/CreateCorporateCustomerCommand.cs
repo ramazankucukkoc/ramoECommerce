@@ -19,8 +19,8 @@ namespace Application.Features.CorporateCustomers.Command.CreateCorporateCustome
             private readonly IFindeksCreditRateRepository _findeksCreditRateRepository;
             private readonly CorporateCustomerBusinessRules _corporateCustomerBusinessRules;
 
-            public CreateCorporateCustomerCommandHandler(ICorporateCustomerRepository corporateCustomerRepository, 
-                IMapper mapper, IFindeksCreditRateRepository findeksCreditRateRepository, 
+            public CreateCorporateCustomerCommandHandler(ICorporateCustomerRepository corporateCustomerRepository,
+                IMapper mapper, IFindeksCreditRateRepository findeksCreditRateRepository,
                 CorporateCustomerBusinessRules corporateCustomerBusinessRules)
             {
                 _corporateCustomerRepository = corporateCustomerRepository;
@@ -32,7 +32,7 @@ namespace Application.Features.CorporateCustomers.Command.CreateCorporateCustome
             public async Task<CreateCorporateCustomerDto> Handle(CreateCorporateCustomerCommand request, CancellationToken cancellationToken)
             {
                 await _corporateCustomerBusinessRules.CorporateCustomerTaxNoCanNotBeDuplicatedWhenInserted(request.TaxNo);
-                CorporateCustomer mappedCorporateCustomer =_mapper.Map<CorporateCustomer>(request);
+                CorporateCustomer mappedCorporateCustomer = _mapper.Map<CorporateCustomer>(request);
                 CorporateCustomer addedCorporateCustomer = await _corporateCustomerRepository.AddAsync(mappedCorporateCustomer);
                 await _findeksCreditRateRepository.AddAsync(new FindeksCreditRate { CustomerId = addedCorporateCustomer.CustomerId });
 

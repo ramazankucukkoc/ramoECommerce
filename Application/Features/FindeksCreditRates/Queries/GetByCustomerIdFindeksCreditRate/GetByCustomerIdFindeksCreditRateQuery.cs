@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.FindeksCreditRates.Queries.GetByCustomerIdFindeksCreditRate
 {
-    public class GetByCustomerIdFindeksCreditRateQuery:IRequest<FindeksCreditRateDto>
+    public class GetByCustomerIdFindeksCreditRateQuery : IRequest<FindeksCreditRateDto>
     {
         public int CustomerId { get; set; }
 
@@ -30,7 +30,7 @@ namespace Application.Features.FindeksCreditRates.Queries.GetByCustomerIdFindeks
                 FindeksCreditRate? findeksCreditRate = await _findeksCreditRateRepository.GetAsync(c => c.CustomerId == request.CustomerId);
                 await _fadeksCreditRateBusinessRules.FindeksCreditShouldBeExist(findeksCreditRate);
                 FindeksCreditRateDto findeksCreditRateDto = _mapper.Map<FindeksCreditRateDto>(findeksCreditRate);
-                return findeksCreditRateDto; 
+                return findeksCreditRateDto;
             }
         }
     }

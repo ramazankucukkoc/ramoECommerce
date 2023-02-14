@@ -8,7 +8,7 @@ using Domain.Entities;
 
 namespace Application.Features.Brands.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {

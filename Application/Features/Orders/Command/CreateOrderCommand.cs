@@ -2,14 +2,12 @@
 using Application.Features.Orders.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
-using Core.Domain.Entities;
 using Domain.Entities;
-using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Orders.Command
 {
-    public class CreateOrderCommand:IRequest<CreateOrderDto>
+    public class CreateOrderCommand : IRequest<CreateOrderDto>
     {
         public int AddressId { get; set; }
         public int UserId { get; set; }
@@ -42,7 +40,7 @@ namespace Application.Features.Orders.Command
             public async Task<CreateOrderDto> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
             {
 
-                Order? mappedOrder =  _mapper.Map<Order>(request);
+                Order? mappedOrder = _mapper.Map<Order>(request);
                 Order addedOrder = await _orderRepository.AddAsync(mappedOrder);
                 CreateOrderDto createOrderDto = _mapper.Map<CreateOrderDto>(addedOrder);
                 return createOrderDto;

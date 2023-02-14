@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.CorporateCustomers.Command.UpdateCorporateCustomer
 {
-    public class UpdateCorporateCustomerCommand:IRequest<UpdateCorporateDto>
+    public class UpdateCorporateCustomerCommand : IRequest<UpdateCorporateDto>
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
@@ -20,7 +20,7 @@ namespace Application.Features.CorporateCustomers.Command.UpdateCorporateCustome
             private readonly IMapper _mapper;
             private readonly CorporateCustomerBusinessRules _corporateCustomerBusinessRules;
 
-            public UpdateCorporateCustomerCommandHandler(ICorporateCustomerRepository corporateCustomerRepository, 
+            public UpdateCorporateCustomerCommandHandler(ICorporateCustomerRepository corporateCustomerRepository,
                 IMapper mapper, CorporateCustomerBusinessRules corporateCustomerBusinessRules)
             {
                 _corporateCustomerRepository = corporateCustomerRepository;

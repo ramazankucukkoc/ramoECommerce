@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Services.Repositories
 {
-    public interface IFindeksCreditRateRepository:IAsyncRepository<FindeksCreditRate>
+    public interface IFindeksCreditRateRepository : IAsyncRepository<FindeksCreditRate>
     {
     }
 }

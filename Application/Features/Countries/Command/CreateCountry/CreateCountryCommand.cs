@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Countries.Command.CreateCountry
 {
-    public class CreateCountryCommand:IRequest<CreateCountryDto>
+    public class CreateCountryCommand : IRequest<CreateCountryDto>
     {
         public string Name { get; set; }
 

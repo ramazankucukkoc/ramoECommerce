@@ -14,9 +14,9 @@ namespace Persistence.EntityConfigurations
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.NameOnTheCard).HasColumnName("NameOnTheCard").IsRequired();
             builder.Property(x => x.CardNumber).HasColumnName("CardNumber").IsRequired();
-            builder.Property(c => c.CardCvv).HasColumnName("CardCvv").IsRequired() ;
-            builder.Property(c => c.ExpirationDate).HasColumnName("ExpirationDate").IsRequired() ;
-            builder.Property(c => c.MoneyInTheCard).HasColumnName("MoneyInTheCard").IsRequired() ;
+            builder.Property(c => c.CardCvv).HasColumnName("CardCvv").IsRequired();
+            builder.Property(c => c.ExpirationDate).HasColumnName("ExpirationDate").IsRequired();
+            builder.Property(c => c.MoneyInTheCard).HasColumnName("MoneyInTheCard").IsRequired();
             builder.HasOne(x => x.User);
         }
     }

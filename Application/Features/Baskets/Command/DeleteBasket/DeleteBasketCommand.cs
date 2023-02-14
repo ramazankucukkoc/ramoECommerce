@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Baskets.Command.DeleteBasket
 {
-    public sealed class DeleteBasketCommand:IRequest<DeleteBasketDto>
+    public sealed class DeleteBasketCommand : IRequest<DeleteBasketDto>
     {
         public int Id { get; set; }
         public class DeleteBasketCommandHandler : IRequestHandler<DeleteBasketCommand, DeleteBasketDto>

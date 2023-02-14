@@ -1,5 +1,4 @@
-﻿using Core.Domain.Entities;
-using Domain.Enums;
+﻿using Domain.Enums;
 namespace Application.Features.ProductBranchs.Dtos
 {
     public class CreateProductBranchDto

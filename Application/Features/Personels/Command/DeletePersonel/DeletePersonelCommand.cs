@@ -4,11 +4,10 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System.Runtime.CompilerServices;
 
 namespace Application.Features.Personels.Command.DeletePersonel
 {
-    public sealed class DeletePersonelCommand:IRequest<DeletePersonelDto>
+    public sealed class DeletePersonelCommand : IRequest<DeletePersonelDto>
     {
         public int Id { get; set; }
 
@@ -32,7 +31,7 @@ namespace Application.Features.Personels.Command.DeletePersonel
                 Personel? personel = await _personelRepository.GetAsync(p => p.Id == request.Id);
                 personel.Active = false;
                 Personel deletedPersonel = await _personelRepository.UpdateAsync(personel);
-                DeletePersonelDto result =_mapper.Map<DeletePersonelDto>(deletedPersonel);
+                DeletePersonelDto result = _mapper.Map<DeletePersonelDto>(deletedPersonel);
                 return result;
             }
         }

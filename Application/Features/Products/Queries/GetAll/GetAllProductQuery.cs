@@ -5,17 +5,16 @@ using AutoMapper;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities;
-using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Products.Queries.GetAll
 {
-    public class GetAllProductQuery:IRequest<GetListResponse<GetAllProductDto>>
+    public class GetAllProductQuery : IRequest<GetListResponse<GetAllProductDto>>
     {
         public PageRequest PageRequest { get; set; }
 
-        public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery,GetListResponse<GetAllProductDto>>
+        public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, GetListResponse<GetAllProductDto>>
         {
             private readonly IProductRepository _productRepository;
             private readonly IMapper _mapper;
@@ -33,7 +32,7 @@ namespace Application.Features.Products.Queries.GetAll
             {
                 IPaginate<Product> products = await _productRepository.GetListAsync(
                     include: x => x.Include(x => x.Category).Include(x => x.Category.ParentCategory),
-                    orderBy: x =>x.OrderByDescending(x=>x.Name));
+                    orderBy: x => x.OrderByDescending(x => x.Name));
                 GetListResponse<GetAllProductDto> result = _mapper.Map<GetListResponse<GetAllProductDto>>(products);
                 return result;
             }

@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.FindeksCreditRates.Queries.GetListFindeksCreditRate
 {
-    public class GetListFindeksCreditRateQuery:IRequest<GetListResponse<FindeksCreditRateDto>>
+    public class GetListFindeksCreditRateQuery : IRequest<GetListResponse<FindeksCreditRateDto>>
     {
         public PageRequest PageRequest { get; set; }
 

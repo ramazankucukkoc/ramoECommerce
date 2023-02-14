@@ -5,7 +5,7 @@ using Domain.Entities;
 
 namespace Application.Features.Countries.Profiles
 {
-    public class MappinProfiles:Profile
+    public class MappinProfiles : Profile
     {
 
         public MappinProfiles()

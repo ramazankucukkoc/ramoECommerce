@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Categories.Command
 {
-    public sealed class DeleteCategoryCommand:IRequest<DeleteCategoryDto>
+    public sealed class DeleteCategoryCommand : IRequest<DeleteCategoryDto>
     {
         public int Id { get; set; }
         public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, DeleteCategoryDto>
@@ -27,7 +27,7 @@ namespace Application.Features.Categories.Command
                 await _categoryBusinessRules.CategoryCanNotBeDuplicatedWhenInserted(request.Id);
                 Category? category = await _categoryRepository.GetAsync(x => x.Id == request.Id);
                 Category deletedCategory = await _categoryRepository.DeleteAsync(category);
-                DeleteCategoryDto deleteCategoryDto =_mapper.Map<DeleteCategoryDto>(deletedCategory);
+                DeleteCategoryDto deleteCategoryDto = _mapper.Map<DeleteCategoryDto>(deletedCategory);
                 return deleteCategoryDto;
             }
         }

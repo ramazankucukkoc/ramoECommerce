@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Address:Entity
+    public class Address : Entity
     {
         public ICollection<CustomerAddress> CustomerAddress { get; set; }
         public ICollection<Order> Orders { get; set; }

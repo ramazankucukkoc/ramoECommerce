@@ -32,7 +32,7 @@ namespace Application.Features.ProductComments.Command.CreateProductComment
             {
                 ProductComment? mappedProductComment = _mapper.Map<ProductComment>(request);
                 ProductComment createdProductComment = await _productCommentRepository.AddAsync(mappedProductComment);
-                CreateProductCommentDto result =_mapper.Map<CreateProductCommentDto>(createdProductComment);
+                CreateProductCommentDto result = _mapper.Map<CreateProductCommentDto>(createdProductComment);
                 return result;
             }
         }

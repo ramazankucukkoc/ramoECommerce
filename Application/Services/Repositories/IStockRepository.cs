@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Services.Repositories
 {
-    public interface IStockRepository:IAsyncRepository<Stock>
+    public interface IStockRepository : IAsyncRepository<Stock>
     {
     }
 }

@@ -31,7 +31,7 @@ namespace Application.Features.Departmans.Command.CreateDepartman
 
                 List<Departman>? mappedDepartman = request.FullNameList.Select(d => new Departman { FullName = d, CreatedDate = DateTime.Now }).ToList();
                 List<Departman> addedDepartmans = await _departmanRepository.AddRangeAsync(mappedDepartman);
-                List<CreateDepartmanDto> result =addedDepartmans.Select(x=>new CreateDepartmanDto { Id=x.Id,FullName=x.FullName}).ToList();
+                List<CreateDepartmanDto> result = addedDepartmans.Select(x => new CreateDepartmanDto { Id = x.Id, FullName = x.FullName }).ToList();
 
                 return result;
             }

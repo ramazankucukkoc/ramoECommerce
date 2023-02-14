@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Categories.Queries.GetById
 {
-    public sealed class GetByIdCategoryQuery:IRequest<GetByIdCategoryDto>
+    public sealed class GetByIdCategoryQuery : IRequest<GetByIdCategoryDto>
     {
         public int Id { get; set; }
 
@@ -18,7 +18,7 @@ namespace Application.Features.Categories.Queries.GetById
             private readonly IMapper _mapper;
             private readonly CategoryBusinessRules _categoryBusinessRules;
 
-            public GetByIdCategoryQueryHandler(ICategoryRepository categoryRepository, 
+            public GetByIdCategoryQueryHandler(ICategoryRepository categoryRepository,
                 IMapper mapper, CategoryBusinessRules categoryBusinessRules)
             {
                 _categoryRepository = categoryRepository;

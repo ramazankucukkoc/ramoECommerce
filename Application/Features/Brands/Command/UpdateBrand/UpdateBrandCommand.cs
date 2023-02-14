@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Brands.Command.UpdateBrand
 {
-    public sealed class UpdateBrandCommand:IRequest<UpdateBrandDto>
+    public sealed class UpdateBrandCommand : IRequest<UpdateBrandDto>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -18,7 +18,7 @@ namespace Application.Features.Brands.Command.UpdateBrand
             private readonly IMapper _mapper;
             private readonly BrandBusinessRules _brandBusinessRules;
 
-            public UpdateBrandCommandHandler(IBrandRepository brandRepository, 
+            public UpdateBrandCommandHandler(IBrandRepository brandRepository,
                 IMapper mapper, BrandBusinessRules brandBusinessRules)
             {
                 _brandRepository = brandRepository;
@@ -32,9 +32,9 @@ namespace Application.Features.Brands.Command.UpdateBrand
                 Brand? getByIdBrand = await _brandRepository.GetAsync(b => b.Id == request.Id);
                 await _brandBusinessRules.BrandActiveShoulExistsWhenInserted(getByIdBrand.Active);
                 await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInserted(request.Name);
-                _mapper.Map( request, getByIdBrand);
-                 await _brandRepository.UpdateAsync(getByIdBrand);
-                UpdateBrandDto updateBrandDto =_mapper.Map<UpdateBrandDto>(getByIdBrand);
+                _mapper.Map(request, getByIdBrand);
+                await _brandRepository.UpdateAsync(getByIdBrand);
+                UpdateBrandDto updateBrandDto = _mapper.Map<UpdateBrandDto>(getByIdBrand);
                 return updateBrandDto;
             }
         }

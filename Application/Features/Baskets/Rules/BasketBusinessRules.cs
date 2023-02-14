@@ -16,7 +16,7 @@ namespace Application.Features.Baskets.Rules
 
 
         public BasketBusinessRules(IBasketRepository basketRepository, IProductService productService
-            ,IBrandService brandService)
+            , IBrandService brandService)
         {
             _brandService = brandService;
             _basketRepository = basketRepository;
@@ -33,12 +33,18 @@ namespace Application.Features.Baskets.Rules
             Basket? result = await _basketRepository.GetAsync(b => b.BrandId == brandId);
             if (result == null) throw new BusinessException(BasketBusinessExceptionMessages.BasketBrandIdExists);
         }
+        public async Task BasketProductIdControl(int productId)
+        {
+            Basket? result = await _basketRepository.GetAsync(b => b.ProductId == productId);
+            if (result == null) throw new BusinessException(BasketBusinessExceptionMessages.BasketProductExists);
+        }
         public async Task BasketBrandIdActiveShoulExistsWhenInserted(bool active)
         {
             if (active == false) throw new BusinessException(BusinessRulesExceptionMessages.BrandNotExists);
         }
-        public async Task ProductControl(int productId) { 
-            Product? product =await _productService.GetById(productId);
+        public async Task ProductControl(int productId)
+        {
+            Product? product = await _productService.GetById(productId);
             if (product == null) throw new BusinessException(BasketBusinessExceptionMessages.BasketProductExists);
 
         }

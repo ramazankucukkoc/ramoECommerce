@@ -12,7 +12,7 @@ namespace Persistence.Extensions
         {
             //-----------------DbContext------------------------------------------
             services.AddDbContext<ProjectDbContext>();
-           
+
             //-----------------Repositories------------------------------------------
             services.AddScoped<IPersonelRepository, PersonelRepository>();
             services.AddScoped<IProductBranchRepository, ProductBranchRepository>();

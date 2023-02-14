@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Personel:Entity
+    public class Personel : Entity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

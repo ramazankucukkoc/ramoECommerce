@@ -3,7 +3,6 @@ using Application.Features.Auths.Rules;
 using Application.Services.AuthService;
 using Application.Services.Repositories;
 using Core.Application.DTOs;
-using Core.Application.Pipelines.Logging;
 using Core.Domain.Entities;
 using Core.Mailings;
 using Core.Security.Hashing;

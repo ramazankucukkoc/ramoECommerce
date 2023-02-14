@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Addresss.Command.UpdateAddress
 {
-    public class UpdateAddressCommand:IRequest<UpdateAddressDto>
+    public class UpdateAddressCommand : IRequest<UpdateAddressDto>
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -35,7 +35,7 @@ namespace Application.Features.Addresss.Command.UpdateAddress
                 await _addressBusinessRules.AddressIdShoulExistsWhenInserted(request.Id);
                 Address? getByIdAddress = await _addressRepository.GetAsync(a => a.Id == request.Id);
                 await _addressBusinessRules.AddressActiveShoulExistsWhenInserted(getByIdAddress.Active);
-                Address mappedAddress =_mapper.Map<Address>(request);
+                Address mappedAddress = _mapper.Map<Address>(request);
                 Address updatedAddress = await _addressRepository.UpdateAsync(mappedAddress);
                 UpdateAddressDto updateAddressDto = _mapper.Map<UpdateAddressDto>(updatedAddress);
                 return updateAddressDto;

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Cities.Command.UpdateCities
 {
-    public class UpdateCitiesCommand:IRequest<UpdateCityDto>
+    public class UpdateCitiesCommand : IRequest<UpdateCityDto>
     {
         public int Id { get; set; }
         public int CountryId { get; set; }
@@ -19,7 +19,7 @@ namespace Application.Features.Cities.Command.UpdateCities
             private readonly IMapper _mapper;
             private readonly CitiesBusinessRules _citiesBusinessRules;
 
-            public UpdateCitiesCommandHandler(ICityRepository cityRepository, 
+            public UpdateCitiesCommandHandler(ICityRepository cityRepository,
                 IMapper mapper, CitiesBusinessRules citiesBusinessRules)
             {
                 _cityRepository = cityRepository;

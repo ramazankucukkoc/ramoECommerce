@@ -35,7 +35,7 @@ namespace Application.Features.IndividualCustomers.Rules
             if (active == false) throw new BusinessException("Bu Veri silinmiştir.");
         }
 
-        public async Task IndividualCustomerShouldExistWhenRequested(int id ,string name)
+        public async Task IndividualCustomerShouldExistWhenRequested(int id, string name)
         {
             var result = await _individualCustomerRepository.Query().Where(i => i.FirstName + " " + i.LastName == name).AnyAsync();
         }

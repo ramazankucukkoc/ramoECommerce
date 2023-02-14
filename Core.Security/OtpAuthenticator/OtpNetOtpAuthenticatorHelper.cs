@@ -4,7 +4,7 @@ namespace Core.Security.OtpAuthenticator
 {
     public class OtpNetOtpAuthenticatorHelper : IOtpAuthenticatorHelper
     {
-        public  Task<string> ConvertSecretKeyToString(byte[] secretKey)
+        public Task<string> ConvertSecretKeyToString(byte[] secretKey)
         {
             string base32String = Base32Encoding.ToString(secretKey);
             return Task.FromResult(base32String);

@@ -1,6 +1,5 @@
 ﻿using Application.Features.Stocks.Command.CreateStock;
 using Application.Features.Stocks.Dtos;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers

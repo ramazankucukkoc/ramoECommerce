@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class City:Entity
+    public class City : Entity
     {
         public int CountryId { get; set; }
         public Country Country { get; set; }

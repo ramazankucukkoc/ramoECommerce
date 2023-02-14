@@ -6,11 +6,11 @@ using MediatR;
 
 namespace Application.Features.Categories.Command
 {
-    public sealed class UpdateCategoryCommand:IRequest<UpdateCategoryDto>
+    public sealed class UpdateCategoryCommand : IRequest<UpdateCategoryDto>
     {
         public int Id { get; set; }
         public string Name { get; set; }
-      //  public string Slug { get; set; }
+        //  public string Slug { get; set; }
         public int ParentId { get; set; }
 
         public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, UpdateCategoryDto>

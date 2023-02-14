@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Cities.Command.DeleteCities
 {
-    public class DeleteCitiesCommand:IRequest<DeleteCityDto>
+    public class DeleteCitiesCommand : IRequest<DeleteCityDto>
     {
         public int Id { get; set; }
 

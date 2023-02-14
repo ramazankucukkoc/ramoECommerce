@@ -9,11 +9,8 @@
   <ItemGroup>
     <Folder Include="Features\Addresss\Queries\" />
     <Folder Include="Features\Addresss\Validator\" />
-    <Folder Include="Features\Auths\Profiles\" />
     <Folder Include="Features\Baskets\Queries\GetByIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByUserIdBasket\" />
-    <Folder Include="Features\Baskets\Queries\GetByProductIdBasket\" />
-    <Folder Include="Features\Baskets\Queries\GetList\" />
     <Folder Include="Features\Baskets\Validator\" />
     <Folder Include="Features\Brands\Validator\" />
     <Folder Include="Features\Cities\Queries\" />

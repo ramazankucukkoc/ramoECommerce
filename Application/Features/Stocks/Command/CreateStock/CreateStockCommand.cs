@@ -1,4 +1,4 @@
-﻿ using Application.Features.Stocks.Dtos;
+﻿using Application.Features.Stocks.Dtos;
 using Application.Services.ProductService;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Stocks.Command.CreateStock
 {
-    public class CreateStockCommand:IRequest<CreateStockDto>
+    public class CreateStockCommand : IRequest<CreateStockDto>
     {
         public int Quantity { get; set; }
         public int ProductId { get; set; }

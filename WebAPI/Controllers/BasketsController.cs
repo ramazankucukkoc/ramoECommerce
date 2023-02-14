@@ -3,6 +3,9 @@ using Application.Features.Baskets.Command.DeleteBasket;
 using Application.Features.Baskets.Command.UpdateBasket;
 using Application.Features.Baskets.Dtos;
 using Application.Features.Baskets.Queries.GetByBrandIdBasket;
+using Application.Features.Baskets.Queries.GetByProductIdBasket;
+using Application.Features.Baskets.Queries.GetList;
+using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,6 +42,20 @@ namespace WebAPI.Controllers
             UpdateBasketDto result = await Mediator.Send(updateBasketCommand);
             return Ok(result);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> GetListBasket([FromQuery] PageRequest pageRequest)
+        {
+            GetListBasketQuery getListBasketQuery = new() { PageRequest = pageRequest };
+            GetListResponse<BasketListDto> result = await Mediator.Send(getListBasketQuery);
+            return Ok(result);
+        }
+        [HttpGet]
+        // [Route("{productId}")]
+        public async Task<IActionResult> GetByProductIdBasket([FromQuery] PageRequest pageRequest, [FromQuery] int productId)
+        {
+            GetByProductIdBasketQuery getListBasketQuery = new() { PageRequest = pageRequest, ProductId = productId };
+            GetListResponse<BasketListDto> result = await Mediator.Send(getListBasketQuery);
+            return Ok(result);
+        }
     }
 }

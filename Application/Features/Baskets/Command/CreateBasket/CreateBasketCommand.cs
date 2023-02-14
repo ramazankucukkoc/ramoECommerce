@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Baskets.Command.CreateBasket
 {
-    public class CreateBasketCommand:IRequest<CreateBasketDto>
+    public class CreateBasketCommand : IRequest<CreateBasketDto>
     {
         public int ProductId { get; set; }
         public int BrandId { get; set; }
@@ -17,10 +17,10 @@ namespace Application.Features.Baskets.Command.CreateBasket
         public class CreateBasketCommandHandler : IRequestHandler<CreateBasketCommand, CreateBasketDto>
         {
             private readonly IBasketRepository _basketRepository;
-            private readonly  IMapper _mapper;
+            private readonly IMapper _mapper;
             private readonly BasketBusinessRules _basketBusinessRules;
 
-            public CreateBasketCommandHandler(IBasketRepository basketRepository, 
+            public CreateBasketCommandHandler(IBasketRepository basketRepository,
                 IMapper mapper, BasketBusinessRules basketBusinessRules)
             {
                 _basketRepository = basketRepository;

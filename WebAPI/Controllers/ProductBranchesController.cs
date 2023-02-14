@@ -1,6 +1,5 @@
 ﻿using Application.Features.ProductBranchs.Command.CreateProductBranch;
 using Application.Features.ProductBranchs.Dtos;
-using Application.Features.Products.Command;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -11,7 +10,7 @@ namespace WebAPI.Controllers
     {
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]CreateProductBranchCommand  createProductBranchCommand)
+        public async Task<IActionResult> Add([FromBody] CreateProductBranchCommand createProductBranchCommand)
         {
             CreateProductBranchDto result = await Mediator.Send(createProductBranchCommand);
             return Ok(result);

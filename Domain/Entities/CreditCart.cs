@@ -2,9 +2,9 @@
 
 namespace Domain.Entities
 {
-    public class CreditCart:Entity
+    public class CreditCart : Entity
     {
-       // public int Id { get; set; }
+        // public int Id { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public string NameOnTheCard { get; set; }//Kart üzerindeki isim

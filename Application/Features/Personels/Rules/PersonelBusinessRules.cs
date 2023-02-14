@@ -16,7 +16,7 @@ namespace Application.Features.Personels.Rules
         }
         public async Task PersonelNameCanNotBeDuplicatedWhenInserted(string personelName)
         {
-            IPaginate<Personel> result = await _personelRepository.GetListAsync(p => p.FirstName + " " + p.LastName==personelName);
+            IPaginate<Personel> result = await _personelRepository.GetListAsync(p => p.FirstName + " " + p.LastName == personelName);
             if (result.Items.Any()) throw new BusinessException(PersonelBusinessException.PersonelFullName);
         }
         public async Task PersonelIdControl(int id)

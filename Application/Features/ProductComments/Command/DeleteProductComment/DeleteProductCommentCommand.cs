@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.ProductComments.Command.DeleteProductComment
 {
-    public sealed class DeleteProductCommentCommand:IRequest<DeleteProductCommentDto>
+    public sealed class DeleteProductCommentCommand : IRequest<DeleteProductCommentDto>
     {
         public int Id { get; set; }
 
@@ -29,7 +29,7 @@ namespace Application.Features.ProductComments.Command.DeleteProductComment
                 await _businessRules.ProductCommentIdControl(request.Id);
                 ProductComment? getByIdProductComment = await _productCommentRepository.GetAsync(p => p.Id == request.Id);
                 ProductComment deletedProductComment = await _productCommentRepository.DeleteAsync(getByIdProductComment);
-                DeleteProductCommentDto result =_mapper.Map<DeleteProductCommentDto>(deletedProductComment);
+                DeleteProductCommentDto result = _mapper.Map<DeleteProductCommentDto>(deletedProductComment);
                 return result;
             }
         }

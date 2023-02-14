@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class FindeksCreditRate:Entity
+    public class FindeksCreditRate : Entity
     {
         public int CustomerId { get; set; }
         public short Score { get; set; }
@@ -11,7 +11,7 @@ namespace Domain.Entities
         {
 
         }
-        public FindeksCreditRate(int id,int customerId,short score):base(id)
+        public FindeksCreditRate(int id, int customerId, short score) : base(id)
         {
             CustomerId = customerId;
             Score = score;

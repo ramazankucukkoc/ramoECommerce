@@ -4,15 +4,10 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.CorporateCustomers.Command.DeleteCorporateCustomer
 {
-    public class DeleteCorporateCustomerCommand:IRequest<DeleteCorporateCustomerDto>
+    public class DeleteCorporateCustomerCommand : IRequest<DeleteCorporateCustomerDto>
     {
         public int Id { get; set; }
 
@@ -23,7 +18,7 @@ namespace Application.Features.CorporateCustomers.Command.DeleteCorporateCustome
             private readonly CorporateCustomerBusinessRules _corporateCustomerBusinessRules;
 
             public DeleteCorporateCustomerCommandHandler(ICorporateCustomerRepository corporateCustomerRepository
-                ,IMapper mapper, CorporateCustomerBusinessRules corporateCustomerBusinessRules)
+                , IMapper mapper, CorporateCustomerBusinessRules corporateCustomerBusinessRules)
             {
                 _corporateCustomerRepository = corporateCustomerRepository;
                 _mapper = mapper;
@@ -33,10 +28,10 @@ namespace Application.Features.CorporateCustomers.Command.DeleteCorporateCustome
             public async Task<DeleteCorporateCustomerDto> Handle(DeleteCorporateCustomerCommand request, CancellationToken cancellationToken)
             {
                 await _corporateCustomerBusinessRules.CorporateCustomerIdShouldExistWhenSelected(request.Id);
-                CorporateCustomer? mappedCorporateCustomer =_mapper.Map<CorporateCustomer>(request);
-                CorporateCustomer deletedCorporateCustomer =await _corporateCustomerRepository.DeleteAsync(mappedCorporateCustomer);
+                CorporateCustomer? mappedCorporateCustomer = _mapper.Map<CorporateCustomer>(request);
+                CorporateCustomer deletedCorporateCustomer = await _corporateCustomerRepository.DeleteAsync(mappedCorporateCustomer);
 
-                DeleteCorporateCustomerDto deleteCorporateCustomerDto =_mapper.Map<DeleteCorporateCustomerDto>(deletedCorporateCustomer);
+                DeleteCorporateCustomerDto deleteCorporateCustomerDto = _mapper.Map<DeleteCorporateCustomerDto>(deletedCorporateCustomer);
                 return deleteCorporateCustomerDto;
             }
         }

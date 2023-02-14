@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Brands.Command.CreateBrand
 {
-    public sealed class CreateBrandCommand:IRequest<CreateBrandDto>
+    public sealed class CreateBrandCommand : IRequest<CreateBrandDto>
     {
         public string Name { get; set; }
 
@@ -17,7 +17,7 @@ namespace Application.Features.Brands.Command.CreateBrand
             private readonly IMapper _mapper;
             private readonly BrandBusinessRules _brandBusinessRules;
 
-            public CreateBrandCommandHandler(IBrandRepository brandRepository, 
+            public CreateBrandCommandHandler(IBrandRepository brandRepository,
                 IMapper mapper, BrandBusinessRules brandBusinessRules)
             {
                 _brandRepository = brandRepository;

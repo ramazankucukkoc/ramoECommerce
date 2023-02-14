@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Personels.Command.UpdatePersonel
 {
-    public sealed class UpdatePersonelCommand:IRequest<UpdatePersonelDto>
+    public sealed class UpdatePersonelCommand : IRequest<UpdatePersonelDto>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

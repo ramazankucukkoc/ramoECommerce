@@ -6,7 +6,7 @@ using Profile = AutoMapper.Profile;
 
 namespace Application.Features.Products.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {
@@ -22,7 +22,7 @@ namespace Application.Features.Products.Profiles
                 .ReverseMap();
 
             //-----------Queries*---------------------
-            CreateMap<IPaginate<Product>,GetListResponse<GetAllProductDto>>()
+            CreateMap<IPaginate<Product>, GetListResponse<GetAllProductDto>>()
                 .ReverseMap();
             //CreateMap<Product, GetAllProductDto>()
             //    .ForMember(p => p.CategoryName, opt => opt.MapFrom(p => p.Category.Name))

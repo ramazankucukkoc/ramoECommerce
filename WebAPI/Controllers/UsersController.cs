@@ -2,7 +2,6 @@
 using Application.Features.Users.Dtos;
 using Application.Features.Users.Queries.GetByIdUserQuery;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -41,7 +40,7 @@ namespace WebAPI.Controllers
         [HttpPut]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
         {
-            ChangePasswordCommand changePasswordCommand = new() { UserId=getUserIdFromRequest(), CurrentPassword = changePasswordDto.CurrentPassword, NewPassword = changePasswordDto.NewPassword };
+            ChangePasswordCommand changePasswordCommand = new() { UserId = getUserIdFromRequest(), CurrentPassword = changePasswordDto.CurrentPassword, NewPassword = changePasswordDto.NewPassword };
 
             string islem = await Mediator.Send(changePasswordCommand);
             return Ok(islem);
@@ -49,7 +48,7 @@ namespace WebAPI.Controllers
 
         [HttpPut]
 
-        public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordCommand forgotPasswordCommand)
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordCommand forgotPasswordCommand)
         {
             var result = await Mediator.Send(forgotPasswordCommand);
             return Ok(result);

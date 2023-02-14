@@ -1,19 +1,13 @@
-﻿using Application.Features.FindeksCreditRates.Rules;
-using Application.Features.IndividualCustomers.Dtos;
+﻿using Application.Features.IndividualCustomers.Dtos;
 using Application.Features.IndividualCustomers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.IndividualCustomers.Command.CreateIndividualCustomer
 {
-    public sealed class CreateIndividualCustomerCommand:IRequest<CreateIndividualCustomerDto>
+    public sealed class CreateIndividualCustomerCommand : IRequest<CreateIndividualCustomerDto>
     {
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
@@ -39,7 +33,7 @@ namespace Application.Features.IndividualCustomers.Command.CreateIndividualCusto
             public async Task<CreateIndividualCustomerDto> Handle(CreateIndividualCustomerCommand request, CancellationToken cancellationToken)
             {
                 await _individualCustomerBusinessRules.IndividualCustomerNationalIdentityCanNotBeDuplicatedWhenInserted(request.NationalIdentity);
-                IndividualCustomer mappedIndividualCustomer=_mapper.Map<IndividualCustomer>(request);
+                IndividualCustomer mappedIndividualCustomer = _mapper.Map<IndividualCustomer>(request);
                 IndividualCustomer createdIndividualCustomer = await _individualCustomerRepository.AddAsync(mappedIndividualCustomer);
 
                 await _findeksCreditRateRepository.AddAsync(new FindeksCreditRate { CustomerId = createdIndividualCustomer.CustomerId });

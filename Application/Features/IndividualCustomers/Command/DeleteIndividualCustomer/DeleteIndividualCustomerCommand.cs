@@ -5,15 +5,10 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.IndividualCustomers.Command.DeleteIndividualCustomer
 {
-    public class DeleteIndividualCustomerCommand:IRequest<DeleteIndividualCustomerDto>
+    public class DeleteIndividualCustomerCommand : IRequest<DeleteIndividualCustomerDto>
     {
         public int Id { get; set; }
 
@@ -25,7 +20,7 @@ namespace Application.Features.IndividualCustomers.Command.DeleteIndividualCusto
             private readonly IndividualCustomerBusinessRules _individualCustomerBusinessRules;
             private readonly IFindeksCreditRateService _findeksCreditRateService;
 
-            public DeleteIndividualCustomerCommandHandler(IIndividualCustomerRepository individualCustomerRepository, IMapper mapper, 
+            public DeleteIndividualCustomerCommandHandler(IIndividualCustomerRepository individualCustomerRepository, IMapper mapper,
                 IndividualCustomerBusinessRules individualCustomerBusinessRules,
                 IFindeksCreditRateService findeksCreditRateService)
             {

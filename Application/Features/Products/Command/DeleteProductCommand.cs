@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Products.Command
 {
-    public sealed class DeleteProductCommand:IRequest<DeleteProductDto>
+    public sealed class DeleteProductCommand : IRequest<DeleteProductDto>
     {
         public int Id { get; set; }
         public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, DeleteProductDto>
@@ -22,7 +22,7 @@ namespace Application.Features.Products.Command
             public async Task<DeleteProductDto> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
             {
                 await _businnessRules.ProductCanNotBeDuplicatedWhenInserted(request.Id);
-                Product? product = await _productRepository.GetAsync(x=>x.Id == request.Id);
+                Product? product = await _productRepository.GetAsync(x => x.Id == request.Id);
                 Product productDeleted = await _productRepository.DeleteAsync(product);
                 DeleteProductDto productDto = _mapper.Map<DeleteProductDto>(productDeleted);
                 return productDto;

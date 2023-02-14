@@ -3,7 +3,7 @@
 namespace Domain.Entities
 {
     //Bireysel Müşteri Sadece Kendisi olan diyebiliriz.
-    public class IndividualCustomer:Entity
+    public class IndividualCustomer : Entity
     {
         public int CustomerId { get; set; }
         public string FirstName { get; set; }

@@ -19,13 +19,13 @@ namespace WebAPI.Controllers
         }
         [HttpDelete]
         [Route("{Id}")]
-        public async Task<IActionResult> Delete([FromRoute]DeleteCorporateCustomerCommand deleteCorporateCustomerCommand)
+        public async Task<IActionResult> Delete([FromRoute] DeleteCorporateCustomerCommand deleteCorporateCustomerCommand)
         {
             DeleteCorporateCustomerDto result = await Mediator.Send(deleteCorporateCustomerCommand);
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody]UpdateCorporateCustomerCommand updateCorporateCustomerCommand)
+        public async Task<IActionResult> Update([FromBody] UpdateCorporateCustomerCommand updateCorporateCustomerCommand)
         {
             UpdateCorporateDto result = await Mediator.Send(updateCorporateCustomerCommand);
             return Ok(result);

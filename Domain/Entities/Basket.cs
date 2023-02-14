@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Basket:Entity
+    public class Basket : Entity
     {
         public int ProductId { get; set; }
         public Product Product { get; set; }
@@ -11,7 +11,7 @@ namespace Domain.Entities
         public int BrandId { get; set; }
         public int UserId { get; set; }
         public int Count { get; set; }
-       // public decimal TotalPrice { get; set; }
+        // public decimal TotalPrice { get; set; }
 
     }
 }

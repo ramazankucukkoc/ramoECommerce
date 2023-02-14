@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Application.Features.Users.Commands
 {
-    public class UpdateUserFromAuthCommand:IRequest<UpdatedUserFromAuthDto>
+    public class UpdateUserFromAuthCommand : IRequest<UpdatedUserFromAuthDto>
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -26,7 +26,7 @@ namespace Application.Features.Users.Commands
 
 
             public UpdateUserFromAuthCommandHandler(IUserRepository userRepository, IMapper mapper,
-                UserBusinessRules userBusinessRules ,IAuthService authService)
+                UserBusinessRules userBusinessRules, IAuthService authService)
             {
                 _authService = authService;
                 _userRepository = userRepository;
@@ -44,10 +44,10 @@ namespace Application.Features.Users.Commands
                 user.LastName = request.LastName;
 
                 //Burası bir dünüşünülmeli çünkü Validation işlemleri null check yapıyor.
-                if (request.NewPassword is not null &&!string.IsNullOrWhiteSpace(request.Password))
+                if (request.NewPassword is not null && !string.IsNullOrWhiteSpace(request.Password))
                 {
                     byte[] passwordHash, passwordSalt;
-                    HashingHelper.CreatePasswordHash(request.NewPassword,out passwordHash,out passwordSalt);
+                    HashingHelper.CreatePasswordHash(request.NewPassword, out passwordHash, out passwordSalt);
                     user.PasswordHash = passwordHash;
                     user.PasswordSalt = passwordSalt;
                 }

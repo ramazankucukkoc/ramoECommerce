@@ -15,7 +15,7 @@ namespace Persistence.EntityConfigurations
             builder.Property(x => x.CreatedDate).HasColumnName("CreatedDate");
             builder.Property(x => x.UpdatedDate).HasColumnName("UpdatedDate");
             builder.Property(x => x.FullName).IsRequired().HasColumnName("FullName").HasMaxLength(50);
-            
+
 
         }
     }

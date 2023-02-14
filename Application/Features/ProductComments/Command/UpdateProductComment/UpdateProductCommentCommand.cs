@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.ProductComments.Command.UpdateProductComment
 {
-    public sealed class UpdateProductCommentCommand:IRequest<UpdateProductCommentDto>
+    public sealed class UpdateProductCommentCommand : IRequest<UpdateProductCommentDto>
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -30,8 +30,8 @@ namespace Application.Features.ProductComments.Command.UpdateProductComment
 
             public async Task<UpdateProductCommentDto> Handle(UpdateProductCommentCommand request, CancellationToken cancellationToken)
             {
-                ProductComment? productComment=_mapper.Map<ProductComment>(request);
-                ProductComment updatedProductComment =await _productCommentRepository.UpdateAsync(productComment);
+                ProductComment? productComment = _mapper.Map<ProductComment>(request);
+                ProductComment updatedProductComment = await _productCommentRepository.UpdateAsync(productComment);
                 UpdateProductCommentDto result = _mapper.Map<UpdateProductCommentDto>(updatedProductComment);
                 return result;
             }

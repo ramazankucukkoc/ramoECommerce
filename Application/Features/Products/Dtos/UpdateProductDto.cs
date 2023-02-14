@@ -1,6 +1,4 @@
-﻿using Domain.Enums;
-
-namespace Application.Features.Products.Dtos
+﻿namespace Application.Features.Products.Dtos
 {
     public class UpdateProductDto
     {

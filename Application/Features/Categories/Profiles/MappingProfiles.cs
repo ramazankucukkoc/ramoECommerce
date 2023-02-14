@@ -6,7 +6,7 @@ using Profile = AutoMapper.Profile;
 
 namespace Application.Features.Categories.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {
@@ -26,8 +26,8 @@ namespace Application.Features.Categories.Profiles
                 .ForMember(c => c.ParentCategoryName, dest => dest.MapFrom(c => c.ParentCategory.Name))
                 .ReverseMap();
 
-            CreateMap<Category,GetByIdCategoryDto>()
-                .ForMember(x=>x.ParentCategoryName,dest=>dest.MapFrom(x=>x.ParentCategory.Name))
+            CreateMap<Category, GetByIdCategoryDto>()
+                .ForMember(x => x.ParentCategoryName, dest => dest.MapFrom(x => x.ParentCategory.Name))
                 .ReverseMap();
 
 

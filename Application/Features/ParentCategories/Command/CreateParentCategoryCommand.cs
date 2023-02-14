@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Features.ParentCategories.Command
 {
-    public class CreateParentCategoryCommand:IRequest<CreateParentCategoryDto>
+    public class CreateParentCategoryCommand : IRequest<CreateParentCategoryDto>
     {
         public string Name { get; set; }
 
@@ -26,7 +26,7 @@ namespace Application.Features.ParentCategories.Command
             {
                 ParentCategory? mappedParentCategory = _mapper.Map<ParentCategory>(request);
                 ParentCategory addedParentCategory = await _parentCategoriesRepository.AddAsync(mappedParentCategory);
-                CreateParentCategoryDto createParentCategoryDto =_mapper.Map<CreateParentCategoryDto>(addedParentCategory);
+                CreateParentCategoryDto createParentCategoryDto = _mapper.Map<CreateParentCategoryDto>(addedParentCategory);
                 return createParentCategoryDto;
             }
         }

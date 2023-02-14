@@ -7,7 +7,7 @@ using Domain.Entities;
 
 namespace Application.Features.Departmans.Rules
 {
-    public class DepartmanBusinessRules: ITransactionableOperation
+    public class DepartmanBusinessRules : ITransactionableOperation
     {
         private readonly IDepartmanRepository _departmanRepository;
 

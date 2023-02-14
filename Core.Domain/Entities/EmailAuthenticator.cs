@@ -1,6 +1,6 @@
 ﻿namespace Core.Domain.Entities
 {
-    public class EmailAuthenticator:Entity
+    public class EmailAuthenticator : Entity
     {
         public int UserId { get; set; }
         public string? ActivationKey { get; set; }

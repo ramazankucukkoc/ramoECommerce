@@ -22,7 +22,9 @@ namespace Application.Features.Baskets.Profiles
                 .ForMember(b => b.Email, dest => dest.MapFrom(b => b.User.Email))
                 .ReverseMap();
 
-            
+            CreateMap<IPaginate<BasketListDto>, GetListResponse<BasketListDto>>().ReverseMap();
+
+
             CreateMap<Basket, DeleteBasketDto>()
                 .ForMember(b => b.BrandName, dest => dest.MapFrom(b => b.Brand.Name))
                .ForMember(b => b.ProductName, dest => dest.MapFrom(b => b.Product.Name))

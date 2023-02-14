@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace Core.SignalR.HubServices
 {
-    public class HubService<T> :IHubService<T> where T : class
+    public class HubService<T> : IHubService<T> where T : class
     {
         private readonly IHubContext<EntityHub<T>> _hubContext;
 
@@ -16,6 +16,6 @@ namespace Core.SignalR.HubServices
         {
             await _hubContext.Clients.All.SendAsync(receiveMessage, message);
 
-        }       
+        }
     }
 }

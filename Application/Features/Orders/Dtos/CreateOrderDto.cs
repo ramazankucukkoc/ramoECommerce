@@ -1,6 +1,4 @@
-﻿using Domain.Enums;
-
-namespace Application.Features.Orders.Dtos
+﻿namespace Application.Features.Orders.Dtos
 {
     public class CreateOrderDto
     {

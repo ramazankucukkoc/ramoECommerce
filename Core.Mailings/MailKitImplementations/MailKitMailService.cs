@@ -1,5 +1,4 @@
 ﻿using MailKit.Net.Smtp;
-using MailKit.Security;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 namespace Core.Mailings.MailKitImplementations
@@ -38,7 +37,7 @@ namespace Core.Mailings.MailKitImplementations
             email.Body = bodyBuilder.ToMessageBody();
 
             using SmtpClient smtp = new();
-            smtp.Connect(_mailSettings.Server, _mailSettings.Port,MailKit.Security.SecureSocketOptions.Auto);
+            smtp.Connect(_mailSettings.Server, _mailSettings.Port, MailKit.Security.SecureSocketOptions.Auto);
             smtp.Authenticate(_mailSettings.UserName, "Ramazan45.?");
             smtp.Send(email);
             smtp.Disconnect(true);

@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Services.Repositories
 {
-    public interface ISaleRepository:IAsyncRepository<Sale>
+    public interface ISaleRepository : IAsyncRepository<Sale>
     {
     }
 }

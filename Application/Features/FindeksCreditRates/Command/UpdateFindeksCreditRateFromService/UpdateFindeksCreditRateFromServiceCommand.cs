@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.FindeksCreditRates.Command.UpdateFindeksCreditRateFromService
 {
-    public class UpdateFindeksCreditRateFromServiceCommand:IRequest<UpdateFindeksCreditRateDto>
+    public class UpdateFindeksCreditRateFromServiceCommand : IRequest<UpdateFindeksCreditRateDto>
     {
         public int Id { get; set; }
         public string IdentityNumber { get; set; }
@@ -32,7 +32,7 @@ namespace Application.Features.FindeksCreditRates.Command.UpdateFindeksCreditRat
                 findeksCreditRate.Score = _findeksCreditRateService.GetScore(request.IdentityNumber);
                 FindeksCreditRate updatedFindekCreditRate = await _findeksCreditRateRepository.UpdateAsync(findeksCreditRate);
 
-                UpdateFindeksCreditRateDto updateFindeksCreditRateDto =_mapper.Map<UpdateFindeksCreditRateDto>(updatedFindekCreditRate);
+                UpdateFindeksCreditRateDto updateFindeksCreditRateDto = _mapper.Map<UpdateFindeksCreditRateDto>(updatedFindekCreditRate);
                 return updateFindeksCreditRateDto;
 
             }

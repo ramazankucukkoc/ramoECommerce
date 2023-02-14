@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.FindeksCreditRates.Command.CreateFindeksCreditRate
 {
-    public class CreateFindeksCreditRateCommand:IRequest<CreateFindeksCreditRateDto>
+    public class CreateFindeksCreditRateCommand : IRequest<CreateFindeksCreditRateDto>
     {
         public int CustomerId { get; set; }
         public int Score { get; set; }
@@ -29,8 +29,8 @@ namespace Application.Features.FindeksCreditRates.Command.CreateFindeksCreditRat
             public async Task<CreateFindeksCreditRateDto> Handle(CreateFindeksCreditRateCommand request, CancellationToken cancellationToken)
             {
                 FindeksCreditRate mappedFindeksCreditRate = _mapper.Map<FindeksCreditRate>(request);
-                FindeksCreditRate createdFindeksCredidRate =await _findeksCreditRateRepository.AddAsync(mappedFindeksCreditRate);
-                CreateFindeksCreditRateDto result =_mapper.Map<CreateFindeksCreditRateDto>(createdFindeksCredidRate);
+                FindeksCreditRate createdFindeksCredidRate = await _findeksCreditRateRepository.AddAsync(mappedFindeksCreditRate);
+                CreateFindeksCreditRateDto result = _mapper.Map<CreateFindeksCreditRateDto>(createdFindeksCredidRate);
                 return result;
             }
 

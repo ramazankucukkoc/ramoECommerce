@@ -1,7 +1,5 @@
-﻿using Application.Features.Categories.Dtos;
-using Application.Features.ParentCategories.Command;
+﻿using Application.Features.ParentCategories.Command;
 using Application.Features.ParentCategories.Dtos;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -19,6 +17,6 @@ namespace WebAPI.Controllers
             CreateParentCategoryDto createParentCategoryDto = await Mediator.Send(createParentCategoryCommand);
             return Ok(createParentCategoryDto);
         }
-        
+
     }
 }

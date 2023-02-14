@@ -31,14 +31,14 @@ namespace Application.Features.Users.Rules
         public async Task UserEmailShouldExistsWhenSelected(string email)
         {
             User? user = await _userRepository.GetAsync(u => u.Email == email);
-            if(user ==null)throw new BusinessException(UserMessages.UserDontExists);
+            if (user == null) throw new BusinessException(UserMessages.UserDontExists);
         }
-        public async Task UserConNotBeDuplicatedWhenUpdated(int id,string email)
+        public async Task UserConNotBeDuplicatedWhenUpdated(int id, string email)
         {
             var result = await _userRepository.Query().Where(u => u.Email == email).AnyAsync();
             if (result)
             {
-                result=await _userRepository.Query().Where(u =>(u.Id==id &&u.Email==email)).AnyAsync();
+                result = await _userRepository.Query().Where(u => (u.Id == id && u.Email == email)).AnyAsync();
                 if (!result) throw new BusinessException("Email Adresi kullanılmamaktadır.");
             }
         }

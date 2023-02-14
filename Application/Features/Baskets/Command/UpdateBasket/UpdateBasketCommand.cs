@@ -25,7 +25,7 @@ namespace Application.Features.Baskets.Command.UpdateBasket
             private readonly IProductService _productService;
             private readonly IBrandService _brandService;
 
-            public UpdateBasketCommandHandler(IBasketRepository basketRepository, 
+            public UpdateBasketCommandHandler(IBasketRepository basketRepository,
                 IMapper mapper, BasketBusinessRules basketBusinessRules, IProductService productService, IBrandService brandService)
             =>
                 (_basketRepository, _mapper, _basketBusinessRules, _productService, _brandService)

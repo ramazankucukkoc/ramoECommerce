@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.ProductBranchs.Command.CreateProductBranch
 {
-    public sealed class CreateProductBranchCommand:IRequest<CreateProductBranchDto>
+    public sealed class CreateProductBranchCommand : IRequest<CreateProductBranchDto>
     {
         public string Name { get; set; }
         public CitiesPlate Cities { get; set; }
@@ -26,7 +26,7 @@ namespace Application.Features.ProductBranchs.Command.CreateProductBranch
             {
                 ProductBranch mappedProductBranch = _mapper.Map<ProductBranch>(request);
                 ProductBranch createProductBranch = await _productBranchRepository.AddAsync(mappedProductBranch);
-                CreateProductBranchDto createProductBranchDto =_mapper.Map<CreateProductBranchDto>(createProductBranch);
+                CreateProductBranchDto createProductBranchDto = _mapper.Map<CreateProductBranchDto>(createProductBranch);
                 return createProductBranchDto;
             }
         }

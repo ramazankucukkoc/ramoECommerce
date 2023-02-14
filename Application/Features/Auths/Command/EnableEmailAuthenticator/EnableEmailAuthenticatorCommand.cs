@@ -1,4 +1,5 @@
-﻿using Application.Features.Auths.Rules;
+﻿using Application.Features.Auths.Dtos;
+using Application.Features.Auths.Rules;
 using Application.Services.AuthService;
 using Application.Services.Repositories;
 using Application.Services.UserService;
@@ -9,12 +10,12 @@ using System.Web;
 
 namespace Application.Features.Auths.Command.EnableEmailAuthenticator
 {
-    public class EnableEmailAuthenticatorCommand : IRequest
+    public class EnableEmailAuthenticatorCommand : IRequest<EnabledEmailAuthenticatorDto>
     {
         public int UserId { get; set; }
         public string VerifyEmailUrlPrefix { get; set; }
 
-        public class EnableEmailAuthenticatorHandler : IRequestHandler<EnableEmailAuthenticatorCommand>
+        public class EnableEmailAuthenticatorHandler : IRequestHandler<EnableEmailAuthenticatorCommand, EnabledEmailAuthenticatorDto>
         {
             private readonly IUserService _userService;
             private readonly IAuthService _authService;
@@ -33,15 +34,15 @@ namespace Application.Features.Auths.Command.EnableEmailAuthenticator
                 _authBusinessRules = authBusinessRules;
             }
 
-            public async Task<Unit> Handle(EnableEmailAuthenticatorCommand request, CancellationToken cancellationToken)
+            public async Task<EnabledEmailAuthenticatorDto> Handle(EnableEmailAuthenticatorCommand request, CancellationToken cancellationToken)
             {
                 User user = await _userService.GetById(request.UserId);
                 await _authBusinessRules.UserShouldBeExists(user);
                 await _authBusinessRules.UserShouldNotBeHaveAuthenticator(user);
-                user.AuthenticatorType =Core.Domain.Enums.AuthenticatorType.Email;
+                user.AuthenticatorType = Core.Domain.Enums.AuthenticatorType.Email;
                 await _userService.Update(user);
 
-                EmailAuthenticator emailAuthenticator=await _authService.CreateEmailAuthenticator(user);
+                EmailAuthenticator emailAuthenticator = await _authService.CreateEmailAuthenticator(user);
                 EmailAuthenticator addedEmialAuthenticator = await _emailAuthenticatorRepository.AddAsync(emailAuthenticator);
 
                 _mailService.SendMail(new Mail
@@ -51,7 +52,7 @@ namespace Application.Features.Auths.Command.EnableEmailAuthenticator
                     Subject = "Verify Your Email - ECommerce",
                     TextBody = $"Click on the link to verify your email: {request.VerifyEmailUrlPrefix}?ActivationKey={HttpUtility.UrlEncode(addedEmialAuthenticator.ActivationKey)}"
                 });
-               return Unit.Value;
+                return new EnabledEmailAuthenticatorDto { ActivationKey = addedEmialAuthenticator.ActivationKey };
             }
         }
     }

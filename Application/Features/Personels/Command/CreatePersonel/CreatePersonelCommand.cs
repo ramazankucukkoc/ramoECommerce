@@ -1,5 +1,4 @@
-﻿using Application.Features.Personels.Constants;
-using Application.Features.Personels.Dtos;
+﻿using Application.Features.Personels.Dtos;
 using Application.Features.Personels.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
@@ -8,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Personels.Command.CreatePersonel
 {
-    public sealed class CreatePersonelCommand:IRequest<CreatePersonelDto>
+    public sealed class CreatePersonelCommand : IRequest<CreatePersonelDto>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,7 +20,7 @@ namespace Application.Features.Personels.Command.CreatePersonel
             private readonly IMapper _mapper;
             private readonly PersonelBusinessRules _personelBusinessRules;
 
-            public CreatePersonelCommandHandler(IPersonelRepository personelRepository, 
+            public CreatePersonelCommandHandler(IPersonelRepository personelRepository,
                 IMapper mapper, PersonelBusinessRules personelBusinessRules)
             {
                 _personelRepository = personelRepository;

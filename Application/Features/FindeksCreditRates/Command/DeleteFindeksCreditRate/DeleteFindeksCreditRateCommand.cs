@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.FindeksCreditRates.Command.DeleteFindeksCreditRate
 {
-    public class DeleteFindeksCreditRateCommand:IRequest<DeleteFindeksCreditRateDto>
+    public class DeleteFindeksCreditRateCommand : IRequest<DeleteFindeksCreditRateDto>
     {
         public int Id { get; set; }
 
@@ -17,7 +17,7 @@ namespace Application.Features.FindeksCreditRates.Command.DeleteFindeksCreditRat
             private readonly IMapper _mapper;
             private readonly FindeksCreditRateBusinessRules _findeksCreditRateBusinessRules;
 
-            public DeleteFindeksCreditRateCommandHandler(IFindeksCreditRateRepository findeksCreditRateRepository, 
+            public DeleteFindeksCreditRateCommandHandler(IFindeksCreditRateRepository findeksCreditRateRepository,
                 IMapper mapper, FindeksCreditRateBusinessRules findeksCreditRateBusinessRules)
             {
                 _findeksCreditRateRepository = findeksCreditRateRepository;

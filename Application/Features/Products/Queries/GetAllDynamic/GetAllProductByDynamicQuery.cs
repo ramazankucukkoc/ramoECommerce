@@ -7,15 +7,10 @@ using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Products.Queries.GetAllDynamic
 {
-    public class GetAllProductByDynamicQuery:IRequest<GetListResponse<GetAllProductDto>>
+    public class GetAllProductByDynamicQuery : IRequest<GetListResponse<GetAllProductDto>>
     {
         public PageRequest PageRequest { get; set; }
         public Dynamic Dynamic { get; set; }

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Users.Commands
 {
-    public class ForgotPasswordCommand:IRequest<string>
+    public class ForgotPasswordCommand : IRequest<string>
     {
         public string Email { get; set; }
 
@@ -29,7 +29,7 @@ namespace Application.Features.Users.Commands
 
                 var generatedPassword = RandomPasswordExtensions.CreateRandomPassword(14);
                 byte[] passwordHash, passwordSalt;
-                HashingHelper.CreatePasswordHash(generatedPassword, out passwordHash,out passwordSalt );
+                HashingHelper.CreatePasswordHash(generatedPassword, out passwordHash, out passwordSalt);
                 user.PasswordSalt = passwordSalt;
                 user.PasswordHash = passwordHash;
                 await _userRepository.UpdateAsync(user);

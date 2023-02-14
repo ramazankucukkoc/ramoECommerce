@@ -5,16 +5,14 @@ using AutoMapper;
 using Core.Mailings;
 using Core.Persistence.Paging;
 using Domain.Entities;
-using Domain.Enums;
 using MediatR;
-using System.Xml.Linq;
 
 namespace Application.Features.Products.Command
 {
-    public sealed class CreateProductCommand:IRequest<CreateProductDto>
+    public sealed class CreateProductCommand : IRequest<CreateProductDto>
     {
         public string Name { get; set; }
-        public int BrandId { get; set; }     
+        public int BrandId { get; set; }
         public int ProductBranchId { get; set; }
         public string? ShortDescription { get; set; }
         public string Description { get; set; }
@@ -32,7 +30,7 @@ namespace Application.Features.Products.Command
             private readonly ProductBusinnessRules _productBusinnessRules;
             private readonly IMailService _mailService;
             public CreateProductCommandHandler(IProductRepository productRepository,
-                IMapper mapper, ProductBusinnessRules productBusinnessRules,IMailService mailService)
+                IMapper mapper, ProductBusinnessRules productBusinnessRules, IMailService mailService)
             {
                 _mailService = mailService;
                 _productRepository = productRepository;
@@ -46,7 +44,7 @@ namespace Application.Features.Products.Command
                 if (products.Items.Any())
                 {
                     Product? getNameproduct = await _productRepository.GetAsync(x => x.Name == request.Name);
-                   
+
                     Product product = await _productRepository.UpdateAsync(getNameproduct);
                     CreateProductDto createProduct = _mapper.Map<CreateProductDto>(product);
                     return createProduct;

@@ -3,12 +3,11 @@ using Application.Features.Products.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Products.Command
 {
-    public sealed class UpdateProductCommand:IRequest<UpdateProductDto>
+    public sealed class UpdateProductCommand : IRequest<UpdateProductDto>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -39,7 +38,7 @@ namespace Application.Features.Products.Command
 
                 Product mappedProduct = _mapper.Map<Product>(request);
                 Product updatedProduct = await _productRepository.UpdateAsync(mappedProduct);
-                UpdateProductDto updateProductDto =_mapper.Map<UpdateProductDto>(updatedProduct);
+                UpdateProductDto updateProductDto = _mapper.Map<UpdateProductDto>(updatedProduct);
                 return updateProductDto;
             }
         }

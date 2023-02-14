@@ -2,17 +2,11 @@
 using Application.Features.IndividualCustomers.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
-using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.IndividualCustomers.Command.UpdateIndividualCustomer
 {
-    public sealed class UpdateIndividualCustomerCommand:IRequest<UpdateIndividualCustomerDto>
+    public sealed class UpdateIndividualCustomerCommand : IRequest<UpdateIndividualCustomerDto>
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
@@ -26,7 +20,7 @@ namespace Application.Features.IndividualCustomers.Command.UpdateIndividualCusto
             private readonly IMapper _mapper;
             private readonly IndividualCustomerBusinessRules _individualCustomerBusinessRules;
 
-            public UpdateIndividualCustomerCommandHandler(IIndividualCustomerRepository individualCustomerRepository, 
+            public UpdateIndividualCustomerCommandHandler(IIndividualCustomerRepository individualCustomerRepository,
                 IMapper mapper, IndividualCustomerBusinessRules individualCustomerBusinessRules)
             {
                 _individualCustomerRepository = individualCustomerRepository;

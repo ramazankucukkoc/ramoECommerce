@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class UserComment:Entity
+    public class UserComment : Entity
     {
         public int UserId { get; set; }
         public User User { get; set; }

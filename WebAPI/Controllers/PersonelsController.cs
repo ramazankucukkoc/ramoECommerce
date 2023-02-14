@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         }
         [HttpDelete]
         [Route("{Id}")]
-        public async Task<IActionResult> Delete([FromRoute]DeletePersonelCommand deletePersonelCommand)
+        public async Task<IActionResult> Delete([FromRoute] DeletePersonelCommand deletePersonelCommand)
         {
             DeletePersonelDto result = await Mediator.Send(deletePersonelCommand);
             return Ok(result);

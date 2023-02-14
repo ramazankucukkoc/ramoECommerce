@@ -3,7 +3,7 @@
 namespace Domain.Entities
 {
     //Kurumsal Müşteri Şirketi Olan Müşteri diyebiliriz.
-    public class CorporateCustomer:Entity
+    public class CorporateCustomer : Entity
     {
         public int CustomerId { get; set; }
         public string CompanyName { get; set; }

@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Products.Queries.GetByCategoryId
 {
-    public class GetByCategoryIdQuery:IRequest<GetListResponse< GetByCategoryIdDto>>
+    public class GetByCategoryIdQuery : IRequest<GetListResponse<GetByCategoryIdDto>>
     {
         public int CategoryId { get; set; }
-        public PageRequest PageRequest  { get; set; }
+        public PageRequest PageRequest { get; set; }
 
-        public class GetByCategoryIdQueryHandler : IRequestHandler<GetByCategoryIdQuery, GetListResponse< GetByCategoryIdDto>>
+        public class GetByCategoryIdQueryHandler : IRequestHandler<GetByCategoryIdQuery, GetListResponse<GetByCategoryIdDto>>
         {
             private readonly IProductRepository _productRepository;
             private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace Application.Features.Products.Queries.GetByCategoryId
                 _productRepository = productRepository;
                 _mapper = mapper;
             }
-            public async Task<GetListResponse< GetByCategoryIdDto>> Handle(GetByCategoryIdQuery request, CancellationToken cancellationToken)
+            public async Task<GetListResponse<GetByCategoryIdDto>> Handle(GetByCategoryIdQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<Product> products = await _productRepository.GetListAsync(p => p.CategoryId == request.CategoryId
                  , include: p => p.Include(p => p.Category),

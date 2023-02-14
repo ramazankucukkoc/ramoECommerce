@@ -5,7 +5,7 @@ using Profile = AutoMapper.Profile;
 
 namespace Application.Features.ParentCategories.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {

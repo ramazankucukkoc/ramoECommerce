@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Application.Features.Auths.Command.LoginWithGoogle
 {
-    public class LoginWithGoogleCommand:IRequest<LoggedDto>
+    public class LoginWithGoogleCommand : IRequest<LoggedDto>
     {
         public LoginWithGoogleDto LoginWithGoogleDto { get; set; }
         public string IpAddrres { get; set; }
@@ -37,11 +37,11 @@ namespace Application.Features.Auths.Command.LoginWithGoogle
                 User? user = await _userService.GetByEmail(googleUserDetails.Email);
                 await _authBusinessRules.UserShouldBeExists(user);
 
-                AccessToken createdAccessToken =await _authService.CreateAccessToken(user);
+                AccessToken createdAccessToken = await _authService.CreateAccessToken(user);
                 RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.IpAddrres);
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
-                await _authService.DeleteRefreshTokens(user.Id);
-              
+                await _authService.DeleteOldRefreshTokens(user.Id);
+
                 return new LoggedDto
                 {
                     AccessToken = createdAccessToken,

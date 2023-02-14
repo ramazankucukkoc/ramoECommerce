@@ -1,5 +1,4 @@
-﻿using Application.Features.Brands.Constants;
-using Application.Features.Cities.Contants;
+﻿using Application.Features.Cities.Contants;
 using Application.Services.Repositories;
 using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Domain.Entities;

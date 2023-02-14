@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Users.Queries.GetByIdUserQuery
 {
-    public sealed class GetByIdUserQuery:IRequest<GetByIdUserDto>
+    public sealed class GetByIdUserQuery : IRequest<GetByIdUserDto>
     {
         public int UserId { get; set; }
 

@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Services.BrandService
 {
-    public class BrandManager:IBrandService
+    public class BrandManager : IBrandService
     {
         private readonly IBrandRepository _brandRepository;
 

@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
+using System.Security.Claims;
 
 namespace Core.Security.Extensions
 {
@@ -11,31 +12,31 @@ namespace Core.Security.Extensions
         }
         public static List<string>? ClaimRoles(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal?.Claims("Role");
+            return claimsPrincipal?.Claims(ClaimTypes.Role);
         }
         //FirstOrDefault dememizin sebebi kullanıcının sadece bir adı bir emaili bir UserId'si olamsıdır.
         public static int GetUserId(this ClaimsPrincipal claimsPrincipal)
         {
-            return Convert.ToInt32(claimsPrincipal?.Claims("UserId")?.FirstOrDefault());
+            return Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
         }
-        
+
         public static string? GetName(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal?.Claims("Name")?.FirstOrDefault();
+            return claimsPrincipal?.FindFirstValue(ClaimTypes.Name);
         }
         public static string? GetLastName(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal?.Claims("LastName")?.FirstOrDefault();
+            return claimsPrincipal?.Claims(ClaimTypes.Surname)?.FirstOrDefault();
         }
         public static string? GetEmail(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal.Claims("Email")?.FirstOrDefault();
+            return claimsPrincipal.Claims(JwtRegisteredClaimNames.Email)?.FirstOrDefault();
         }
-        public static string? FindFirstValue(this ClaimsPrincipal claimsPrincipal,string claimTypes)
+        public static string? FindFirstValue(this ClaimsPrincipal claimsPrincipal, string claimTypes)
         {
-            if(claimsPrincipal==null)throw new ArgumentNullException(nameof(claimsPrincipal));
+            if (claimsPrincipal == null) throw new ArgumentNullException(nameof(claimsPrincipal));
 
-            var claim=claimsPrincipal.FindFirst(claimTypes);
+            var claim = claimsPrincipal.FindFirst(claimTypes);
             return claim?.Value;
         }
 

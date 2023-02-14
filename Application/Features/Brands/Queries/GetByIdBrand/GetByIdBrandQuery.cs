@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Brands.Queries.GetByIdBrand
 {
-    public sealed class GetByIdBrandQuery:IRequest<BrandDto>
+    public sealed class GetByIdBrandQuery : IRequest<BrandDto>
     {
         public int Id { get; set; }
 

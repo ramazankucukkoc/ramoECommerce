@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Brands.Command.DeleteBrand
 {
-    public sealed class DeleteBrandCommand:IRequest<DeleteBrandDto>
+    public sealed class DeleteBrandCommand : IRequest<DeleteBrandDto>
     {
         public int Id { get; set; }
 
@@ -32,7 +32,7 @@ namespace Application.Features.Brands.Command.DeleteBrand
                 getByIdBrand.Active = false;
 
                 Brand deletedBrand = await _brandRepository.UpdateAsync(getByIdBrand);
-                DeleteBrandDto deleteBrandDto =_mapper.Map<DeleteBrandDto>(deletedBrand);
+                DeleteBrandDto deleteBrandDto = _mapper.Map<DeleteBrandDto>(deletedBrand);
                 return deleteBrandDto;
             }
         }

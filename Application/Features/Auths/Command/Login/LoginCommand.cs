@@ -22,8 +22,8 @@ namespace Application.Features.Auths.Command.Login
             private readonly AuthBusinessRules _authBusinessRules;
             private readonly IMailService _mailService;
 
-            public LoginCommandHandler(IUserService userService 
-                ,IAuthService authService, AuthBusinessRules authBusinessRules, IMailService mailService)
+            public LoginCommandHandler(IUserService userService
+                , IAuthService authService, AuthBusinessRules authBusinessRules, IMailService mailService)
             {
                 _userService = userService;
                 _authService = authService;

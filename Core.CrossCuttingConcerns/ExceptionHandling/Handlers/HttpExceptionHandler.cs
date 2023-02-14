@@ -28,7 +28,7 @@ namespace Core.CrossCuttingConcerns.ExceptionHandling.Handlers
             Response.StatusCode = StatusCodes.Status400BadRequest;
             object errors = ((ValidationException)validationException).Errors;
             string details = new ValidationProblemDetails(validationException.Message).AsJson();
-           
+
             return Response.WriteAsync(details);
         }
 

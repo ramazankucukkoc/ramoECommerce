@@ -7,7 +7,7 @@ using Domain.Entities;
 
 namespace Application.Features.CorporateCustomers.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {
@@ -19,7 +19,7 @@ namespace Application.Features.CorporateCustomers.Profiles
             CreateMap<CorporateCustomer, CreateCorporateCustomerDto>().ReverseMap();
             CreateMap<CorporateCustomer, DeleteCorporateCustomerDto>().ReverseMap();
 
-            
+
         }
     }
 }

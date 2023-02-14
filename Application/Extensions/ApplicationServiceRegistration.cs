@@ -43,7 +43,7 @@ namespace Application.Extensions
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            
+
             //-----------------Business Rules----------------------
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<OperationClaimsBusinessRules>();

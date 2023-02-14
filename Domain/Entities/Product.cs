@@ -17,11 +17,11 @@ namespace Domain.Entities
         public string SKU { get; set; }//Stok Kodu
         public int Rating { get; set; }//Değerlendirme
         public int DiscountRate { get; set; }//Indirim oranı
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
         public int CategoryId { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<UserComment> UserComments { get; set; }
-        public  virtual ICollection<ProductComment> ProductComments { get; set; }
+        public virtual ICollection<ProductComment> ProductComments { get; set; }
         public virtual ICollection<Basket> Baskets { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }

@@ -14,7 +14,7 @@ namespace Application.Features.ProductComments.Rules
         }
         public async Task ProductCommentIdControl(int id)
         {
-         ProductComment? productComment=   await _productCommentRepository.GetAsync(p => p.Id == id);
+            ProductComment? productComment = await _productCommentRepository.GetAsync(p => p.Id == id);
             if (productComment == null) throw new BusinessException($"{id}'ye ait ürün yorumu yoktur ");
         }
 

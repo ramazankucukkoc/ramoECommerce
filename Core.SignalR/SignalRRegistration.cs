@@ -1,5 +1,4 @@
-﻿using Core.SignalR.HubServices;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Core.SignalR
 {
@@ -8,7 +7,7 @@ namespace Core.SignalR
         public static IServiceCollection AddSignalRRegistration(this IServiceCollection services)
         {
             services.AddSignalR();
-           // services.AddTransient<IHubService< >>
+            // services.AddTransient<IHubService< >>
             return services;
         }
     }

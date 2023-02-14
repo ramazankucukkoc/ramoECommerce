@@ -9,7 +9,7 @@ namespace Domain.Entities
         public int OrderId { get; set; }
         public Order Order { get; set; }
         public decimal SalePrice { get; set; }
-        public int  Count { get; set; }
+        public int Count { get; set; }
 
     }
 }

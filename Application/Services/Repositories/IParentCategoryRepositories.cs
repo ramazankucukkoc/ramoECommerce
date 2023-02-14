@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace Application.Services.Repositories
 {
-    public interface IParentCategoryRepositories:IAsyncRepository<ParentCategory>
+    public interface IParentCategoryRepositories : IAsyncRepository<ParentCategory>
     {
     }
 }

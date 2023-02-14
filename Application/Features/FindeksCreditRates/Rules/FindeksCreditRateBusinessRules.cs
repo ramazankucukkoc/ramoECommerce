@@ -18,7 +18,7 @@ namespace Application.Features.FindeksCreditRates.Rules
             FindeksCreditRate? findeksCreditRate = await _findeksCreditRateRepository.GetAsync(f => f.Id == id);
             if (findeksCreditRate is null) throw new BusinessException(FindeksCreditRateBusinessRulesMessages.FindeksCreditRateExists);
         }
-        public  Task FindeksCreditShouldBeExist(FindeksCreditRate? findeksCreditRate)
+        public Task FindeksCreditShouldBeExist(FindeksCreditRate? findeksCreditRate)
         {
             if (findeksCreditRate is null) throw new BusinessException(FindeksCreditRateBusinessRulesMessages.FindeksCreditRateExists);
 

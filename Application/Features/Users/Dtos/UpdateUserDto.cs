@@ -2,7 +2,7 @@
 
 namespace Application.Features.Users.Dtos
 {
-    public class UpdateUserDto:IDto
+    public class UpdateUserDto : IDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
