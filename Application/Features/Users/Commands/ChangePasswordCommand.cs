@@ -29,7 +29,7 @@ namespace Application.Features.Users.Commands
 
                 byte[] passwordHash, passwordSalt;
 
-                await _authBusinessRules.UserPasswordShouldBeMatch(request.UserId, request.NewPassword);
+                await _authBusinessRules.UserPasswordShouldBeMatch(request.UserId, request.NewPassword.Trim());
                 HashingHelper.CreatePasswordHash(request.NewPassword, out passwordHash, out passwordSalt);
 
                 user.PasswordHash = passwordHash;

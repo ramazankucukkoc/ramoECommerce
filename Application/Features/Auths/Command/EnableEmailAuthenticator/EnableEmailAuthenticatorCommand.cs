@@ -39,6 +39,8 @@ namespace Application.Features.Auths.Command.EnableEmailAuthenticator
                 User user = await _userService.GetById(request.UserId);
                 await _authBusinessRules.UserShouldBeExists(user);
                 await _authBusinessRules.UserShouldNotBeHaveAuthenticator(user);
+
+
                 user.AuthenticatorType = Core.Domain.Enums.AuthenticatorType.Email;
                 await _userService.Update(user);
 

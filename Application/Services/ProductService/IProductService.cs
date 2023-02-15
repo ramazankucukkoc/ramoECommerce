@@ -6,5 +6,8 @@ namespace Application.Services.ProductService
     {
         Task<Product> GetByName(string name);
         Task<Product> GetById(int id);
+        Task<decimal> GetUnitPriceById(int id);
+        Task<byte[]> QrCodeToProductAsync(int productId);
+
     }
 }

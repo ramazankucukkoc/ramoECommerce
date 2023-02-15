@@ -14,7 +14,7 @@ namespace Application.Services.UserService
 
         public async Task<User?> GetByEmail(string email)
         {
-            User? user = await _userRepository.GetAsync(x => x.Email == email);
+            User? user = await _userRepository.GetAsync(x => x.Email.ToLower().Trim() == email.ToLower().Trim());
             return user;
         }
 

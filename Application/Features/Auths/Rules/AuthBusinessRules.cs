@@ -34,7 +34,7 @@ namespace Application.Features.Auths.Rules
         }
         public async Task UserEmailShouldBeActive(string email)
         {
-            User? user = await _userRepository.GetAsync(u => u.Email == email);
+            User? user = await _userRepository.GetAsync(u => u.Email.ToLower() == email.ToLower());
             if (user != null) throw new BusinessException(AuthBusinessExceptionMessages.UserMailAlreadyExists);
         }
         public async Task UserPasswordShouldBeMatch(int id, string password)

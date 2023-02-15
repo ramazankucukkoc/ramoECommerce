@@ -1,4 +1,5 @@
 ﻿using Application.Features.Users.Dtos;
+using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
@@ -16,10 +17,10 @@ namespace Application.Features.Users.Queries.GetList
         {
             private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
-
+            private readonly UserBusinessRules _userBusinessRules;
             //Dependency Injection aynısı.
-            public GetListUserQueryHandler(IUserRepository userRepository, IMapper mapper)
-            => (_userRepository, _mapper) = (userRepository, mapper);
+            public GetListUserQueryHandler(IUserRepository userRepository, IMapper mapper, UserBusinessRules userBusinessRules)
+            => (_userRepository, _mapper, _userBusinessRules) = (userRepository, mapper, userBusinessRules);
 
             public async Task<GetListResponse<UserListDto>> Handle(GetListUserQuery request, CancellationToken cancellationToken)
             {
@@ -27,7 +28,8 @@ namespace Application.Features.Users.Queries.GetList
                     include: x => x.Include(x => x.UserOperationClaims).ThenInclude(x => x.OperationClaim),
                     index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
-
+                await _userBusinessRules.ThereShouldBeSomeDataInUserListAsRequired(users);
+                
                 GetListResponse<UserListDto> response = _mapper.Map<GetListResponse<UserListDto>>(users);
                 return response;
 

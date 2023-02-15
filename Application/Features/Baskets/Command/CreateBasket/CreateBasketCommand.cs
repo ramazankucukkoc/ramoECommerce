@@ -30,6 +30,15 @@ namespace Application.Features.Baskets.Command.CreateBasket
 
             public async Task<CreateBasketDto> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
             {
+                Basket? basket = await _basketRepository.GetAsync(b => b.Id == request.ProductId);
+                if (basket is not null)
+                {
+                    basket.Count += request.Count;
+                    Basket updatedBasket = await _basketRepository.UpdateAsync(basket);
+                    CreateBasketDto updatedBasketDto = _mapper.Map<CreateBasketDto>(updatedBasket);
+                    return updatedBasketDto;
+                }
+
                 Basket? mappedBasket = _mapper.Map<Basket>(request);
                 Basket createBasket = await _basketRepository.AddAsync(mappedBasket);
                 CreateBasketDto createBasketDto = _mapper.Map<CreateBasketDto>(createBasket);

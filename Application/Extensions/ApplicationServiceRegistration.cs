@@ -6,6 +6,7 @@ using Application.Features.Categories.Rules;
 using Application.Features.Cities.Rules;
 using Application.Features.CorporateCustomers.Rules;
 using Application.Features.Countries.Rules;
+using Application.Features.Customers.Rules;
 using Application.Features.Departmans.Rules;
 using Application.Features.FindeksCreditRates.Rules;
 using Application.Features.IndividualCustomers.Rules;
@@ -17,6 +18,7 @@ using Application.Features.Products.Rules;
 using Application.Features.Users.Rules;
 using Application.Services.AuthService;
 using Application.Services.BrandService;
+using Application.Services.CorporateCustomerService;
 using Application.Services.CustomerService;
 using Application.Services.FindeksCreditRateService;
 using Application.Services.ProductService;
@@ -62,6 +64,7 @@ namespace Application.Extensions
             services.AddScoped<CorporateCustomerBusinessRules>();
             services.AddScoped<IndividualCustomerBusinessRules>();
             services.AddScoped<ProductCommentBusinessRules>();
+            services.AddScoped<CustomerBusinessRules>();
 
             //-----------------Business Rules----------------------
 
@@ -85,6 +88,7 @@ namespace Application.Extensions
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<IFindeksCreditRateService, FindeksCreditRateManager>();
             services.AddScoped<ICustomerService, CustomerManager>();
+            services.AddScoped<ICorporateCustomerService, CorporateCustomerManager>();
 
             //-----------------Business Services----------------------
             services.AddSingleton<IMailService, MailKitMailService>();

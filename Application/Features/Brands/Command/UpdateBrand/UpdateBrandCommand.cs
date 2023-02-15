@@ -31,7 +31,7 @@ namespace Application.Features.Brands.Command.UpdateBrand
                 await _brandBusinessRules.BrandIdShoulExistsWhenInserted(request.Id);
                 Brand? getByIdBrand = await _brandRepository.GetAsync(b => b.Id == request.Id);
                 await _brandBusinessRules.BrandActiveShoulExistsWhenInserted(getByIdBrand.Active);
-                await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInserted(request.Name);
+                await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInserted(request.Name.Trim());
                 _mapper.Map(request, getByIdBrand);
                 await _brandRepository.UpdateAsync(getByIdBrand);
                 UpdateBrandDto updateBrandDto = _mapper.Map<UpdateBrandDto>(getByIdBrand);

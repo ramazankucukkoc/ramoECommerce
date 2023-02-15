@@ -12,7 +12,6 @@
     <Folder Include="Features\Baskets\Queries\GetByIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByUserIdBasket\" />
     <Folder Include="Features\Baskets\Validator\" />
-    <Folder Include="Features\Brands\Validator\" />
     <Folder Include="Features\Cities\Queries\" />
     <Folder Include="Features\Cities\Validator\" />
     <Folder Include="Features\CorporateCustomers\Queries\" />
@@ -25,18 +24,15 @@
     <Folder Include="Features\CreditCards\Queries\" />
     <Folder Include="Features\CreditCards\Rules\" />
     <Folder Include="Features\CreditCards\Validator\" />
-    <Folder Include="Features\CustomerAdress\Command\" />
-    <Folder Include="Features\CustomerAdress\Dtos\" />
-    <Folder Include="Features\CustomerAdress\Profile\" />
-    <Folder Include="Features\CustomerAdress\Queries\" />
-    <Folder Include="Features\CustomerAdress\Rules\" />
-    <Folder Include="Features\CustomerAdress\Validator\" />
-    <Folder Include="Features\Customers\Command\" />
-    <Folder Include="Features\Customers\Dtos\" />
     <Folder Include="Features\Customers\Profile\" />
     <Folder Include="Features\Customers\Queries\" />
-    <Folder Include="Features\Customers\Rules\" />
     <Folder Include="Features\Customers\Validator\" />
+    <Folder Include="Features\CustomersAddress\Command\" />
+    <Folder Include="Features\CustomersAddress\Dtos\" />
+    <Folder Include="Features\CustomersAddress\Profile\" />
+    <Folder Include="Features\CustomersAddress\Queries\" />
+    <Folder Include="Features\CustomersAddress\Rules\" />
+    <Folder Include="Features\CustomersAddress\Validator\" />
     <Folder Include="Features\Departmans\Profile\" />
     <Folder Include="Features\Departmans\Queries\" />
     <Folder Include="Features\Departmans\Validator\" />
@@ -69,7 +65,6 @@
     <Folder Include="Features\Orders\Queries\" />
     <Folder Include="Features\ParentCategories\Queries\" />
     <Folder Include="Features\Personels\Queries\" />
-    <Folder Include="Features\Personels\Validator\" />
     <Folder Include="Features\ProductBranchs\Queries\" />
     <Folder Include="Features\ProductBranchs\Rules\" />
     <Folder Include="Features\ProductBranchs\Validator\" />
@@ -100,6 +95,7 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.6" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="QRCoder" Version="1.4.3" />
   </ItemGroup>
 
   <ItemGroup>

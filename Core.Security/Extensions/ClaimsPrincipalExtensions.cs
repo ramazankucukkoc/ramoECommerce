@@ -19,7 +19,6 @@ namespace Core.Security.Extensions
         {
             return Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
         }
-
         public static string? GetName(this ClaimsPrincipal claimsPrincipal)
         {
             return claimsPrincipal?.FindFirstValue(ClaimTypes.Name);
@@ -30,7 +29,7 @@ namespace Core.Security.Extensions
         }
         public static string? GetEmail(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal.Claims(JwtRegisteredClaimNames.Email)?.FirstOrDefault();
+            return claimsPrincipal?.FindFirst(JwtRegisteredClaimNames.Email)?.Value ?? "<Anonymous>";
         }
         public static string? FindFirstValue(this ClaimsPrincipal claimsPrincipal, string claimTypes)
         {
@@ -39,6 +38,9 @@ namespace Core.Security.Extensions
             var claim = claimsPrincipal.FindFirst(claimTypes);
             return claim?.Value;
         }
+        public static bool HasClaimType(this ClaimsPrincipal principal, string claimType)
+       => principal.HasClaim(c => c.Type == claimType);
+        
 
     }
 }

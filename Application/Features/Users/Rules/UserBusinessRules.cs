@@ -2,6 +2,7 @@
 using Application.Services.Repositories;
 using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Core.Domain.Entities;
+using Core.Persistence.Paging;
 using Core.Security.Hashing;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,6 +42,10 @@ namespace Application.Features.Users.Rules
                 result = await _userRepository.Query().Where(u => (u.Id == id && u.Email == email)).AnyAsync();
                 if (!result) throw new BusinessException("Email Adresi kullanılmamaktadır.");
             }
+        }
+        public async Task ThereShouldBeSomeDataInUserListAsRequired(IPaginate<User> users)
+        {
+            if (!users.Items.Any()) throw new NotFoundException("Kullanıcılar bulunamadı");
         }
 
     }
