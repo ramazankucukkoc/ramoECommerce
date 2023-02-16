@@ -8,7 +8,7 @@ namespace Core.Application.Rules
 
         public virtual Task EntityShouldBeExists<T>(T entity)
         {
-            if (entity is null) throw new BusinessException(entity.GetType().FullName + BaseBusinessRulesMessages.Null);
+            if (entity is null) throw new BusinessException(entity.GetType().Name + BaseBusinessRulesMessages.Null);
             return Task.CompletedTask;
         }
         // public abstract Task CanNotDuplicate(string name);

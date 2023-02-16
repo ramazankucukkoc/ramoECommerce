@@ -30,6 +30,10 @@ namespace Core.Application.Extensions
                 .Must(IsPhoneValid).WithMessage(ValidationExtensionMessages.PhoneSpecialCharacter);
             return options;
         }
+        public static IRuleBuilderOptions<T, string> EsImagen<T>(this IRuleBuilder<T, string> ruleBuilder)
+        {
+            return ruleBuilder.Must(EsImagen).WithMessage("Wrong format file. It must be an image.");
+        }
         public static bool IsPhoneValid(string mobilePhone)
         {
             if (string.IsNullOrWhiteSpace(mobilePhone))
@@ -37,6 +41,10 @@ namespace Core.Application.Extensions
 
             mobilePhone = Regex.Replace(mobilePhone, "[^0-9]", "");
             return mobilePhone.StartsWith("5") && mobilePhone.Length == 10;
+        }
+        private static bool EsImagen(string imagen)
+        {
+            return imagen != null ? imagen.EndsWith(".jpg") || imagen.EndsWith(".png") : true;
         }
 
     }

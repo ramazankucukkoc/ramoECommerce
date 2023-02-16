@@ -22,6 +22,8 @@ using Application.Services.CorporateCustomerService;
 using Application.Services.CustomerService;
 using Application.Services.FindeksCreditRateService;
 using Application.Services.ProductService;
+using Application.Services.QRCodeService;
+using Application.Services.StockService;
 using Application.Services.UserService;
 using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Caching;
@@ -89,10 +91,12 @@ namespace Application.Extensions
             services.AddScoped<IFindeksCreditRateService, FindeksCreditRateManager>();
             services.AddScoped<ICustomerService, CustomerManager>();
             services.AddScoped<ICorporateCustomerService, CorporateCustomerManager>();
+            services.AddScoped<IQRCodeService, QRCodeService>();
+            services.AddScoped<IStockService, StockManager>();
 
             //-----------------Business Services----------------------
             services.AddSingleton<IMailService, MailKitMailService>();
-
+           
             return services;
         }
     }

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Addresss\Queries\" />
     <Folder Include="Features\Addresss\Validator\" />
     <Folder Include="Features\Baskets\Queries\GetByIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByUserIdBasket\" />

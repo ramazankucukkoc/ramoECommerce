@@ -24,5 +24,9 @@ namespace Core.Security.Extensions
         {
             claims.Add(new Claim(ClaimTypes.SerialNumber, nameUniqueIdentifier));
         }
+        public static void AddDateOfBirth(this ICollection<Claim> claims, DateTime dateOfBirth)
+        {
+            claims.Add(new Claim(ClaimTypes.DateOfBirth, dateOfBirth.ToString()));
+        }
     }
 }

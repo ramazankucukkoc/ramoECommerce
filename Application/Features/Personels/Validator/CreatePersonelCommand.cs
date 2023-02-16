@@ -1,4 +1,5 @@
 ﻿using Application.Features.Personels.Command.CreatePersonel;
+using Core.Application.Extensions;
 using FluentValidation;
 
 namespace Application.Features.Personels.Validator
@@ -7,12 +8,9 @@ namespace Application.Features.Personels.Validator
     {
         public CreatePersonelCommandValidator()
         {
-            RuleFor(p => p.Gorsel).Must(EsImagen).WithMessage("Wrong format file. It must be an image.");
+            RuleFor(p => p.Gorsel).EsImagen();
         }
-        private bool EsImagen(string imagen)
-        {
-            return imagen != null ? imagen.EndsWith(".jpg") || imagen.EndsWith(".png") : true;
-        }
+       
     }
    
 }
