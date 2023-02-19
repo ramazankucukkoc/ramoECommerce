@@ -3,6 +3,7 @@ using Application.Features.CorporateCustomers.Command.DeleteCorporateCustomer;
 using Application.Features.CorporateCustomers.Command.UpdateCorporateCustomer;
 using Application.Features.CorporateCustomers.Dtos;
 using AutoMapper;
+using Core.Persistence.Paging;
 using Domain.Entities;
 
 namespace Application.Features.CorporateCustomers.Profiles
@@ -19,7 +20,9 @@ namespace Application.Features.CorporateCustomers.Profiles
             CreateMap<CorporateCustomer, CreateCorporateCustomerDto>().ReverseMap();
             CreateMap<CorporateCustomer, DeleteCorporateCustomerDto>().ReverseMap();
 
+            CreateMap<CorporateCustomer, CorporateCustomerDto>().ReverseMap();
 
+            CreateMap<IPaginate<CorporateCustomer>, GetListResponse<CorporateCustomerDto>>().ReverseMap();
         }
     }
 }

@@ -2,14 +2,19 @@
 using Application.Features.Addresss.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Constants;
+using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Addresss.Command.DeleteAddress
 {
-    public class DeleteAddressCommand : IRequest<DeleteAddressDto>
+    public class DeleteAddressCommand : IRequest<DeleteAddressDto>,ISecuredRequest,ILoggableRequest
     {
         public int Id { get; set; }
+
+        public string[] Roles => new[] { RoleNames.AddressAdmin };
 
         public class DeleteAddressCommandHandler : IRequestHandler<DeleteAddressCommand, DeleteAddressDto>
         {

@@ -2,12 +2,15 @@
 using Application.Features.Addresss.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Constants;
+using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Addresss.Command.UpdateAddress
 {
-    public class UpdateAddressCommand : IRequest<UpdateAddressDto>
+    public class UpdateAddressCommand : IRequest<UpdateAddressDto>,ISecuredRequest,ILoggableRequest
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -15,6 +18,7 @@ namespace Application.Features.Addresss.Command.UpdateAddress
         public string AddressDetail { get; set; }
         public string AddressAbbreviation { get; set; }//Adres Kısaltması
         public string PostalCode { get; set; }
+        public string[] Roles => new[] { RoleNames.AddressAdmin };
 
         public class UpdateAddressCommandHandler : IRequestHandler<UpdateAddressCommand, UpdateAddressDto>
         {

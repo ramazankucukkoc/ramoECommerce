@@ -29,7 +29,7 @@ namespace Core.Security.Extensions
         }
         public static string? GetEmail(this ClaimsPrincipal claimsPrincipal)
         {
-            return claimsPrincipal?.FindFirst(JwtRegisteredClaimNames.Email)?.Value ?? "<Anonymous>";
+            return claimsPrincipal?.FindFirst(ClaimTypes.Email)?.Value ?? "<Anonymous>";
         }
         public static string? FindFirstValue(this ClaimsPrincipal claimsPrincipal, string claimTypes)
         {

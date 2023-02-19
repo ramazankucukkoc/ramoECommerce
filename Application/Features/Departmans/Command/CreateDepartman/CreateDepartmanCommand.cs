@@ -2,6 +2,7 @@
 using Application.Features.Departmans.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Extensions;
 using Domain.Entities;
 using MediatR;
 

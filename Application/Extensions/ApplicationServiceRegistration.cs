@@ -31,6 +31,8 @@ using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Performance;
 using Core.Application.Pipelines.Transaction;
 using Core.Application.Pipelines.Validation;
+using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Mailings;
 using Core.Mailings.MailKitImplementations;
 using FluentValidation;
@@ -79,7 +81,7 @@ namespace Application.Extensions
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionScopeBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
 
-            // services.AddScoped<LoggerServiceBase, PostgreSqlLogger>();
+             services.AddScoped<LoggerServiceBase, PostgreSqlLogger>();
             //services.AddTransient<IMessageBrokerHelper, MqQueueHelper>();
 
             //-----------------Business Services----------------------

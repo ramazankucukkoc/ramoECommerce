@@ -2,18 +2,24 @@
 using Application.Features.Addresss.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Constants;
+using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Addresss.Command.CreateAddress
 {
-    public class CreateAddressCommand : IRequest<CreateAddressDto>
+    public class CreateAddressCommand : IRequest<CreateAddressDto>,ISecuredRequest,ILoggableRequest
     {
         public int UserId { get; set; }
         public int CityId { get; set; }
         public string AddressDetail { get; set; }
         public string AddressAbbreviation { get; set; }//Adres Kısaltması
         public string PostalCode { get; set; }
+
+        public string[] Roles => new[] { RoleNames.AddressAdmin };
+
         public class CreateBrandCommandHandler : IRequestHandler<CreateAddressCommand, CreateAddressDto>
         {
             private readonly IAddressRepository _addressRepository;

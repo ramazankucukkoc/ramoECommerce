@@ -17,7 +17,7 @@ namespace Application.Features.Departmans.Rules
         }
         public async Task DepartmanNameListCanNotBeDuplicatedWhenInserted(List<string> departmanList)
         {
-            IPaginate<Departman> result = await _departmanRepository.GetListAsync(d => departmanList.Contains(d.FullName));
+            IPaginate<Departman> result = await _departmanRepository.GetListAsync(d => departmanList.Contains(d.FullName.Trim()));
             if (result.Items.Any()) throw new BusinessException(DepartmanBusinessExceptionMessages.DepartmanNameExists);
 
         }
