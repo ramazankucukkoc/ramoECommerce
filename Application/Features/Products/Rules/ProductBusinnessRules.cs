@@ -16,12 +16,12 @@ namespace Application.Features.Products.Rules
         public async Task ProductCanNotBeDuplicatedWhenInserted(int id)
         {
             Product? product = await _productRepository.GetAsync(c => c.Id == id);
-            if (product == null) throw new BusinessException(ProductExceptionMessages.ProductIsNotExists);
+            if (product is null) throw new BusinessException(ProductExceptionMessages.ProductIsNotExists);
         }
         public async void CheckIfProductNameExists(string productName)
         {
             Product? checkProductName = await _productRepository.GetAsync(p => p.Name == productName);
-            if (checkProductName != null) throw new BusinessException(ProductExceptionMessages.ProductNameExists);
+            if (checkProductName is not null) throw new BusinessException(ProductExceptionMessages.ProductNameExists);
         }
     }
 }

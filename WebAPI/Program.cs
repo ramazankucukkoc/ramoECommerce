@@ -128,7 +128,7 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
-//app.UseCors("AllowOrigin");
+app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 

@@ -9,9 +9,11 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Loggers
 {
     public class PostgreSqlLogger : LoggerServiceBase
     {
+        private IConfiguration _configuration;
         public PostgreSqlLogger(IConfiguration configuration)
         {
-            var postgreConfiguration = configuration.GetSection("SeriLogConfigurations:PostgreConfiguration")
+            _configuration = configuration;
+            var postgreConfiguration = _configuration.GetSection("SeriLogConfigurations:PostgreConfiguration")
                 .Get<PostgreSqlConfiguration>() ??
                 throw new Exception(SerilogMessages.NullOptionMessages);
 

@@ -63,11 +63,8 @@
     <Folder Include="Features\ProductBranchs\Validator\" />
     <Folder Include="Features\ProductComments\Queries\" />
     <Folder Include="Features\ProductComments\Validator\" />
-    <Folder Include="Features\Sales\Command\" />
-    <Folder Include="Features\Sales\Dtos\" />
     <Folder Include="Features\Sales\Profile\" />
     <Folder Include="Features\Sales\Queries\" />
-    <Folder Include="Features\Sales\Rules\" />
     <Folder Include="Features\Sales\Validator\" />
     <Folder Include="Features\Stocks\Queries\" />
     <Folder Include="Features\Stocks\Rules\" />

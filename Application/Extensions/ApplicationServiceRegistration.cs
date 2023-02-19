@@ -15,12 +15,14 @@ using Application.Features.Orders.Rules;
 using Application.Features.Personels.Rules;
 using Application.Features.ProductComments.Rules;
 using Application.Features.Products.Rules;
+using Application.Features.Sales.Rules;
 using Application.Features.Users.Rules;
 using Application.Services.AuthService;
 using Application.Services.BrandService;
 using Application.Services.CorporateCustomerService;
 using Application.Services.CustomerService;
 using Application.Services.FindeksCreditRateService;
+using Application.Services.PersonelService;
 using Application.Services.ProductService;
 using Application.Services.QRCodeService;
 using Application.Services.StockService;
@@ -69,6 +71,7 @@ namespace Application.Extensions
             services.AddScoped<IndividualCustomerBusinessRules>();
             services.AddScoped<ProductCommentBusinessRules>();
             services.AddScoped<CustomerBusinessRules>();
+            services.AddScoped<SaleBusinessRules>();
 
             //-----------------Business Rules----------------------
 
@@ -95,6 +98,7 @@ namespace Application.Extensions
             services.AddScoped<ICorporateCustomerService, CorporateCustomerManager>();
             services.AddScoped<IQRCodeService, QRCodeService>();
             services.AddScoped<IStockService, StockManager>();
+            services.AddScoped<IPersonelService, PersonelManager>();
 
             //-----------------Business Services----------------------
             services.AddSingleton<IMailService, MailKitMailService>();

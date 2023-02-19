@@ -14,7 +14,7 @@ namespace Core.Security.Extensions
         {
             return claimsPrincipal?.Claims(ClaimTypes.Role);
         }
-        //FirstOrDefault dememizin sebebi kullanıcının sadece bir adı bir emaili bir UserId'si olamsıdır.
+        // FirstOrDefault dememizin sebebi kullanıcının sadece bir adı bir emaili bir UserId'si olamsıdır.
         public static int GetUserId(this ClaimsPrincipal claimsPrincipal)
         {
             return Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
@@ -40,7 +40,5 @@ namespace Core.Security.Extensions
         }
         public static bool HasClaimType(this ClaimsPrincipal principal, string claimType)
        => principal.HasClaim(c => c.Type == claimType);
-        
-
     }
 }

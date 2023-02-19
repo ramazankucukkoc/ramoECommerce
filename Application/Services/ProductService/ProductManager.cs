@@ -16,6 +16,17 @@ namespace Application.Services.ProductService
             _productRepository = productRepository;
         }
 
+        public async Task Add(Product product)
+        {
+          await _productRepository.AddAsync(product);
+        }
+
+        public async Task<Product> AddAsync(Product product)
+        {
+            Product? createdProduct= await _productRepository.AddAsync(product);
+            return createdProduct;
+        }
+
         public async Task<Product> GetById(int id)
         {
             Product? product = await _productRepository.GetAsync(p => p.Id == id);
@@ -25,7 +36,7 @@ namespace Application.Services.ProductService
 
         public async Task<Product> GetByName(string name)
         {
-            Product? product = await _productRepository.GetAsync(p => p.Name.ToLower() == name.ToLower());
+            Product? product = await _productRepository.GetAsync(p => p.Name.ToLower().Trim() == name.ToLower().Trim());
             return product;
         }
 
