@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.IndividualCustomers.Queries.GetByIdIndividualCustomer
 {
-    public class GetByIdIndividualCustomerQuery:IRequest<IndividualCustomerDto>
+    public class GetByIdIndividualCustomerQuery : IRequest<IndividualCustomerDto>
     {
         public int Id { get; set; }
         public class GetByIdIndividualCustomerQueryHandler : IRequestHandler<GetByIdIndividualCustomerQuery, IndividualCustomerDto>
@@ -28,7 +28,7 @@ namespace Application.Features.IndividualCustomers.Queries.GetByIdIndividualCust
             {
                 IndividualCustomer? individualCustomer = await _individualCustomerRepository.GetAsync(b => b.Id == request.Id);
                 await _individualCustomerBusinessRules.IndividualCustomerShouldBeExist(individualCustomer);
-                IndividualCustomerDto individualCustomerDto =_mapper.Map<IndividualCustomerDto>(individualCustomer);
+                IndividualCustomerDto individualCustomerDto = _mapper.Map<IndividualCustomerDto>(individualCustomer);
                 return individualCustomerDto;
 
             }

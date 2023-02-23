@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Customers.Queries.GetByIdCustomer
 {
-    public class GetByIdCustomerQuery:IRequest<CustomerDto>
+    public class GetByIdCustomerQuery : IRequest<CustomerDto>
     {
         public int Id { get; set; }
         public class GetByIdCustomerQueryHandler : IRequestHandler<GetByIdCustomerQuery, CustomerDto>
@@ -17,7 +17,7 @@ namespace Application.Features.Customers.Queries.GetByIdCustomer
             private readonly IMapper _mapper;
             private readonly CustomerBusinessRules _customerBusinessRules;
 
-            public GetByIdCustomerQueryHandler(ICustomerRepository customerRepository, 
+            public GetByIdCustomerQueryHandler(ICustomerRepository customerRepository,
                 IMapper mapper, CustomerBusinessRules customerBusinessRules)
             {
                 _customerRepository = customerRepository;

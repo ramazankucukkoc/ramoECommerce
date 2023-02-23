@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Application.Features.Customers.Command.CreateCustomer
 {
-    public class CreateCustomerCommand:IRequest<CustomerDto>
+    public class CreateCustomerCommand : IRequest<CustomerDto>
     {
         public int UserId { get; set; }
 
@@ -23,7 +23,7 @@ namespace Application.Features.Customers.Command.CreateCustomer
 
 
             public CreateCustomerCommandHandler(ICustomerRepository customerRepository,
-                IMapper mapper, CustomerBusinessRules businessRules,IUserService userService)
+                IMapper mapper, CustomerBusinessRules businessRules, IUserService userService)
             {
                 _userService = userService;
                 _customerRepository = customerRepository;
@@ -33,12 +33,12 @@ namespace Application.Features.Customers.Command.CreateCustomer
 
             public async Task<CustomerDto> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
             {
-                User user =await _userService.GetById(request.UserId);
+                User user = await _userService.GetById(request.UserId);
                 if (user == null) throw new NotFoundException("Böyle kullanıcı bulunamadı o yüzden eklenemez");
 
                 Customer? mappedCustomer = _mapper.Map<Customer>(request);
                 Customer addedCustomer = await _customerRepository.AddAsync(mappedCustomer);
-                CustomerDto result =_mapper.Map<CustomerDto>(addedCustomer);
+                CustomerDto result = _mapper.Map<CustomerDto>(addedCustomer);
                 return result;
             }
         }

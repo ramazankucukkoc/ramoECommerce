@@ -40,11 +40,11 @@ namespace Persistence.Repositories
 
         public async Task<IPaginate<Basket>> GetAllBaskets2(int index = 0, int size = 10, CancellationToken cancellationToken = default)
         {
-           var result = Context.Baskets
-                .Include(b => b.Product)
-                .Include(b => b.User)
-                .Include(b => b.Brand)
-                .ToPaginateAsync(index, size, 0,cancellationToken);
+            var result = Context.Baskets
+                 .Include(b => b.Product)
+                 .Include(b => b.User)
+                 .Include(b => b.Brand)
+                 .ToPaginateAsync(index, size, 0, cancellationToken);
             return await result;
         }
 

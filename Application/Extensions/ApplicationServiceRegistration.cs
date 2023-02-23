@@ -84,7 +84,7 @@ namespace Application.Extensions
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionScopeBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
 
-             services.AddScoped<LoggerServiceBase, PostgreSqlLogger>();
+            services.AddScoped<LoggerServiceBase, PostgreSqlLogger>();
             //services.AddTransient<IMessageBrokerHelper, MqQueueHelper>();
 
             //-----------------Business Services----------------------
@@ -102,7 +102,7 @@ namespace Application.Extensions
 
             //-----------------Business Services----------------------
             services.AddSingleton<IMailService, MailKitMailService>();
-           
+
             return services;
         }
     }

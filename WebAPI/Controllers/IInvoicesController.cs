@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
     public class IInvoicesController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]CreateInvoiceCommand createInvoiceCommand)
+        public async Task<IActionResult> Add([FromBody] CreateInvoiceCommand createInvoiceCommand)
         {
             CreateInvoiceDto result = await Mediator.Send(createInvoiceCommand);
             return Ok(result);

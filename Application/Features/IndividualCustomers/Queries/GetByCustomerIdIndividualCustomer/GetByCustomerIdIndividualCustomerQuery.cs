@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.IndividualCustomers.Queries.GetByCustomerIdIndividualCustomer
 {
-    public class GetByCustomerIdIndividualCustomerQuery:IRequest<IndividualCustomerDto>
+    public class GetByCustomerIdIndividualCustomerQuery : IRequest<IndividualCustomerDto>
     {
         public int CustomerId { get; set; }
 

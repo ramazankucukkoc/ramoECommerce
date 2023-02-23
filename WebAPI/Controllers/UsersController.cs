@@ -16,13 +16,6 @@ namespace WebAPI.Controllers
             DeletedUserDto deletedUserDto = await Mediator.Send(deleteUserCommnad);
             return Ok(deletedUserDto);
         }
-
-        //[Route("byname/{firstName}/{lastName}")]
-        //public ActionResult<string> GetByName(string firstName, string lastName)
-        //{
-        //    return "Found another employee";
-        //}
-
         [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateUserCommand updateUserCommand)
         {

@@ -6,6 +6,6 @@ namespace Application.Services.Repositories
 {
     public interface ISaleRepository : IAsyncRepository<Sale>
     {
-        Task<CreateSaleDto?>GetById(int id);
+        Task<CreateSaleDto?> GetById(int id);
     }
 }

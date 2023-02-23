@@ -23,8 +23,9 @@ namespace Application.Features.Auths.Command.LoginWithGoogle
 
 
             public LoginWithGoogleCommandHandler(IGoogleAuthAdapter googleAuthAdapter,
-                IAuthService authService, IUserService userService, AuthBusinessRules authBusinessRules)            {
-                
+                IAuthService authService, IUserService userService, AuthBusinessRules authBusinessRules)
+            {
+
                 _googleAuthAdapter = googleAuthAdapter;
                 _authService = authService;
                 _userService = userService;
@@ -33,7 +34,7 @@ namespace Application.Features.Auths.Command.LoginWithGoogle
 
             public async Task<LoggedDto> Handle(LoginWithGoogleCommand request, CancellationToken cancellationToken)
             {
-              
+
                 GoogleUserDetails googleUserDetails = await _googleAuthAdapter.GetGoogleUserDetails(request.LoginWithGoogleDto.GoogleAccessToken);
                 await _authBusinessRules.UsersGoogleMailShouldBeVerified(googleUserDetails);
 

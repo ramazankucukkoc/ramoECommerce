@@ -14,14 +14,14 @@ namespace Application.Features.Auths.Command.LoginWithMicrosoft
         public string MicrosoftAccessToken { get; set; }
         public string IpAddress { get; set; }
 
-        public class LoginWithMicrosoftCommandHandler : IRequestHandler<LoginWithMicrosoftCommand,LoggedDto>
+        public class LoginWithMicrosoftCommandHandler : IRequestHandler<LoginWithMicrosoftCommand, LoggedDto>
         {
             private readonly IUserService _userService;
             private readonly IAuthService _authService;
             private readonly IMicrosoftAuthAdapter _microsoftAuthAdapter;
             private readonly AuthBusinessRules _authBusinessRules;
 
-            public LoginWithMicrosoftCommandHandler(IUserService userService, IAuthService authService, 
+            public LoginWithMicrosoftCommandHandler(IUserService userService, IAuthService authService,
                 IMicrosoftAuthAdapter microsoftAuthAdapter, AuthBusinessRules authBusinessRules)
             {
                 _userService = userService;

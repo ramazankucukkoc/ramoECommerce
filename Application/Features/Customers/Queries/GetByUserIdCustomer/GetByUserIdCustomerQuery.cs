@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Customers.Queries.GetByUserIdCustomer
 {
-    public class GetByUserIdCustomerQuery:IRequest<CustomerDto>
+    public class GetByUserIdCustomerQuery : IRequest<CustomerDto>
     {
         public int UserId { get; set; }
 
@@ -30,7 +30,7 @@ namespace Application.Features.Customers.Queries.GetByUserIdCustomer
             {
                 Customer? customer = await _customerRepository.GetAsync(c => c.UserId == request.UserId, include: u => u.Include(u => u.User));
                 await _customerBusinessRules.CustomerShouldExist(customer);
-                CustomerDto customerDto =_mapper.Map<CustomerDto>(customer);
+                CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
                 return customerDto;
             }
         }

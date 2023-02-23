@@ -8,12 +8,10 @@ namespace Application.Features.Cities.Rules
     public class CitiesBusinessRules
     {
         private readonly ICityRepository _citiesRepository;
-
         public CitiesBusinessRules(ICityRepository citiesRepository)
         {
             _citiesRepository = citiesRepository;
         }
-
         public async Task CitiesIdShoulExistsWhenInserted(int id)
         {
             City? result = await _citiesRepository.GetAsync(c => c.Id == id);

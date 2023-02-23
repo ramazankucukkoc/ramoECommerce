@@ -20,7 +20,7 @@ namespace Application.Services.PersonelService
 
         public async Task<Personel> AddAsync(Personel personel)
         {
-            Personel? addedPersonel =await _personelRepository.AddAsync(personel);
+            Personel? addedPersonel = await _personelRepository.AddAsync(personel);
             return addedPersonel;
         }
 
@@ -32,14 +32,14 @@ namespace Application.Services.PersonelService
 
         public async Task<Personel> GetByName(string firstName, string lastName)
         {
-            Personel? personel = await _personelRepository.GetAsync(p => p.FirstName.ToLower().Trim()==firstName.ToLower().Trim() 
+            Personel? personel = await _personelRepository.GetAsync(p => p.FirstName.ToLower().Trim() == firstName.ToLower().Trim()
             && p.LastName.ToLower().Trim() == lastName.ToLower().Trim());
             return personel;
         }
 
         public async Task Remove(Personel personel)
         {
-          await _personelRepository.DeleteAsync(personel);
+            await _personelRepository.DeleteAsync(personel);
         }
 
         public async Task<Personel> RemoveAsync(Personel personel)

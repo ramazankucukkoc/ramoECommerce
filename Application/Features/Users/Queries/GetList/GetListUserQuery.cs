@@ -29,7 +29,7 @@ namespace Application.Features.Users.Queries.GetList
                     index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
                 await _userBusinessRules.ThereShouldBeSomeDataInUserListAsRequired(users);
-                
+
                 GetListResponse<UserListDto> response = _mapper.Map<GetListResponse<UserListDto>>(users);
                 return response;
 

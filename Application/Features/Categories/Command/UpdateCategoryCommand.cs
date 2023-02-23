@@ -10,7 +10,6 @@ namespace Application.Features.Categories.Command
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        //  public string Slug { get; set; }
         public int ParentId { get; set; }
 
         public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, UpdateCategoryDto>

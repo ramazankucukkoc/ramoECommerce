@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Features.Invoices.Command.CreateInvoice
 {
-    public class CreateInvoiceCommand:IRequest<CreateInvoiceDto>
+    public class CreateInvoiceCommand : IRequest<CreateInvoiceDto>
     {
         public int ProductId { get; set; }
         public double TotalSum { get; set; }
@@ -27,8 +27,8 @@ namespace Application.Features.Invoices.Command.CreateInvoice
 
             async Task<CreateInvoiceDto> IRequestHandler<CreateInvoiceCommand, CreateInvoiceDto>.Handle(CreateInvoiceCommand request, CancellationToken cancellationToken)
             {
-                Invoice? mappedInvoice=_mapper.Map<Invoice>(request);
-                Invoice createdInvoice=await _invoiceRepository.AddAsync(mappedInvoice);
+                Invoice? mappedInvoice = _mapper.Map<Invoice>(request);
+                Invoice createdInvoice = await _invoiceRepository.AddAsync(mappedInvoice);
 
                 CreateInvoiceDto? result = await _invoiceRepository.GetInvoiceDetailsById(createdInvoice.Id);
                 return result;

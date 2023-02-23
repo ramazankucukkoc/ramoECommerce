@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Addresss\Validator\" />
     <Folder Include="Features\Baskets\Queries\GetByIdBasket\" />
     <Folder Include="Features\Baskets\Queries\GetByUserIdBasket\" />
-    <Folder Include="Features\Baskets\Validator\" />
     <Folder Include="Features\Cities\Queries\" />
-    <Folder Include="Features\Cities\Validator\" />
-    <Folder Include="Features\CorporateCustomers\Validator\" />
     <Folder Include="Features\Countries\Queries\" />
     <Folder Include="Features\Countries\Validator\" />
     <Folder Include="Features\CreditCards\Command\" />
@@ -22,7 +18,6 @@
     <Folder Include="Features\CreditCards\Queries\" />
     <Folder Include="Features\CreditCards\Rules\" />
     <Folder Include="Features\CreditCards\Validator\" />
-    <Folder Include="Features\Customers\Validator\" />
     <Folder Include="Features\CustomersAddress\Command\" />
     <Folder Include="Features\CustomersAddress\Dtos\" />
     <Folder Include="Features\CustomersAddress\Profile\" />
@@ -38,12 +33,9 @@
     <Folder Include="Features\Favorites\Queries\" />
     <Folder Include="Features\Favorites\Rules\" />
     <Folder Include="Features\Favorites\Validator\" />
-    <Folder Include="Features\FindeksCreditRates\Validator\" />
-    <Folder Include="Features\IndividualCustomers\Validator\" />
     <Folder Include="Features\Invoices\Profile\" />
     <Folder Include="Features\Invoices\Queries\" />
     <Folder Include="Features\Invoices\Rules\" />
-    <Folder Include="Features\Invoices\Validator\" />
     <Folder Include="Features\OperationClaims\Commands\" />
     <Folder Include="Features\OperationClaims\Dtos\" />
     <Folder Include="Features\OperationClaims\Profiles\" />
@@ -65,10 +57,8 @@
     <Folder Include="Features\ProductComments\Validator\" />
     <Folder Include="Features\Sales\Profile\" />
     <Folder Include="Features\Sales\Queries\" />
-    <Folder Include="Features\Sales\Validator\" />
     <Folder Include="Features\Stocks\Queries\" />
     <Folder Include="Features\Stocks\Rules\" />
-    <Folder Include="Features\Stocks\Validator\" />
     <Folder Include="Features\UserComments\Command\" />
     <Folder Include="Features\UserComments\Dtos\" />
     <Folder Include="Features\UserComments\Profile\" />

@@ -2,6 +2,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
+using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
@@ -30,6 +31,9 @@ namespace Application.Features.Products.Queries.GetByCategoryId
                  , include: p => p.Include(p => p.Category),
                  index: request.PageRequest.Page,
                  size: request.PageRequest.PageSize);
+
+                if (products.Items.Any()) throw new BusinessException("Ürün bulunmamadı");
+
                 GetListResponse<GetByCategoryIdDto> result = _mapper.Map<GetListResponse<GetByCategoryIdDto>>(products);
                 return result;
             }

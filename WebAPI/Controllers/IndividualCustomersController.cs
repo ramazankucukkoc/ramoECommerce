@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody]UpdateIndividualCustomerCommand updateIndividualCustomerCommand)
+        public async Task<IActionResult> Update([FromBody] UpdateIndividualCustomerCommand updateIndividualCustomerCommand)
         {
             UpdateIndividualCustomerDto result = await Mediator.Send(updateIndividualCustomerCommand);
             return Ok(result);
@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery]PageRequest pageRequest)
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
             GetListIndividualCustomerQuery getListIndividualCustomerQuery = new() { PageRequest = pageRequest };
             GetListResponse<IndividualCustomerDto> result = await Mediator.Send(getListIndividualCustomerQuery);

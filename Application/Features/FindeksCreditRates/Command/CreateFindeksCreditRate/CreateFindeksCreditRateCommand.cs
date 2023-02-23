@@ -9,6 +9,9 @@ namespace Application.Features.FindeksCreditRates.Command.CreateFindeksCreditRat
 {
     public class CreateFindeksCreditRateCommand : IRequest<CreateFindeksCreditRateDto>
     {
+        //Findeks Kredi Notu; kişilerin kredi, kredi kartı ve kredili mevduat hesaplarındaki ödeme alışkanlıklarına,
+        //limit ve borç durumlarına, yeni kredili ürün açılışlarının yoğunluğu gibi detaylara göre hesaplanan nottur.
+        //Findeks Kredi Notu 1-1900 arasında değişir. Not 1'den 1900'e doğru ilerledikçe risk seviyesi azalır.
         public int CustomerId { get; set; }
         public int Score { get; set; }
 

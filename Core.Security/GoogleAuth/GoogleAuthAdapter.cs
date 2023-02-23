@@ -19,8 +19,8 @@ namespace Core.Security.GoogleAuth
 
                 Audience = new List<string> { _config["Google:Client_ID"] }
             };
-            GoogleJsonWebSignature.Payload? googleAuthTokenInfo = 
-                await GoogleJsonWebSignature.ValidateAsync(googleAccessToken,settings);
+            GoogleJsonWebSignature.Payload? googleAuthTokenInfo =
+                await GoogleJsonWebSignature.ValidateAsync(googleAccessToken, settings);
 
             return new GoogleUserDetails
             {

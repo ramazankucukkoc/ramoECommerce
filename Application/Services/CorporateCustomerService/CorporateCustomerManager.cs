@@ -7,7 +7,7 @@ namespace Application.Services.CorporateCustomerService
     {
         private readonly ICorporateCustomerRepository _corporateCustomerRepository;
 
-        public CorporateCustomerManager(ICorporateCustomerRepository corporateCustomerRepository )
+        public CorporateCustomerManager(ICorporateCustomerRepository corporateCustomerRepository)
         {
             _corporateCustomerRepository = corporateCustomerRepository;
         }

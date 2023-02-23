@@ -37,22 +37,22 @@ namespace WebAPI.Controllers
         }
         [HttpGet]
         [Route("{CustomerId}")]
-        public async Task<IActionResult> GetByCustomerId([FromRoute]GetByCustomerIdCorporateCustomerQuery getByCustomerIdCorporateCustomerQuery)
+        public async Task<IActionResult> GetByCustomerId([FromRoute] GetByCustomerIdCorporateCustomerQuery getByCustomerIdCorporateCustomerQuery)
         {
             CorporateCustomerDto result = await Mediator.Send(getByCustomerIdCorporateCustomerQuery);
             return Ok(result);
         }
         [HttpGet]
         [Route("{Id}")]
-        public async Task<IActionResult> GetById([FromRoute]GetByIdCorporateCustomerQuery getByIdCorporateCustomerQuery)
+        public async Task<IActionResult> GetById([FromRoute] GetByIdCorporateCustomerQuery getByIdCorporateCustomerQuery)
         {
             CorporateCustomerDto result = await Mediator.Send(getByIdCorporateCustomerQuery);
             return Ok(result);
         }
         [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery]PageRequest pageRequest)
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-            GetListCorporateCustomerQuery getListCorporateCustomerQuery = new() { PageRequest=pageRequest};
+            GetListCorporateCustomerQuery getListCorporateCustomerQuery = new() { PageRequest = pageRequest };
             GetListResponse<CorporateCustomerDto> result = await Mediator.Send(getListCorporateCustomerQuery);
             return Ok(result);
         }

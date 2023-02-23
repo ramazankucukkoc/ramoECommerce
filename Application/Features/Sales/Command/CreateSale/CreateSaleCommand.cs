@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.Sales.Command.CreateSale
 {
-    public sealed class CreateSaleCommand:IRequest<CreateSaleDto>
+    public sealed class CreateSaleCommand : IRequest<CreateSaleDto>
     {
         public int Quantity { get; set; }//Adet
         public decimal TotalPrice { get; set; }

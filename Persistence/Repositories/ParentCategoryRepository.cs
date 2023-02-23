@@ -5,7 +5,7 @@ using Persistence.Contexts;
 
 namespace Persistence.Repositories
 {
-    public class ParentCategoryRepository : EfRepositoryBase<ParentCategory, ProjectDbContext>, IParentCategoryRepositories
+    public class ParentCategoryRepository : EfRepositoryBase<ParentCategory, ProjectDbContext>, IParentCategoryRepository
     {
         public ParentCategoryRepository(ProjectDbContext context) : base(context)
         {

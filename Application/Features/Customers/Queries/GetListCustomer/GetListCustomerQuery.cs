@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Customers.Queries.GetListCustomer
 {
-    public class GetListCustomerQuery:IRequest<GetListResponse<CustomerDto>>
+    public class GetListCustomerQuery : IRequest<GetListResponse<CustomerDto>>
     {
         public PageRequest PageRequest { get; set; }
 

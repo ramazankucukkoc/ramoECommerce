@@ -9,10 +9,10 @@ namespace WebAPI.Controllers
     public class SalesController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody]CreateSaleCommand createSaleCommand)
+        public async Task<IActionResult> Add([FromBody] CreateSaleCommand createSaleCommand)
         {
             CreateSaleDto createSaleDto = await Mediator.Send(createSaleCommand);
-            return Ok(createSaleDto);             
+            return Ok(createSaleDto);
         }
     }
 }

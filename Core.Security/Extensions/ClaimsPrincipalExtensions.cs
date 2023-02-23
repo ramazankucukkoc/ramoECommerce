@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.JsonWebTokens;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 
 namespace Core.Security.Extensions
 {

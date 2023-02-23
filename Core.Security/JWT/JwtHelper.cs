@@ -17,7 +17,7 @@ namespace Core.Security.JWT
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
-            //Microsoft.Extensions.Configuration.Binder Get<> işelemrinde yükleniyor!!!!
+            //Microsoft.Extensions.Configuration.Binder Get<> işelemlerinde yükleniyor!!!!
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
         }
         public RefreshToken CreateRefreshToken(User user, string ipAddress)
@@ -25,7 +25,7 @@ namespace Core.Security.JWT
             RefreshToken refreshToken = new()
             {
                 UserId = user.Id,
-                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+                Token = RandomRefreshToken(),
                 Expires = DateTime.UtcNow.AddDays(7),
                 Created = DateTime.UtcNow,
                 CreatedByIp = ipAddress
@@ -66,6 +66,14 @@ namespace Core.Security.JWT
             claims.AddLastName(user.LastName);
             claims.AddRoles(operationClaims.Select(x => x.Name).ToArray());
             return claims;
+        }
+
+        private string RandomRefreshToken()
+        {
+            byte[] numberByte = new Byte[32];
+            using RandomNumberGenerator random =RandomNumberGenerator.Create();
+            random.GetBytes(numberByte);
+            return Convert.ToBase64String(numberByte);
         }
     }
 }

@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Application.Features.Addresss.Command.CreateAddress
 {
-    public class CreateAddressCommand : IRequest<CreateAddressDto>,ISecuredRequest,ILoggableRequest
+    public class CreateAddressCommand : IRequest<CreateAddressDto>, ISecuredRequest, ILoggableRequest
     {
         public int UserId { get; set; }
         public int CityId { get; set; }

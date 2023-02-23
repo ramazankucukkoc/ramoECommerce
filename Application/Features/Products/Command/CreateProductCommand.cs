@@ -40,10 +40,10 @@ namespace Application.Features.Products.Command
 
             public async Task<CreateProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
-                IPaginate<Product> products = await _productRepository.GetListAsync(c => c.Name == request.Name);
+                IPaginate<Product> products = await _productRepository.GetListAsync(c => c.Name.ToLower().Trim() == request.Name.ToLower().Trim());
                 if (products.Items.Any())
                 {
-                    Product? getNameproduct = await _productRepository.GetAsync(x => x.Name == request.Name);
+                    Product? getNameproduct = await _productRepository.GetAsync(x => x.Name.ToLower().Trim() == request.Name.ToLower().Trim());
 
                     Product product = await _productRepository.UpdateAsync(getNameproduct);
                     CreateProductDto createProduct = _mapper.Map<CreateProductDto>(product);

@@ -31,7 +31,7 @@ namespace Application.Features.Products.Command
 
             public UpdateProductCommandHandler(IProductRepository productRepository,
                 IMapper mapper, ProductBusinnessRules productBusinnessRules)
-            => (_productRepository, _mapper, _productBusinnessRules) = (productRepository, mapper, _productBusinnessRules);
+            => (_productRepository, _mapper, _productBusinnessRules) = (productRepository, mapper, productBusinnessRules);
             public async Task<UpdateProductDto> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
             {
                 await _productBusinnessRules.ProductCanNotBeDuplicatedWhenInserted(request.Id);

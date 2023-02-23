@@ -1,4 +1,5 @@
 ﻿using Application.Features.ParentCategories.Dtos;
+using Application.Features.ParentCategories.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -12,18 +13,21 @@ namespace Application.Features.ParentCategories.Command
 
         public class CreateParentCategoryCommandHandler : IRequestHandler<CreateParentCategoryCommand, CreateParentCategoryDto>
         {
-            private readonly IParentCategoryRepositories _parentCategoriesRepository;
+            private readonly IParentCategoryRepository _parentCategoriesRepository;
             private readonly IMapper _mapper;
+            private readonly ParentCategoriesBusinessRules _parentCategoriesBusinessRules;
 
-            public CreateParentCategoryCommandHandler(IParentCategoryRepositories parentCategoriesRepository,
-                IMapper mapper)
+            public CreateParentCategoryCommandHandler(IParentCategoryRepository parentCategoriesRepository, 
+                IMapper mapper, ParentCategoriesBusinessRules parentCategoriesBusinessRules)
             {
                 _parentCategoriesRepository = parentCategoriesRepository;
                 _mapper = mapper;
+                _parentCategoriesBusinessRules = parentCategoriesBusinessRules;
             }
 
             public async Task<CreateParentCategoryDto> Handle(CreateParentCategoryCommand request, CancellationToken cancellationToken)
             {
+                await _parentCategoriesBusinessRules.ParentCategoryNameCanNotBeDuplicatedWhenInserted(request.Name);
                 ParentCategory? mappedParentCategory = _mapper.Map<ParentCategory>(request);
                 ParentCategory addedParentCategory = await _parentCategoriesRepository.AddAsync(mappedParentCategory);
                 CreateParentCategoryDto createParentCategoryDto = _mapper.Map<CreateParentCategoryDto>(addedParentCategory);

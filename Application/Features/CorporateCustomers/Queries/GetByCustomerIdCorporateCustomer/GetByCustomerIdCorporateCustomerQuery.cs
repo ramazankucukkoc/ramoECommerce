@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.CorporateCustomers.Queries.GetByCustomerIdCorporateCustomer
 {
-    public class GetByCustomerIdCorporateCustomerQuery:IRequest<CorporateCustomerDto>
+    public class GetByCustomerIdCorporateCustomerQuery : IRequest<CorporateCustomerDto>
     {
         public int CustomerId { get; set; }
 
@@ -29,7 +29,7 @@ namespace Application.Features.CorporateCustomers.Queries.GetByCustomerIdCorpora
             {
                 CorporateCustomer? corporateCustomer = await _corporateCustomerRepository.GetAsync(b => b.CustomerId == request.CustomerId);
                 await _corporateCustomerBusinessRules.CorporateCustomerShouldBeExist(corporateCustomer);
-                CorporateCustomerDto corporateCustomerDto =_mapper.Map<CorporateCustomerDto>(corporateCustomer);
+                CorporateCustomerDto corporateCustomerDto = _mapper.Map<CorporateCustomerDto>(corporateCustomer);
                 return corporateCustomerDto;
             }
         }

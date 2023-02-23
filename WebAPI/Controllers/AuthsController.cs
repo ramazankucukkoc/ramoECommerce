@@ -69,11 +69,11 @@ namespace WebAPI.Controllers
             return Ok(result.AccessToken);
         }
         [HttpPost]
-        public async Task<IActionResult> LoginWithMicrosoft([FromBody]String microsoftAccessToken)
+        public async Task<IActionResult> LoginWithMicrosoft([FromBody] String microsoftAccessToken)
         {
             LoginWithMicrosoftCommand loginWithMicrosoftCommand = new() { IpAddress = getIpAddress(), MicrosoftAccessToken = microsoftAccessToken };
             LoggedDto result = await Mediator.Send(loginWithMicrosoftCommand);
-            if(result.RefreshToken is not null)setRefreshTokenCookie(result.RefreshToken);
+            if (result.RefreshToken is not null) setRefreshTokenCookie(result.RefreshToken);
 
             return Ok(result.AccessToken);
         }
@@ -107,7 +107,7 @@ namespace WebAPI.Controllers
             return Ok();
         }
         [HttpPost]
-        public async Task<IActionResult> VerifyOtpAuthenticator([FromBody] VerifyOtpAuthenticatorDto verifyOtpAuthenticatorDto  )
+        public async Task<IActionResult> VerifyOtpAuthenticator([FromBody] VerifyOtpAuthenticatorDto verifyOtpAuthenticatorDto)
         {
             VerifyOtpAuthenticatorCommand verifyOtpAuthenticatorCommand = new()
             {

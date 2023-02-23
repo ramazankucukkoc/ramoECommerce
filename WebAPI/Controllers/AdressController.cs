@@ -34,8 +34,8 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpGet]
-        
-        public async Task<IActionResult> GetByUserId([FromQuery]PageRequest pageRequest)
+
+        public async Task<IActionResult> GetByUserId([FromQuery] PageRequest pageRequest)
         {
             GetByUserIdAddressQuery getByUserIdAddressQuery = new() { PageRequest = pageRequest, UserId = getUserIdFromRequest() };
             GetListResponse<GetByUserIdAddressDto> result = await Mediator.Send(getByUserIdAddressQuery);

@@ -12,6 +12,6 @@
 
         public const string AddressAdmin = $"{Address}.{Admin}";
 
-        
+
     }
 }

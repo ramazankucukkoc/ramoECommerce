@@ -9,11 +9,11 @@ using MediatR;
 
 namespace Application.Features.CorporateCustomers.Queries.GetListCorporateCustomer
 {
-    public class GetListCorporateCustomerQuery:IRequest<GetListResponse<CorporateCustomerDto>>
+    public class GetListCorporateCustomerQuery : IRequest<GetListResponse<CorporateCustomerDto>>
     {
         public PageRequest PageRequest { get; set; }
 
-        public class GetListCorporateCustomerQueryHandler : IRequestHandler<GetListCorporateCustomerQuery,GetListResponse< CorporateCustomerDto>>
+        public class GetListCorporateCustomerQueryHandler : IRequestHandler<GetListCorporateCustomerQuery, GetListResponse<CorporateCustomerDto>>
         {
             private readonly ICorporateCustomerRepository _corporateCustomerRepository;
             private readonly IMapper _mapper;
@@ -24,11 +24,11 @@ namespace Application.Features.CorporateCustomers.Queries.GetListCorporateCustom
                 _mapper = mapper;
             }
 
-            public async Task<GetListResponse< CorporateCustomerDto>> Handle(GetListCorporateCustomerQuery request, CancellationToken cancellationToken)
+            public async Task<GetListResponse<CorporateCustomerDto>> Handle(GetListCorporateCustomerQuery request, CancellationToken cancellationToken)
             {
                 IPaginate<CorporateCustomer> corporateCustomers = await _corporateCustomerRepository.GetListAsync(index: request.PageRequest.Page,
                     size: request.PageRequest.PageSize);
-                if (corporateCustomers.Items.Any()==false) throw new NotFoundException("Müşteriler bulunamadı");
+                if (corporateCustomers.Items.Any() == false) throw new NotFoundException("Müşteriler bulunamadı");
 
                 GetListResponse<CorporateCustomerDto> result = _mapper.Map<GetListResponse<CorporateCustomerDto>>(corporateCustomers);
                 return result;

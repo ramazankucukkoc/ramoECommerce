@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Application.Features.Customers.Command.DeleteCustomer
 {
-    public class DeleteCustomerCommand:IRequest<CustomerDto>
+    public class DeleteCustomerCommand : IRequest<CustomerDto>
     {
         public int Id { get; set; }
 
@@ -30,7 +30,7 @@ namespace Application.Features.Customers.Command.DeleteCustomer
                 await _businessRules.CustomerIdShouldExist(request.Id);
                 Customer mappedCustomer = _mapper.Map<Customer>(request);
                 Customer deletedCustomer = await _customerRepository.DeleteAsync(mappedCustomer);
-                CustomerDto result =_mapper.Map<CustomerDto>(deletedCustomer);
+                CustomerDto result = _mapper.Map<CustomerDto>(deletedCustomer);
                 return result;
             }
         }

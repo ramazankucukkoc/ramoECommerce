@@ -2,6 +2,7 @@
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
+using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using Domain.Entities;
@@ -34,6 +35,8 @@ namespace Application.Features.Products.Queries.GetAllDynamic
                     .Include(p => p.Category.ParentCategory)
                     , request.PageRequest.Page,
                    request.PageRequest.PageSize);
+
+                if (products.Items.Any()) throw new BusinessException("Ürünler bulunamadı");
 
                 GetListResponse<GetAllProductDto> result = _mapper.Map<GetListResponse<GetAllProductDto>>(products);
                 return result;

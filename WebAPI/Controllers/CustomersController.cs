@@ -1,5 +1,4 @@
-﻿using Application.Features.Baskets.Queries.GetList;
-using Application.Features.Customers.Command.CreateCustomer;
+﻿using Application.Features.Customers.Command.CreateCustomer;
 using Application.Features.Customers.Command.DeleteCustomer;
 using Application.Features.Customers.Command.UpdateCustomer;
 using Application.Features.Customers.Dtos;

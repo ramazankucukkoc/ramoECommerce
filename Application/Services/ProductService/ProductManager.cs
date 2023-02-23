@@ -10,20 +10,20 @@ namespace Application.Services.ProductService
     {
         private readonly IProductRepository _productRepository;
         private readonly IQRCodeService _qRCodeService;
-        public ProductManager(IProductRepository productRepository,IQRCodeService qRCodeService)
+        public ProductManager(IProductRepository productRepository, IQRCodeService qRCodeService)
         {
-            _qRCodeService= qRCodeService;
+            _qRCodeService = qRCodeService;
             _productRepository = productRepository;
         }
 
         public async Task Add(Product product)
         {
-          await _productRepository.AddAsync(product);
+            await _productRepository.AddAsync(product);
         }
 
         public async Task<Product> AddAsync(Product product)
         {
-            Product? createdProduct= await _productRepository.AddAsync(product);
+            Product? createdProduct = await _productRepository.AddAsync(product);
             return createdProduct;
         }
 
@@ -61,7 +61,7 @@ namespace Application.Services.ProductService
                 product.CreatedDate
             };
             //plainText:düz metin
-            string plainText =JsonSerializer.Serialize(plainObject);
+            string plainText = JsonSerializer.Serialize(plainObject);
             return _qRCodeService.GenerateQRCode(plainText);
         }
     }

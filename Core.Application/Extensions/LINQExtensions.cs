@@ -30,22 +30,22 @@
     (from num in numbersY select selector(num)).Median();
 
         //Aşagıdaki kullanıma sahip olur.
-//        int[] numbers4 = { 14, 16, 15, 13, 11, 10, 9 };
+        //        int[] numbers4 = { 14, 16, 15, 13, 11, 10, 9 };
 
-//        /*
-//           In this case, the compiler will implicitly convert num=>num's value to double when you pass it as a parameter to the Median method.
-//           Otherwise, the compiler will give the user an error message.
-//        */
-//        var query4 = numbers4.Median(num => num);
+        //        /*
+        //           In this case, the compiler will implicitly convert num=>num's value to double when you pass it as a parameter to the Median method.
+        //           Otherwise, the compiler will give the user an error message.
+        //        */
+        //        var query4 = numbers4.Median(num => num);
 
-//        Console.WriteLine("int: Median = " + query3);
+        //        Console.WriteLine("int: Median = " + query3);
 
-//string[] numbers5 = { "fourteen", "sixteen", "fifteen", "thirteen", "eleven", "ten", "nine" };
+        //string[] numbers5 = { "fourteen", "sixteen", "fifteen", "thirteen", "eleven", "ten", "nine" };
 
-//        A number of object properties are available with the generic overload.
+        //        A number of object properties are available with the generic overload.
 
-//       var query5 = numbers5.Median(str => str.Length);
+        //       var query5 = numbers5.Median(str => str.Length);
 
-//        Console.WriteLine("String: Median = " + query5);
+        //        Console.WriteLine("String: Median = " + query5);
     }
 }

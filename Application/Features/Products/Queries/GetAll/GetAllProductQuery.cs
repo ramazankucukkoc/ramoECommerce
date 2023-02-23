@@ -3,6 +3,7 @@ using Application.Features.Products.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Application.Requests;
+using Core.CrossCuttingConcerns.ExceptionHandling.Exceptions;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
@@ -33,6 +34,8 @@ namespace Application.Features.Products.Queries.GetAll
                 IPaginate<Product> products = await _productRepository.GetListAsync(
                     include: x => x.Include(x => x.Category).Include(x => x.Category.ParentCategory),
                     orderBy: x => x.OrderByDescending(x => x.Name));
+                if (products.Items.Any()) throw new BusinessException("Ürün bulunmamadı");
+
                 GetListResponse<GetAllProductDto> result = _mapper.Map<GetListResponse<GetAllProductDto>>(products);
                 return result;
             }

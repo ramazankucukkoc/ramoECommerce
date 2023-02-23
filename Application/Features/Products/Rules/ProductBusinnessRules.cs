@@ -20,7 +20,7 @@ namespace Application.Features.Products.Rules
         }
         public async void CheckIfProductNameExists(string productName)
         {
-            Product? checkProductName = await _productRepository.GetAsync(p => p.Name == productName);
+            Product? checkProductName = await _productRepository.GetAsync(p => p.Name.ToLower().Trim() == productName.ToLower().Trim());
             if (checkProductName is not null) throw new BusinessException(ProductExceptionMessages.ProductNameExists);
         }
     }

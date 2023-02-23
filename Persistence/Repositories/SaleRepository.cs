@@ -23,7 +23,7 @@ namespace Persistence.Repositories
                          join ca in Context.Categories
                          on p.CategoryId equals ca.Id
                          join pb in Context.ProductBranches
-                        on p.ProductBranchId equals pb.Id
+                         on p.ProductBranchId equals pb.Id
                          join c in Context.Customers
                          on s.CustomerId equals c.Id
                          join u in Context.Users
@@ -38,9 +38,9 @@ namespace Persistence.Repositories
                              CustomerName = u.FirstName + " " + u.LastName,
                              PersonelName = pe.FirstName + " " + pe.LastName,
                              TotalPrice = p.RegularPrice * s.Quantity,
-                             ProductBranchName=pb.Name,
-                             ProductName=p.Name,
-                             Quantity=s.Quantity,
+                             ProductBranchName = pb.Name,
+                             ProductName = p.Name,
+                             Quantity = s.Quantity,
                          };
             return await result.FirstOrDefaultAsync();
 

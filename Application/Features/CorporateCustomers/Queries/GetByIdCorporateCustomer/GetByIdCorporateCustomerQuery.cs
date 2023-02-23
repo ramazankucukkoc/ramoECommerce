@@ -1,6 +1,5 @@
 ﻿using Application.Features.CorporateCustomers.Dtos;
 using Application.Features.CorporateCustomers.Rules;
-using Application.Services.CorporateCustomerService;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;

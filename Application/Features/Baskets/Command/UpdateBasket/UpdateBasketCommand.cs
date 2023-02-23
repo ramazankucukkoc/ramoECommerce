@@ -29,7 +29,7 @@ namespace Application.Features.Baskets.Command.UpdateBasket
                 IMapper mapper, BasketBusinessRules basketBusinessRules, IProductService productService, IBrandService brandService)
             =>
                 (_basketRepository, _mapper, _basketBusinessRules, _productService, _brandService)
-                = (basketRepository, mapper, basketBusinessRules, _productService, brandService);
+                = (basketRepository, mapper, basketBusinessRules, productService, brandService);
             public async Task<UpdateBasketDto> Handle(UpdateBasketCommand request, CancellationToken cancellationToken)
             {
                 await _basketBusinessRules.ProductControl(request.ProductId);

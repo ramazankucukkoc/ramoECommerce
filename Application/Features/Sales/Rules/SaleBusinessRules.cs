@@ -40,6 +40,6 @@ namespace Application.Features.Sales.Rules
         {
             await _personelBusinessRules.PersonelIdControl(personelId);
         }
-      
+
     }
 }

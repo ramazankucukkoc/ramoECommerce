@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Application.Features.Customers.Command.UpdateCustomer
 {
-    public class UpdateCustomerCommand:IRequest<CustomerDto>
+    public class UpdateCustomerCommand : IRequest<CustomerDto>
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -38,7 +38,7 @@ namespace Application.Features.Customers.Command.UpdateCustomer
                 Customer? customer = await _customerRepository.GetAsync(c => c.Id == request.Id);
                 _mapper.Map(request, customer);
                 await _customerRepository.UpdateAsync(customer);
-                CustomerDto result =_mapper.Map<CustomerDto>(customer);
+                CustomerDto result = _mapper.Map<CustomerDto>(customer);
                 return result;
             }
         }

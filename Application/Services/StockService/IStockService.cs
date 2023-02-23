@@ -1,9 +1,7 @@
-﻿using Domain.Entities;
-
-namespace Application.Services.StockService
+﻿namespace Application.Services.StockService
 {
     public interface IStockService
     {
-         Task StockUpdateToProductAsync(int productId,int quantity);
+        Task StockUpdateToProductAsync(int productId, int quantity);
     }
 }

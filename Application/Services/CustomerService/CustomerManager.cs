@@ -15,5 +15,5 @@ namespace Application.Services.CustomerService
             Customer? customer = await _customerRepository.GetAsync(c => c.UserId == userId);
             return customer;
         }
-    } 
+    }
 }
