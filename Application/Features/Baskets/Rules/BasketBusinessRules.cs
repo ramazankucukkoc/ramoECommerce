@@ -48,7 +48,6 @@ namespace Application.Features.Baskets.Rules
             if (product == null) throw new BusinessException(BasketBusinessExceptionMessages.BasketProductExists);
 
         }
-
         internal async Task BrandControl(int brandId)
         {
             Brand? brand = await _brandService.GetById(brandId);

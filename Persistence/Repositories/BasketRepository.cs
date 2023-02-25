@@ -23,7 +23,6 @@ namespace Persistence.Repositories
                                                on b.UserId equals u.Id
                                                join brand in Context.Brands
                                                on b.BrandId equals brand.Id
-
                                                select new BasketListDto
                                                {
                                                    Id = b.Id,

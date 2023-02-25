@@ -52,13 +52,13 @@ namespace Application.Features.Products.Command
                 Product mappedProduct = _mapper.Map<Product>(request);
                 Product addedProduct = await _productRepository.AddAsync(mappedProduct);
                 CreateProductDto createProductDto = _mapper.Map<CreateProductDto>(addedProduct);
-                //_mailService.SendMail(new Mail
-                //{
-                //    ToEmail = "ramazankucukkoc43@gmail.com",
-                //    HtmlBody = "<strong>Hey, Ürünlere eklendi.</strong>",
-                //    Subject = "Yeni ürün eklendi!",
-                //    ToFullName = "system Admins"
-                //});
+               await _mailService.SendMailAsync(new Mail
+                {
+                    ToEmail = "ramazankucukkoc43@gmail.com",
+                    HtmlBody = "<strong>Hey, Ürünlere eklendi.</strong>",
+                    Subject = "Yeni ürün eklendi!",
+                    ToFullName = "system Admins"
+                });
                 return createProductDto;
             }
         }

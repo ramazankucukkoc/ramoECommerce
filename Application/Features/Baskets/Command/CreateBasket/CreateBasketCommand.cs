@@ -8,7 +8,6 @@ using Core.Domain.Entities;
 using Core.Mailings;
 using Domain.Entities;
 using MediatR;
-using Newtonsoft.Json;
 
 namespace Application.Features.Baskets.Command.CreateBasket
 {

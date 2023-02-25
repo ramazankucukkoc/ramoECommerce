@@ -4,6 +4,7 @@ using Application.Features.Products.Queries.GetAll;
 using Application.Features.Products.Queries.GetAllDynamic;
 using Application.Features.Products.Queries.GetByCategoryId;
 using Application.Features.Products.Queries.GetById;
+using Application.Services.ProductService;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
@@ -15,6 +16,14 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ProductsController : BaseController
     {
+
+        private readonly IProductService _productService;
+
+        public ProductsController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         /// <summary>
         /// Ürün ekleme işlemi yapıyor!!!
         /// </summary>
@@ -80,5 +89,11 @@ namespace WebAPI.Controllers
             GetListResponse<GetByCategoryIdDto> result = await Mediator.Send(getByCategoryIdQuery);
             return Ok(result);
         }
+        [HttpGet("qrcode/{productId}")]
+        public async Task<IActionResult> GetQrCodeToProduct([FromRoute] int productId)
+        {
+            var data = await _productService.QrCodeToProductAsync(productId);
+            return File(data, "image/png");
+        } 
     }
 }
