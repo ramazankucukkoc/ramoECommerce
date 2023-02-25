@@ -3,6 +3,7 @@ using Application.Features.Auths.Rules;
 using Application.Services.AuthService;
 using Application.Services.Repositories;
 using Core.Application.DTOs;
+using Core.Application.Pipelines.Logging;
 using Core.Domain.Entities;
 using Core.Mailings;
 using Core.Security.Hashing;
@@ -11,7 +12,7 @@ using MediatR;
 
 namespace Application.Features.Auths.Command.Register
 {
-    public class RegisterCommand : IRequest<RegisteredDto>
+    public class RegisterCommand : IRequest<RegisteredDto>,ILoggableRequest
     {
         public UserForRegisterDto UserForRegisterDto { get; set; }
         public string IpAddress { get; set; }
@@ -58,16 +59,14 @@ namespace Application.Features.Auths.Command.Register
                     RefreshToken = addedRefreshToken
                 };
 
-                //_mailService.SendMail(new Mail
-                //{
-                //    ToEmail = request.UserForRegisterDto.Email,
-                //    ToFullName = $"{request.UserForRegisterDto.FirstName} ${request.UserForRegisterDto.LastName}",
-                //    Subject = "Register Your Email - ECommerce - Ramazan",
-                //    TextBody = "Teşekkürler",
-                //    HtmlBody = "Kaydetme işlemerini< başarılı şekilde tamamlandı."
-                //});
-
-
+               await _mailService.SendMailAsync(new Mail
+                {
+                    ToEmail = request.UserForRegisterDto.Email,
+                    ToFullName = $"{request.UserForRegisterDto.FirstName} ${request.UserForRegisterDto.LastName}",
+                    Subject = "Register Your Email - ECommerce - Ramazan",
+                    TextBody = "Teşekkürler",
+                    HtmlBody = "Kaydetme işlemerini<strong> başarılı şekilde tamamlandı.</strong>"
+                });
                 return registeredDto;
             }
         }

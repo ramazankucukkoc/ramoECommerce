@@ -3,7 +3,8 @@
     public static class ValidationExtensionMessages
     {
         public const string PasswordEmpty = "Parola Boş Olamaz!";
-        public const string PasswordLength = "Minimum 8 Karakter Uzunluğunda Olmalıdır!";
+        public const string PasswordMinumumLength = "Minimum 8 Karakter Uzunluğunda Olmalıdır!";
+        public const string PasswordMaximumLength = "Minimum 16 Karakter Uzunluğunda Olmalıdır!";
         public const string PasswordUppercaseLetter = "En Az 1 Büyük Harf İçermeledir!";
         public const string PasswordLowercaseLetter = "En Az 1 Küçük Harf İçermeledir!";
         public const string PasswordDigit = "En Az 1 Rakam İçermeledir!";

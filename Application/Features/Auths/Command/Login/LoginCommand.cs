@@ -41,15 +41,6 @@ namespace Application.Features.Auths.Command.Login
                 RefreshToken createdRefreshToken = await _authService.CreateRefreshToken(user, request.IpAddress);
                 RefreshToken addedRefreshToken = await _authService.AddRefreshToken(createdRefreshToken);
 
-                //_mailService.SendMail(new Mail
-                //{
-                //    ToEmail = request.UserForLoginDto.Email,
-                //    ToFullName = "Ramazan Küçükkoç",
-                //    Subject = "Register Your Email - ECommerce - Ramazan",
-                //    TextBody = "Teşekkürler",
-                //    HtmlBody = "Kaydetme işlemerini< başarılı şekilde tamamlandı."
-                //});
-
                 return new LoggedDto() { AccessToken = createdAccessToken, RefreshToken = addedRefreshToken };
             }
         }

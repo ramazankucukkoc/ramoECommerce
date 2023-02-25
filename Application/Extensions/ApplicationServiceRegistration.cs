@@ -12,6 +12,7 @@ using Application.Features.FindeksCreditRates.Rules;
 using Application.Features.IndividualCustomers.Rules;
 using Application.Features.OperationClaims.Rules;
 using Application.Features.Orders.Rules;
+using Application.Features.ParentCategories.Rules;
 using Application.Features.Personels.Rules;
 using Application.Features.ProductComments.Rules;
 using Application.Features.Products.Rules;
@@ -72,6 +73,7 @@ namespace Application.Extensions
             services.AddScoped<ProductCommentBusinessRules>();
             services.AddScoped<CustomerBusinessRules>();
             services.AddScoped<SaleBusinessRules>();
+            services.AddScoped<ParentCategoriesBusinessRules>();
 
             //-----------------Business Rules----------------------
 

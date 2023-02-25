@@ -37,10 +37,9 @@ namespace Application.Features.Auths.Command.VerifyEmailAuthenticator
 
                 User user = await _userService.GetById(emailAuthenticator.UserId);
                 user.AuthenticatorType = Core.Domain.Enums.AuthenticatorType.Email;
-
                 await _userService.Update(user);
-                return Unit.Value;
 
+                return Unit.Value;
             }
         }
 

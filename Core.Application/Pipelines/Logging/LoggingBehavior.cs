@@ -33,9 +33,9 @@ namespace Core.Application.Pipelines.Logging
                 MethodName = next.Method.Name,
                 Parameters = logParameters,
                 User = _httpContextAccessor.HttpContext == null ||
-                _httpContextAccessor.HttpContext.User.GetName() == null
+                _httpContextAccessor.HttpContext.User.Identity.Name == null
                 ? "UnKnown"
-                : _httpContextAccessor.HttpContext.User.GetName()
+                : _httpContextAccessor.HttpContext.User.Identity.Name
             };
             _loggerServiceBase.Info(JsonConvert.SerializeObject(logDetail));
             return next();

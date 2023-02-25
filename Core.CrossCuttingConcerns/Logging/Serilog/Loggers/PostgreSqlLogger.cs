@@ -1,4 +1,5 @@
-﻿using Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
+﻿using Core.CrossCuttingConcerns.Logging.Extensions;
+using Core.CrossCuttingConcerns.Logging.Serilog.ConfigurationModels;
 using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using NpgsqlTypes;
@@ -13,9 +14,7 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Loggers
         public PostgreSqlLogger(IConfiguration configuration)
         {
             _configuration = configuration;
-            var postgreConfiguration = _configuration.GetSection("SeriLogConfigurations:PostgreConfiguration")
-                .Get<PostgreSqlConfiguration>() ??
-                throw new Exception(SerilogMessages.NullOptionMessages);
+            var postgreConfiguration = _configuration.GetConfig<PostgreSqlConfiguration>("SeriLogConfigurations:PostgreConfiguration");
 
             IDictionary<string, ColumnWriterBase> columnWriters = new Dictionary<string, ColumnWriterBase>
             {

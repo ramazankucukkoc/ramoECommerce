@@ -1,9 +1,14 @@
 ﻿using Application.Features.Baskets.Dtos;
 using Application.Features.Baskets.Rules;
+using Application.Services.ProductService;
 using Application.Services.Repositories;
+using Application.Services.UserService;
 using AutoMapper;
+using Core.Domain.Entities;
+using Core.Mailings;
 using Domain.Entities;
 using MediatR;
+using Newtonsoft.Json;
 
 namespace Application.Features.Baskets.Command.CreateBasket
 {
@@ -19,29 +24,38 @@ namespace Application.Features.Baskets.Command.CreateBasket
             private readonly IBasketRepository _basketRepository;
             private readonly IMapper _mapper;
             private readonly BasketBusinessRules _basketBusinessRules;
+            private readonly IMailService _mailService;
+            private readonly IUserService _userService;
+            private readonly IProductService _productService;
 
-            public CreateBasketCommandHandler(IBasketRepository basketRepository,
-                IMapper mapper, BasketBusinessRules basketBusinessRules)
+            public CreateBasketCommandHandler(IBasketRepository basketRepository, IMapper mapper, BasketBusinessRules basketBusinessRules, IMailService mailService,
+                IUserService userService,IProductService productService)
             {
                 _basketRepository = basketRepository;
                 _mapper = mapper;
                 _basketBusinessRules = basketBusinessRules;
+                _mailService = mailService;
+                _userService = userService;
+                _productService = productService;
             }
 
             public async Task<CreateBasketDto> Handle(CreateBasketCommand request, CancellationToken cancellationToken)
             {
-                Basket? basket = await _basketRepository.GetAsync(b => b.Id == request.ProductId);
-                if (basket is not null)
-                {
-                    basket.Count += request.Count;
-                    Basket updatedBasket = await _basketRepository.UpdateAsync(basket);
-                    CreateBasketDto updatedBasketDto = _mapper.Map<CreateBasketDto>(updatedBasket);
-                    return updatedBasketDto;
-                }
-
+                User? user =await _userService.GetById(request.UserId);
+                Product product = await _productService.GetById(request.ProductId);
                 Basket? mappedBasket = _mapper.Map<Basket>(request);
                 Basket createBasket = await _basketRepository.AddAsync(mappedBasket);
                 CreateBasketDto createBasketDto = _mapper.Map<CreateBasketDto>(createBasket);
+
+                await _mailService.SendMailAsync(new Mail
+                {
+                    ToEmail =user.Email,
+                    ToFullName=$"{user.FirstName} ${user.LastName}",
+                    Subject = "Register Your Email - ECommerce - Ramazan",
+                    TextBody = "Teşekkürler",
+                    HtmlBody = $"Sepete {product.Name} ürün<strong> başarılı şekilde eklendi.</strong>"
+
+                });
                 return createBasketDto;
             }
         }

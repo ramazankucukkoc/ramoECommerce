@@ -14,7 +14,7 @@ namespace Core.Mailings.MailKitImplementations
             _mailSettings = _configuration.GetSection("MailSettings").Get<MailSettings>();
         }
 
-        public void SendMail(Mail mail)
+        public async Task SendMailAsync(Mail mail)
         {
             MimeMessage email = new();
 
@@ -37,10 +37,10 @@ namespace Core.Mailings.MailKitImplementations
             email.Body = bodyBuilder.ToMessageBody();
 
             using SmtpClient smtp = new();
-            smtp.Connect(_mailSettings.Server, _mailSettings.Port, MailKit.Security.SecureSocketOptions.Auto);
-            smtp.Authenticate(_mailSettings.UserName, "Ramazan45.?");
-            smtp.Send(email);
-            smtp.Disconnect(true);
+           await smtp.ConnectAsync(_mailSettings.Server, _mailSettings.Port, false);
+           await smtp.AuthenticateAsync(_mailSettings.UserName, _mailSettings.Password);
+           await smtp.SendAsync(email);
+           await smtp.DisconnectAsync(true);
         }
     }
 }

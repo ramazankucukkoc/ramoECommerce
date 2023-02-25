@@ -6,11 +6,13 @@ namespace Core.Application.Extensions
 {
     public static class RuleBuilderExtensions
     {
-        public static IRuleBuilder<T, string> Password<T>(this IRuleBuilder<T, string> ruleBuilder, int minimumLength = 8)
+        public static IRuleBuilder<T, string> Password<T>(this IRuleBuilder<T, string> ruleBuilder, 
+            int minimumLength = 8,int maximumLength=16)
         {
             var options = ruleBuilder
                 .NotEmpty().WithMessage(ValidationExtensionMessages.PasswordEmpty)
-                .MinimumLength(minimumLength).WithMessage(ValidationExtensionMessages.PasswordLength)
+                .MaximumLength(maximumLength).WithMessage(ValidationExtensionMessages.PasswordMaximumLength)
+                .MinimumLength(minimumLength).WithMessage(ValidationExtensionMessages.PasswordMinumumLength)
                  .Matches("[A-Z]").WithMessage(ValidationExtensionMessages.PasswordUppercaseLetter)
                  .Matches("[a-z]").WithMessage(ValidationExtensionMessages.PasswordLowercaseLetter)
                  .Matches("[0-9]").WithMessage(ValidationExtensionMessages.PasswordDigit)

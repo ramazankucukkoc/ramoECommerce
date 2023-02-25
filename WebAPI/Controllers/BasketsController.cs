@@ -8,6 +8,7 @@ using Application.Features.Baskets.Queries.GetList;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Dtos;
 
 namespace WebAPI.Controllers
 {
@@ -16,8 +17,16 @@ namespace WebAPI.Controllers
     public class BasketsController : BaseController
     {
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateBasketCommand createBasketCommand)
+        public async Task<IActionResult> Add([FromBody] CreateBasketCommandModelDto createBasketCommandModelDto)
         {
+            CreateBasketCommand createBasketCommand = new()
+            {
+                BrandId = createBasketCommandModelDto.BrandId,
+                ProductId = createBasketCommandModelDto.ProductId,
+                Count = createBasketCommandModelDto.Count,
+                UserId = getUserIdFromRequest()
+            };
+
             CreateBasketDto result = await Mediator.Send(createBasketCommand);
             return Ok(result);
         }

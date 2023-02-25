@@ -89,8 +89,8 @@ namespace WebAPI.Controllers
                 UserId = getUserIdFromRequest(),
                 VerifyEmailUrlPrefix = $"{_configuration.APIDomain}/Auths/EnableEmailAuthenticator"
             };
-            await Mediator.Send(enableEmailAuthenticatorCommand);
-            return Ok();
+            EnabledEmailAuthenticatorDto result= await Mediator.Send(enableEmailAuthenticatorCommand);
+            return Ok(result);
         }
         [HttpGet]
         public async Task<IActionResult> EnableOtpAuthenticator()

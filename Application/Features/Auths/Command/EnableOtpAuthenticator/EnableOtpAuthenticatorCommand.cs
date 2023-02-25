@@ -43,7 +43,9 @@ namespace Application.Features.Auths.Command.EnableOtpAuthenticator
                 OtpAuthenticator addedOtpAuthenticator = await _authenticatorRepository.AddAsync(newOtpAuthenticator);
 
                 EnabledOtpAuthenticatorDto enabledOtpAuthenticatorDto = new() { SecretKey = await _authService.ConvertSecretKeyToString(addedOtpAuthenticator.SecretKey) };
+               
                 return enabledOtpAuthenticatorDto;
+           
             }
         }
     }

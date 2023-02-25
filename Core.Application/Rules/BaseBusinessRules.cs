@@ -11,9 +11,5 @@ namespace Core.Application.Rules
             if (entity is null) throw new BusinessException(entity.GetType().Name + BaseBusinessRulesMessages.Null);
             return Task.CompletedTask;
         }
-        // public abstract Task CanNotDuplicate(string name);
-
-
-
     }
 }

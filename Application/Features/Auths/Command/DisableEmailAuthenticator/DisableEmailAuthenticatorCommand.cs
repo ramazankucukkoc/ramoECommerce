@@ -2,6 +2,7 @@
 using Application.Services.AuthService;
 using Application.Services.UserService;
 using Core.Domain.Entities;
+using Core.Domain.Enums;
 using MediatR;
 
 namespace Application.Features.Auths.Command.DisableEmailAuthenticator
@@ -28,7 +29,7 @@ namespace Application.Features.Auths.Command.DisableEmailAuthenticator
                 User user = await _userService.GetById(request.UserId);
                 await _authBusinessRules.UserShouldBeExists(user);
                 await _authBusinessRules.UserShouldBeHaveAuthenticator(user);
-                user.AuthenticatorType = Core.Domain.Enums.AuthenticatorType.None;
+                user.AuthenticatorType =AuthenticatorType.None;
                 await _authService.DeleteOldEmailAuthenticators(user);
                 await _userService.Update(user);
                 return Unit.Value;

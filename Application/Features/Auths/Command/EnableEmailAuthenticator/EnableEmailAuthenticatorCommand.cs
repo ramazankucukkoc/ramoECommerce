@@ -47,7 +47,7 @@ namespace Application.Features.Auths.Command.EnableEmailAuthenticator
                 EmailAuthenticator emailAuthenticator = await _authService.CreateEmailAuthenticator(user);
                 EmailAuthenticator addedEmialAuthenticator = await _emailAuthenticatorRepository.AddAsync(emailAuthenticator);
 
-                _mailService.SendMail(new Mail
+              await _mailService.SendMailAsync(new Mail
                 {
                     ToEmail = user.Email,
                     ToFullName = $"{user.FirstName} ${user.LastName}",
