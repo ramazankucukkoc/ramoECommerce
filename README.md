@@ -1,1 +1,1 @@
-# ProjectsTemplate
+Inspired by Clean Architecture, nArchitecture is a monolith project. In this project, which is a ecommerce simulation, we have completed the project with advanced techniques. A project has been created that includes Clean Architecture, CQRS, Advanced Repository, Dynamic Querying, JWT, OTP, Google & Microsoft Auth, Role Based Management, Distributed Caching(Redis), Logging (Serilog), Elastic Search, and much more. 
