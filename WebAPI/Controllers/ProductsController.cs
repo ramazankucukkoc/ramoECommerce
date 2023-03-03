@@ -16,9 +16,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ProductsController : BaseController
     {
-
         private readonly IProductService _productService;
-
         public ProductsController(IProductService productService)
         {
             _productService = productService;

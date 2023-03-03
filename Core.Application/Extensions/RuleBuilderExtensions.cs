@@ -17,7 +17,6 @@ namespace Core.Application.Extensions
                  .Matches("[a-z]").WithMessage(ValidationExtensionMessages.PasswordLowercaseLetter)
                  .Matches("[0-9]").WithMessage(ValidationExtensionMessages.PasswordDigit)
                   .Matches("[^a-zA-Z0-9]").WithMessage(ValidationExtensionMessages.PasswordSpecialCharacter);
-
             return options;
         }
         public static IRuleBuilderOptions<T, string> FirstLetterMustBeUpperCase<T>(this IRuleBuilder<T, string> ruleBuilder)

@@ -12,7 +12,6 @@ namespace Core.Persistence.Repositories
         where TContext : DbContext
     {
         protected TContext Context { get; }
-
         public EfRepositoryBase(TContext context)
         {
             Context = context;

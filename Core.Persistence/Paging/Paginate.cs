@@ -93,7 +93,6 @@
 
             Items = new List<TResult>(converter(source.Items));
         }
-
         public int Index { get; }
 
         public int Size { get; }
