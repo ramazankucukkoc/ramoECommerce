@@ -27,11 +27,6 @@
     <Folder Include="Features\Departmans\Profile\" />
     <Folder Include="Features\Departmans\Queries\" />
     <Folder Include="Features\Departmans\Validator\" />
-    <Folder Include="Features\Favorites\Command\" />
-    <Folder Include="Features\Favorites\Dtos\" />
-    <Folder Include="Features\Favorites\Profile\" />
-    <Folder Include="Features\Favorites\Queries\" />
-    <Folder Include="Features\Favorites\Rules\" />
     <Folder Include="Features\Favorites\Validator\" />
     <Folder Include="Features\Invoices\Profile\" />
     <Folder Include="Features\Invoices\Queries\" />
@@ -66,6 +61,7 @@
     <Folder Include="Features\UserComments\Rules\" />
     <Folder Include="Features\UserComments\Validator\" />
     <Folder Include="Features\Users\Models\" />
+    <Folder Include="Services\FavoriteService\" />
   </ItemGroup>
 
   <ItemGroup>
