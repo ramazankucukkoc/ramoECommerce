@@ -1,6 +1,7 @@
 ﻿using Application.Features.Auths.Rules;
 using Application.Services.Repositories;
 using Core.Domain.Entities;
+using Core.Mailings;
 using Core.Security.Hashing;
 using MediatR;
 
@@ -15,9 +16,13 @@ namespace Application.Features.Users.Commands
         {
             private readonly IUserRepository _userRepository;
             private readonly AuthBusinessRules _authBusinessRules;
+            private readonly IMailService _mailService;
 
-            public ChangePasswordCommandHandler(IUserRepository userRepository, AuthBusinessRules authBusinessRules)
+
+            public ChangePasswordCommandHandler(IUserRepository userRepository, AuthBusinessRules authBusinessRules
+                ,IMailService mailService)
             {
+                _mailService = mailService;
                 _userRepository = userRepository;
                 _authBusinessRules = authBusinessRules;
             }
@@ -32,9 +37,18 @@ namespace Application.Features.Users.Commands
                 await _authBusinessRules.UserPasswordShouldBeMatch(request.UserId, request.NewPassword.Trim());
                 HashingHelper.CreatePasswordHash(request.NewPassword, out passwordHash, out passwordSalt);
 
+
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
                 await _userRepository.UpdateAsync(user);
+                await _mailService.SendMailAsync(new Mail
+                {
+                    ToEmail = user.Email,
+                    ToFullName = $"{user.FirstName} ${user.LastName}",
+                    Subject = "PasswordChanded Your Email - RamoCommerce - RamoBaba",
+                    TextBody = "Teşekkürler",
+                    HtmlBody = "Şifre değiştirme işlemi başarılı şekilde tamamlandı"
+                });
                 return "Şifre değiştirme işlemi başarılı şekilde tamamlandı";
 
             }

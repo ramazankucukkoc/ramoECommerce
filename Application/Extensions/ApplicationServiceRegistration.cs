@@ -8,6 +8,7 @@ using Application.Features.CorporateCustomers.Rules;
 using Application.Features.Countries.Rules;
 using Application.Features.Customers.Rules;
 using Application.Features.Departmans.Rules;
+using Application.Features.Favorites.Rules;
 using Application.Features.FindeksCreditRates.Rules;
 using Application.Features.IndividualCustomers.Rules;
 using Application.Features.OperationClaims.Rules;
@@ -74,6 +75,7 @@ namespace Application.Extensions
             services.AddScoped<CustomerBusinessRules>();
             services.AddScoped<SaleBusinessRules>();
             services.AddScoped<ParentCategoriesBusinessRules>();
+            services.AddScoped<FavoriteBusinessRules>();
 
             //-----------------Business Rules----------------------
 

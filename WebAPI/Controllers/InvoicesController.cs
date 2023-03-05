@@ -6,7 +6,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class IInvoicesController : BaseController
+    public class InvoicesController : BaseController
     {
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateInvoiceCommand createInvoiceCommand)
@@ -14,6 +14,5 @@ namespace WebAPI.Controllers
             CreateInvoiceDto result = await Mediator.Send(createInvoiceCommand);
             return Ok(result);
         }
-
     }
 }

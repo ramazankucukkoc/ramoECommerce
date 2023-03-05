@@ -3,6 +3,7 @@ using Application.Features.Users.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Domain.Entities;
+using Core.Mailings;
 using MediatR;
 
 namespace Application.Features.Users.Commands
@@ -16,10 +17,13 @@ namespace Application.Features.Users.Commands
             private readonly IUserRepository _userRepository;
             private readonly IMapper _mapper;
             private readonly UserBusinessRules _userBusinessRules;
+            private readonly IMailService _mailService;
+
 
             public DeleteUserCommnadHandler(IUserRepository userRepository,
-                IMapper mapper, UserBusinessRules userBusinessRules)
+                IMapper mapper, UserBusinessRules userBusinessRules,IMailService mailService)
             {
+                _mailService = mailService;
                 _userRepository = userRepository;
                 _mapper = mapper;
                 _userBusinessRules = userBusinessRules;
@@ -32,6 +36,15 @@ namespace Application.Features.Users.Commands
                 mappedUser.Status = false;
                 User deletedUser = await _userRepository.UpdateAsync(mappedUser);
                 DeletedUserDto deletedUserDto = _mapper.Map<DeletedUserDto>(deletedUser);
+                await _mailService.SendMailAsync(new Mail
+                {
+                    ToEmail = mappedUser.Email,
+                    ToFullName = $"{mappedUser.FirstName} ${mappedUser.LastName}",
+                    Subject = "Teşekkürler",
+                    TextBody = "Her şey için teşekkürler bye bye",
+                    HtmlBody = "Artık üyemiz değilsiniz <strong> bye bye</strong>"
+                });
+
                 return deletedUserDto;
 
             }
