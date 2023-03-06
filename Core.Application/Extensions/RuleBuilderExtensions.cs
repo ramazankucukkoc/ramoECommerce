@@ -6,6 +6,12 @@ namespace Core.Application.Extensions
 {
     public static class RuleBuilderExtensions
     {
+
+        public static IRuleBuilder<T,string>NotEmptyMessages<T>(this IRuleBuilder<T,string> ruleBuilder)
+        {
+            var options = ruleBuilder.NotEmpty().WithMessage($"{ruleBuilder.GetType().Name} boş geçilemez");
+            return options;
+        }
         public static IRuleBuilder<T, string> Password<T>(this IRuleBuilder<T, string> ruleBuilder, 
             int minimumLength = 8,int maximumLength=16)
         {

@@ -4,8 +4,10 @@ using Application.Services.Repositories;
 using AutoMapper;
 using Core.Mailings;
 using Core.Persistence.Paging;
+using Core.Security.Extensions;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.Features.Products.Command
 {
@@ -29,9 +31,13 @@ namespace Application.Features.Products.Command
             private readonly IMapper _mapper;
             private readonly ProductBusinnessRules _productBusinnessRules;
             private readonly IMailService _mailService;
+            private readonly IHttpContextAccessor _contextAccessor;
+
             public CreateProductCommandHandler(IProductRepository productRepository,
-                IMapper mapper, ProductBusinnessRules productBusinnessRules, IMailService mailService)
+                IMapper mapper, ProductBusinnessRules productBusinnessRules, IMailService mailService
+                ,IHttpContextAccessor httpContextAccessor)
             {
+                _contextAccessor = httpContextAccessor;
                 _mailService = mailService;
                 _productRepository = productRepository;
                 _mapper = mapper;
@@ -40,24 +46,17 @@ namespace Application.Features.Products.Command
 
             public async Task<CreateProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
-                IPaginate<Product> products = await _productRepository.GetListAsync(c => c.Name.ToLower().Trim() == request.Name.ToLower().Trim());
-                if (products.Items.Any())
-                {
-                    Product? getNameproduct = await _productRepository.GetAsync(x => x.Name.ToLower().Trim() == request.Name.ToLower().Trim());
+               await _productBusinnessRules.CheckIfProductNameExists(request.Name);
 
-                    Product product = await _productRepository.UpdateAsync(getNameproduct);
-                    CreateProductDto createProduct = _mapper.Map<CreateProductDto>(product);
-                    return createProduct;
-                }
                 Product mappedProduct = _mapper.Map<Product>(request);
                 Product addedProduct = await _productRepository.AddAsync(mappedProduct);
                 CreateProductDto createProductDto = _mapper.Map<CreateProductDto>(addedProduct);
                await _mailService.SendMailAsync(new Mail
                 {
-                    ToEmail = "ramazankucukkoc43@gmail.com",
+                    ToEmail = _contextAccessor.HttpContext.User.GetEmail(),
                     HtmlBody = "<strong>Hey, Ürünlere eklendi.</strong>",
                     Subject = "Yeni ürün eklendi!",
-                    ToFullName = "system Admins"
+                    ToFullName = $"{_contextAccessor.HttpContext.User.GetName()} ${_contextAccessor.HttpContext.User.GetLastName()}"
                 });
                 return createProductDto;
             }

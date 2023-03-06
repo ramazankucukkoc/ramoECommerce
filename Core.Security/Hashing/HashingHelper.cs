@@ -17,6 +17,12 @@ namespace Core.Security.Hashing
             byte[] computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             return computeHash.SequenceEqual(passwordHash);
         }
+        //public static void CreateCreditCartHash(string CardNumber,out byte[]crediCartHash,out byte[] creditCardSalt)
+        //{
+        //    using HMACSHA512 hmac = new();
+
+
+        //}
 
     }
 }

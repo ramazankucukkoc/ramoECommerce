@@ -25,7 +25,7 @@ namespace Application.Features.Brands.Rules
         }
         public async Task BrandNameCanNotBeDuplicatedWhenInserted(string name)
         {
-            IPaginate<Brand> result = await _brandRepository.GetListAsync(b => b.Name.ToLower() == name.ToLower());
+            IPaginate<Brand> result = await _brandRepository.GetListAsync(b => b.Name.ToLower().Trim() == name.ToLower());
             if (result.Items.Any()) throw new BusinessException(BusinessRulesExceptionMessages.BrandNameExists);
         }
         public async Task BrandNameListCanNotBeDuplicatedWhenInserted(List<string> nameList)

@@ -17,7 +17,7 @@ namespace Application.Features.Categories.Rules
         }
         public async Task CategoryNameCanNotBeDuplicatedWhenInserted(string name)
         {
-            IPaginate<Category> categories = await _categoryRepository.GetListAsync(c => c.Name == name);
+            IPaginate<Category> categories = await _categoryRepository.GetListAsync(c => c.Name.ToLower().Trim() == name.ToLower().Trim());
             if (categories.Items.Any()) throw new BusinessException(CategoryExceptionMessages.CategoryNameExists);
         }
         public async Task CategoryCanNotBeDuplicatedWhenInserted(int id)
