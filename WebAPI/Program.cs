@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Persistence.Extensions;
 using System.Reflection;
+using WebAPI.Middleware;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
